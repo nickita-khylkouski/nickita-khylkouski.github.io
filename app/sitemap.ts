@@ -1,6 +1,8 @@
 import { getProjectPosts } from 'app/projects/utils'
 
-export const baseUrl = 'https://portfolio-blog-starter.vercel.app'
+export const baseUrl = 'https://nickitakhy.me'
+
+export const dynamic = 'force-static'
 
 export default async function sitemap() {
   let projects = getProjectPosts().map((post) => ({
