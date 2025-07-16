@@ -1,18 +1,23 @@
 import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { baseUrl } from 'app/sitemap'
+import { CustomMDX } from '../../components/mdx'
+import { formatDate, getProjectPosts } from '../utils'
+import { baseUrl } from '../../sitemap'
+
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  let posts = getProjectPosts()
 
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params
+  let post = getProjectPosts().find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -35,7 +40,7 @@ export function generateMetadata({ params }) {
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}/projects/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -51,8 +56,9 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Project({ params }: PageProps) {
+  const { slug } = await params
+  let post = getProjectPosts().find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
@@ -66,7 +72,7 @@ export default function Blog({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            '@type': 'Article',
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -74,10 +80,10 @@ export default function Blog({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
+            url: `${baseUrl}/projects/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              name: 'Nickita Khylkouski',
             },
           }),
         }}
@@ -85,7 +91,7 @@ export default function Blog({ params }) {
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+      <div className="flex justify-between items-center mt-1 mb-6 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>

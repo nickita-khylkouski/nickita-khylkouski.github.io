@@ -11,15 +11,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Nickita Khylkouski - Portfolio',
+    template: '%s | Nickita Khylkouski',
   },
-  description: 'This is my portfolio.',
+  description: 'Developer passionate about building innovative projects and solving complex problems.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Nickita Khylkouski - Portfolio',
+    description: 'Developer passionate about building innovative projects and solving complex problems.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Nickita Khylkouski - Portfolio',
     locale: 'en_US',
     type: 'website',
   },
@@ -36,7 +36,9 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+function cx(...classes: string[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function RootLayout({
   children,
