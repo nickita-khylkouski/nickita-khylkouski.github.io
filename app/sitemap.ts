@@ -5,15 +5,10 @@ export const baseUrl = 'https://nickitakhy.me'
 export const dynamic = 'force-static'
 
 export default async function sitemap() {
-  let projects = getProjectPosts().map((post) => ({
-    url: `${baseUrl}/projects/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }))
-
   let routes = ['', '/blog', '/projects'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...projects]
+  return routes
 }

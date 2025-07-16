@@ -33,8 +33,8 @@ function getMDXData(dir: string) {
   })
 }
 
-export function getProjectPosts() {
-  return getMDXData(path.join(process.cwd(), 'app/projects/posts'))
+export function getBlogPosts() {
+  return getMDXData(path.join(process.cwd(), 'app/blog/posts'))
 }
 
 export function formatDate(date: string, includeRelative = false) {
@@ -71,4 +71,4 @@ export function formatDate(date: string, includeRelative = false) {
   }
 
   return `${fullDate} (${formattedDate})`
-}
+} 
