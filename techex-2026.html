@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///Users/nickita/Desktop/TechEx_Session_Script.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechEx 2026 - Research Session</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #fff; color: #111; line-height: 1.6; padding: 40px 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 5px; border-bottom: 3px solid #000; padding-bottom: 10px; }
+        h2 { font-size: 1.3rem; font-weight: 700; margin: 35px 0 15px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 25px 0 10px; }
+        .meta { color: #666; font-size: 0.9rem; margin-bottom: 30px; }
+
+        .alt-titles { border: 1px solid #000; padding: 15px 20px; margin: 20px 0; background: #fafafa; }
+        .alt-titles h3 { margin: 0 0 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .alt-titles ul { margin: 0; padding-left: 20px; }
+        .alt-titles li { margin: 5px 0; font-size: 0.95rem; }
+
+        .segment { border: 1px solid #ddd; padding: 20px; margin: 20px 0; }
+        .segment-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .segment-time { font-weight: 700; font-size: 0.85rem; }
+        .segment-title { font-weight: 700; font-size: 1.1rem; }
+        .segment > ul { margin: 0 0 0 20px; }
+        .segment > ul li { margin: 6px 0; font-size: 0.95rem; }
+
+        details { margin-top: 15px; border-top: 1px solid #ddd; padding-top: 12px; }
+        summary { font-weight: 600; font-size: 0.85rem; cursor: pointer; padding: 5px 0; list-style: none; color: #555; }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: "+ "; font-weight: 700; }
+        details[open] summary::before { content: "- "; }
+        .detail-content { padding: 15px 0; font-size: 0.85rem; color: #333; }
+        .detail-content h4 { font-size: 0.9rem; font-weight: 600; margin: 15px 0 8px; }
+        .detail-content ul { margin: 8px 0 8px 20px; }
+        .detail-content li { margin: 4px 0; }
+        .detail-content .script { font-style: italic; background: #f9f9f9; padding: 10px; margin: 10px 0; border-left: 2px solid #000; }
+        .detail-content .q-block { margin: 15px 0; padding: 10px; background: #fafafa; }
+        .detail-content .q-block strong { font-weight: 600; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85rem; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; vertical-align: top; }
+        th { font-weight: 700; background: #f5f5f5; }
+        td a { color: #000; }
+
+        .researcher { border: 1px solid #ddd; padding: 15px; margin: 12px 0; }
+        .researcher h4 { font-size: 1rem; margin-bottom: 3px; }
+        .researcher .affiliation { font-size: 0.85rem; color: #555; }
+        .researcher .paper { font-size: 0.85rem; margin: 8px 0; font-style: italic; }
+        .researcher .links { font-size: 0.8rem; margin-top: 8px; }
+        .researcher .links a { color: #000; margin-right: 15px; }
+
+        .stat { display: inline-block; border: 1px solid #000; padding: 5px 12px; margin: 5px; font-size: 0.85rem; }
+        .stat strong { font-weight: 700; }
+
+        .cta { border: 2px solid #000; padding: 20px; margin: 30px 0; text-align: center; }
+        .cta h3 { margin-bottom: 10px; }
+        .cta p { font-size: 0.9rem; color: #555; }
+
+        @media print { body { padding: 20px; } details { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>From Lab to Production: How Bay Area AI Labs Are Shipping Agents</h1>
+        <p class="meta">TechEx North America 2026 | Learning Hub Session | May 18-19, San Jose | AI Valley Partnership</p>
+
+        <div class="alt-titles" style="background: #fff; border: 2px solid #000; margin-bottom: 30px;">
+            <h3 style="margin-bottom: 15px;">What This Session Is</h3>
+            <p style="margin: 0 0 15px; font-size: 0.95rem;">A 60-minute expert panel bringing together three perspectives on AI agents: <strong>academic research</strong>, <strong>infrastructure/tooling</strong>, and <strong>production deployment</strong>. Moderated by AI Valley. Audience: enterprise tech professionals evaluating or building AI agents.</p>
+            <p style="margin: 0; font-size: 0.95rem;"><strong>Format:</strong> Panel discussion (no slides) → Audience Q&amp;A → Lightning round takeaways</p>
+        </div>
+
+        <div class="alt-titles">
+            <h3>Alternate Titles</h3>
+            <ul>
+                <li><strong>Agents That Actually Work</strong> — What Stanford &amp; Anthropic Learned the Hard Way</li>
+                <li><strong>The 2026 Agent Stack</strong> — Research, Infrastructure, Reality</li>
+                <li><strong>Beyond the Demo</strong> — Shipping AI Agents in Production</li>
+                <li><strong>ReAct to Reality</strong> — From Research Paper to Enterprise Deployment</li>
+                <li><strong>The Agent Gap</strong> — Why Most Fail and What the Winners Do Different</li>
+            </ul>
+        </div>
+
+        <h2>Session Script</h2>
+
+        <!-- OPENING -->
+        <div class="segment">
+            <div class="segment-header">
+                <span class="segment-time">0:00 - 5:00</span>
+                <span class="segment-title">Opening: The Agent Moment</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px;"><strong>Speaker:</strong> AI Valley Moderator</p>
+            <ul>
+                <li>Hand-raise hook: "who built an agent? who got it to production?"</li>
+                <li>2025 was talk, 2026 is shipping — 40% enterprise apps by 2027</li>
+                <li>Three perspectives: researcher, infrastructure, production</li>
+                <li>Quick panel intros — one-liners, no long bios</li>
+            </ul>
+            <details>
+                <summary>Full Script &amp; Notes</summary>
+                <div class="detail-content">
+                    <div class="script">"Show of hands — how many of you have tried building something with AI agents in the last year? [pause] Now keep your hand up if it actually worked in production. [pause] That gap you just saw? That's why we're here today."</div>
+                    <div class="script">"2025 was the year everyone talked about agents. 2026 is the year we figure out which ones actually work. Gartner says 40% of enterprise apps will embed agents by 2027. That's not a prediction — that's a deadline."</div>
+                    <div class="script">"We went straight to the source. Not the VCs, not the analysts — the people who wrote the papers, built the infrastructure, and shipped the products."</div>
+                    <h4>Intro Format</h4>
+                    <ul>
+                        <li>"[Researcher] — first author on [paper], the technique half of you are probably already using."</li>
+                        <li>"[Infrastructure] — sees more agent architectures in a week than most teams see in a year."</li>
+                        <li>"[Production] — shipped [product] to [X users], learned what breaks at 3am."</li>
+                    </ul>
+                    <h4>Moderator Notes</h4>
+                    <ul>
+                        <li>Keep energy high — sets the tone</li>
+                        <li>Hand-raise creates immediate engagement</li>
+                        <li>Don't read slides — conversational</li>
+                        <li>Transition to Part 1 by 5:00</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- RESEARCH -->
+        <div class="segment">
+            <div class="segment-header">
+                <span class="segment-time">5:00 - 20:00</span>
+                <span class="segment-title">Part 1: The Research Frontier</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px;"><strong>Speaker:</strong> Academic Researcher (Stanford/Berkeley)</p>
+            <ul>
+                <li>Which agent architectures actually matter for enterprise?</li>
+                <li>Gap between demos and production — what breaks?</li>
+                <li>What's still broken: planning, long-horizon, reliability</li>
+                <li>Hidden gems + one paper to read Monday</li>
+            </ul>
+            <details>
+                <summary>Full Script &amp; Notes</summary>
+                <div class="detail-content">
+                    <p><strong>Speaker:</strong> Stanford/Berkeley Researcher (John Yang, Shunyu Yao, or Chelsea Finn)</p>
+
+                    <div class="q-block">
+                        <strong>Q1 (5:00-7:00):</strong> Which agent architectures actually matter for enterprise?
+                        <ul>
+                            <li>ReAct is the baseline — proven, simple, works</li>
+                            <li>Tree of Thoughts adds latency/cost, use sparingly</li>
+                            <li>Reflexion good for self-correction but needs error signals</li>
+                            <li>Most use cases don't need the fancy stuff</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q2 (7:00-10:00):</strong> What's the gap between demos and production?
+                        <ul>
+                            <li>Benchmarks clean, production messy</li>
+                            <li>Latency matters; papers optimize accuracy</li>
+                            <li>Error handling afterthought in research, critical in prod</li>
+                            <li>The "last 10%" is 90% of the work</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q3 (10:00-15:00):</strong> What's still broken? Planning, long-horizon, reliability?
+                        <ul>
+                            <li>Planning hard — LLMs lack true world models</li>
+                            <li>Error compounding over long sequences</li>
+                            <li>Hybrid approaches (LLM + classical) showing promise</li>
+                            <li>Verification easier than generation — use that</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q4 (15:00-18:00):</strong> Hidden gem from last 12 months enterprises should know?
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q5 (18:00-20:00):</strong> One paper to read if starting Monday?
+                    </div>
+
+                    <h4>Full Questions (word-for-word)</h4>
+                    <div class="script">"There are dozens of agent architectures in papers now — ReAct, Tree of Thoughts, Reflexion, Chain of Agents, dozens more. For someone in this room building enterprise applications, which patterns actually matter?"</div>
+                    <div class="script">"What's the biggest gap you see between agent demos and production agents? When a paper shows 90% accuracy on a benchmark, what happens when a real company tries to deploy it?"</div>
+                    <div class="script">"Let's talk about what's still broken. Planning, long-horizon tasks, reliability over many steps — where are we actually stuck?"</div>
+
+                    <h4>Moderator Notes</h4>
+                    <ul>
+                        <li>Push for specifics — "can you give an example?"</li>
+                        <li>If too academic: "how does that help someone shipping next month?"</li>
+                        <li>Watch for jargon — ask to explain</li>
+                        <li>Transition to Part 2 by 20:00</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- INFRASTRUCTURE -->
+        <div class="segment">
+            <div class="segment-header">
+                <span class="segment-time">20:00 - 35:00</span>
+                <span class="segment-title">Part 2: The Infrastructure Layer</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px;"><strong>Speaker:</strong> Infrastructure Builder (LangChain/Anthropic/OpenAI)</p>
+            <ul>
+                <li>#1 mistake enterprises make when starting</li>
+                <li>The agent stack: memory, tools, orchestration, eval</li>
+                <li>What breaks at scale (10 users → 10,000)</li>
+                <li>Multi-agent: when do you actually need it?</li>
+            </ul>
+            <details>
+                <summary>Full Script &amp; Notes</summary>
+                <div class="detail-content">
+                    <p><strong>Speaker:</strong> Harrison Chase (LangChain), Anthropic engineer, or OpenAI</p>
+
+                    <div class="q-block">
+                        <strong>Q1 (20:00-23:00):</strong> #1 mistake enterprises make when starting?
+                        <ul>
+                            <li>Starting too complex — multi-agent when single works</li>
+                            <li>No observability/debugging early</li>
+                            <li>Underestimating prompt engineering</li>
+                            <li>Building before defining success metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q2 (23:00-27:00):</strong> Walk through the agent stack — where do teams get stuck?
+                        <ul>
+                            <li>Memory: short-term vs. long-term — most mess this up</li>
+                            <li>Tools: function calling solved, defining right tools is hard</li>
+                            <li>Orchestration: state management, retry logic, failure handling</li>
+                            <li>Evaluation: how do you know if it's getting better?</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q3 (27:00-30:00):</strong> What breaks at scale that works in demos?
+                        <ul>
+                            <li>Cost — agents expensive, optimize tokens</li>
+                            <li>Latency spikes from retries and long chains</li>
+                            <li>Edge cases multiply — rare becomes daily</li>
+                            <li>Debugging at scale needs logging from day 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q4 (30:00-33:00):</strong> Multi-agent — when do you actually need it?
+                        <ul>
+                            <li>Most use cases don't need it</li>
+                            <li>Real use: different models for different sub-tasks</li>
+                            <li>Coordination overhead often exceeds benefit</li>
+                            <li>Start single-agent, add only when you hit limits</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q5 (33:00-35:00):</strong> Security — giving agents API access without nightmares?
+                    </div>
+
+                    <h4>Full Questions (word-for-word)</h4>
+                    <div class="script">"You see thousands of companies building agents. What's the #1 mistake you see enterprises make when they start?"</div>
+                    <div class="script">"Walk us through the agent stack as you see it. Memory, tools, orchestration — what are the layers and where do most teams get stuck?"</div>
+                    <div class="script">"What breaks at scale that works fine in demos? When you go from 10 users to 10,000, what falls apart?"</div>
+
+                    <h4>Moderator Notes</h4>
+                    <ul>
+                        <li>This should feel practical — "how do I actually do this?"</li>
+                        <li>Ask for specific examples, tool names, patterns</li>
+                        <li>If too high-level: "what would you show in code review?"</li>
+                        <li>Transition to Part 3 by 35:00</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- PRODUCTION -->
+        <div class="segment">
+            <div class="segment-header">
+                <span class="segment-time">35:00 - 50:00</span>
+                <span class="segment-title">Part 3: Production Reality</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px;"><strong>Speaker:</strong> Startup Founder (Cognition/All Hands AI)</p>
+            <ul>
+                <li>Real deployment story — what actually broke</li>
+                <li>Failure modes: the 3am surprises</li>
+                <li>Graceful failure: when to ask for help vs. recover</li>
+                <li>ROI: when do agents actually save money?</li>
+            </ul>
+            <details>
+                <summary>Full Script &amp; Notes</summary>
+                <div class="detail-content">
+                    <p><strong>Speaker:</strong> Scott Wu (Cognition/Devin), Graham Neubig (OpenHands), or similar</p>
+
+                    <div class="q-block">
+                        <strong>Q1 (35:00-40:00):</strong> Walk through a real deployment — what broke?
+                        <ul>
+                            <li>Specific story: "launched X, expected Y, got Z"</li>
+                            <li>The failure that taught them the most</li>
+                            <li>What they'd do differently starting over</li>
+                            <li>How long it actually took vs. expected</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q2 (40:00-43:00):</strong> Failure modes — the 3am surprises?
+                        <ul>
+                            <li>Agents stuck in loops (and how to detect/break)</li>
+                            <li>Confident wrong answers that look right</li>
+                            <li>Edge cases that seemed impossible</li>
+                            <li>User behavior that breaks assumptions</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q3 (43:00-46:00):</strong> Graceful failure — when ask for help vs. recover?
+                        <ul>
+                            <li>Confidence calibration — knowing when to escalate</li>
+                            <li>Human-in-the-loop patterns that work</li>
+                            <li>Setting user expectations correctly</li>
+                            <li>"I don't know" better than wrong answer</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q4 (46:00-48:00):</strong> ROI — when do agents actually save money?
+                        <ul>
+                            <li>Clear ROI: high-volume, repetitive, well-defined</li>
+                            <li>Unclear: creative work, edge-case-heavy</li>
+                            <li>Hidden costs: maintenance, monitoring, prompt eng</li>
+                            <li>Specific numbers if possible</li>
+                        </ul>
+                    </div>
+
+                    <div class="q-block">
+                        <strong>Q5 (48:00-50:00):</strong> Advice for shipping first agent in 2026?
+                    </div>
+
+                    <h4>Full Questions (word-for-word)</h4>
+                    <div class="script">"Walk us through a real agent deployment. Not the polished version — the real one. What worked, what broke, what did you learn that you wish you'd known at the start?"</div>
+                    <div class="script">"What are the failure modes enterprises should know about? Not the obvious ones — the 3am pages that nobody warned you about."</div>
+                    <div class="script">"The question everyone wants to ask: when do agents actually save money versus just being expensive experiments?"</div>
+
+                    <h4>Moderator Notes</h4>
+                    <ul>
+                        <li>This should feel like war stories</li>
+                        <li>Push for numbers, timelines, specifics</li>
+                        <li>If too polished: "what's the version you'd tell over drinks?"</li>
+                        <li>Transition to Q&amp;A by 50:00</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- Q&A -->
+        <div class="segment">
+            <div class="segment-header">
+                <span class="segment-time">50:00 - 60:00</span>
+                <span class="segment-title">Q&amp;A + Closing</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #555; margin-bottom: 12px;"><strong>Speaker:</strong> All Panelists + Moderator</p>
+            <ul>
+                <li>3-4 audience questions, keep short</li>
+                <li>Lightning round: each panelist, 20 sec — "one thing to try Monday"</li>
+            </ul>
+            <details>
+                <summary>Full Script &amp; Notes</summary>
+                <div class="detail-content">
+                    <div class="script">"We have 8 minutes for questions. Keep them short — we want to get to as many as possible."</div>
+
+                    <h4>Backup Questions (if needed)</h4>
+                    <ul>
+                        <li>"What's overhyped right now that people should ignore?"</li>
+                        <li>"What are you most excited about in the next 12 months?"</li>
+                        <li>"What's the smallest possible agent project that would be useful?"</li>
+                        <li>"How do you evaluate agent performance — what metrics?"</li>
+                    </ul>
+
+                    <div class="script">"We're at time. Lightning round. Each panelist, 20 seconds: one thing someone in this room should try on Monday morning. Go."</div>
+
+                    <h4>Expected Responses</h4>
+                    <ul>
+                        <li>Research: "Read the ReAct paper. Not a summary — the actual paper."</li>
+                        <li>Infrastructure: "Add logging to your LLM calls today."</li>
+                        <li>Production: "Pick the most boring, repetitive task. Start there."</li>
+                    </ul>
+
+                    <h4>Moderator Notes</h4>
+                    <ul>
+                        <li>Be strict on time</li>
+                        <li>Filter questions: skip "what about AGI"</li>
+                        <li>Lightning round fast and punchy</li>
+                        <li>End on high energy</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- RESEARCHERS -->
+        <h2>Researchers (2024-2025 Papers)</h2>
+
+        <h3>SWE-agent / SWE-bench</h3>
+        <div class="researcher">
+            <h4>John Yang</h4>
+            <div class="affiliation">Stanford (PhD) - formerly Princeton</div>
+            <div class="paper">"SWE-agent" (NeurIPS 2024), "SWE-smith" (NeurIPS 2025), "SWE-bench Multimodal" (ICLR 2025)</div>
+            <div class="links"><a href="https://john-b-yang.github.io/">Website</a> <a href="mailto:johnby@stanford.edu">johnby@stanford.edu</a></div>
+        </div>
+        <div class="researcher">
+            <h4>Carlos E. Jimenez</h4>
+            <div class="affiliation">Princeton (PhD candidate)</div>
+            <div class="paper">"SWE-bench" (ICLR 2024)</div>
+            <div class="links"><a href="mailto:carlosej@cs.princeton.edu">carlosej@cs.princeton.edu</a></div>
+        </div>
+        <div class="researcher">
+            <h4>Kilian Lieret</h4>
+            <div class="affiliation">Princeton (Research Software Engineer)</div>
+            <div class="links"><a href="https://www.linkedin.com/in/kilian-lieret-ph-d-0b0667104/">LinkedIn</a></div>
+        </div>
+
+        <h3>ReAct / Reflexion</h3>
+        <div class="researcher">
+            <h4>Shunyu Yao</h4>
+            <div class="affiliation">OpenAI - Princeton PhD</div>
+            <div class="paper">"ReAct", "Tree of Thoughts", "tau-bench"</div>
+            <div class="links"><a href="https://ysymyth.github.io/">Website</a> <a href="https://twitter.com/ShunyuYao12">@ShunyuYao12</a></div>
+        </div>
+        <div class="researcher">
+            <h4>Noah Shinn</h4>
+            <div class="affiliation">Northeastern</div>
+            <div class="paper">"Reflexion" (NeurIPS 2024)</div>
+            <div class="links"><a href="https://github.com/noahshinn/reflexion">GitHub</a></div>
+        </div>
+
+        <h3>Stanford NeurIPS/ICLR 2025</h3>
+        <div class="researcher">
+            <h4>Qizheng Zhang</h4>
+            <div class="affiliation">Stanford</div>
+            <div class="paper">"Agentic Plan Caching" (NeurIPS 2025)</div>
+        </div>
+        <div class="researcher">
+            <h4>Anjiang Wei</h4>
+            <div class="affiliation">Stanford</div>
+            <div class="paper">"CodeARC" (NeurIPS 2025)</div>
+        </div>
+        <div class="researcher">
+            <h4>Andy K Zhang</h4>
+            <div class="affiliation">Stanford</div>
+            <div class="paper">"Cybench" (ICLR 2025 Oral)</div>
+        </div>
+
+        <h3>Multi-Agent</h3>
+        <div class="researcher">
+            <h4>Xingyao Wang</h4>
+            <div class="affiliation">All Hands AI / UIUC</div>
+            <div class="paper">"OpenHands"</div>
+            <div class="links"><a href="https://twitter.com/xingyaow_">@xingyaow_</a></div>
+        </div>
+        <div class="researcher">
+            <h4>Sirui Hong</h4>
+            <div class="affiliation">DeepWisdom</div>
+            <div class="paper">"MetaGPT" (ICLR 2024)</div>
+            <div class="links"><a href="https://www.linkedin.com/in/sirui-hong-b23593292/">LinkedIn</a></div>
+        </div>
+
+        <!-- SPEAKERS -->
+        <h2>Speaker Targets</h2>
+        <table>
+            <tbody><tr><th>Name</th><th>Role</th><th>Contact</th></tr>
+            <tr><td>Harrison Chase</td><td>LangChain - Infrastructure</td><td><a href="https://twitter.com/hwchase17">@hwchase17</a></td></tr>
+            <tr><td>Scott Wu</td><td>Cognition/Devin - Production</td><td><a href="https://twitter.com/scottwu_">@scottwu_</a></td></tr>
+            <tr><td>Chelsea Finn</td><td>Stanford - Research</td><td><a href="https://ai.stanford.edu/~cbfinn/">Website</a></td></tr>
+            <tr><td>John Yang</td><td>Stanford - Research (SWE-agent)</td><td>johnby@stanford.edu</td></tr>
+            <tr><td>Shunyu Yao</td><td>OpenAI - Research (ReAct)</td><td><a href="https://twitter.com/ShunyuYao12">@ShunyuYao12</a></td></tr>
+            <tr><td>Graham Neubig</td><td>All Hands AI - Production</td><td><a href="https://twitter.com/gneubig">@gneubig</a></td></tr>
+            <tr><td>Jan Leike</td><td>Anthropic - Safety</td><td><a href="https://twitter.com/janleike">@janleike</a></td></tr>
+        </tbody></table>
+
+        <h2>Key Stats</h2>
+        <div>
+            <span class="stat"><strong>40%</strong> enterprise apps by 2027</span>
+            <span class="stat"><strong>$52B</strong> market by 2030</span>
+            <span class="stat"><strong>10K+</strong> on LangChain</span>
+            <span class="stat"><strong>80%</strong> fail without error handling</span>
+        </div>
+
+        <div class="cta">
+            <h3>Session Deliverables</h3>
+            <p>Expert panel with Bay Area researchers and builders<br>
+            Actionable insights for enterprise AI teams<br>
+            AI Valley curates speakers and moderates</p>
+        </div>
+
+    </div>
+
+
+</body></html>
