@@ -140,29 +140,35 @@
         software engineering, and security engineering.</b>
       </p>
 
-      <h3>Data Enrichment</h3>
+      <h3>Security Research</h3>
 
       <p>
-        One thing I am interested in right now is data enrichment. I like taking messy video or image data and turning
-        it into cleaner structure that is actually useful.
+        Found and reported vulnerabilities across multiple enterprise, startup, and public-sector targets. Findings
+        have included critical issues across several YC-backed companies, government systems, and critical
+        infrastructure, totaling an estimated $10B+ in potential damages.
+      </p>
+
+      <h3>Recruiting Intelligence</h3>
+
+      <p>
+        One thing I have been working on is ranking people by evidence instead of what they say about themselves. The
+        idea is that competition results, commit history, and writing are more reliable signals than a resume, and the
+        question is how to collect and weight them.
       </p>
 
       <p>
-        For example, if somebody gets out of a car, I want a person, a car, an exit event, and the link between them,
-        not just raw footage.
+        That turned into Metric, which I co-founded with my brother. It pulls signals from competitions, repos, talks,
+        and private or paywalled sources, then outputs ranked candidates with scores and a breakdown of why they placed
+        where they did. We backtested against real outcomes and got 93% accuracy.
       </p>
 
-      <h3>Ranking Qualitative Data</h3>
+      <h3>Hackathons</h3>
 
       <p>
-        Another thing I like is ranking qualitative data. Ranking data is hard enough already: which metric, how do you
-        weight it, and how do you compare it.
-      </p>
-
-      <p>
-        The qualitative part makes it more interesting. Right now I am trying a variety of techniques such as turning it
-        into numbers, using embedding models, training models, and seeing which representation gives the cleanest
-        ranking.
+        I work at <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a>, where we host hackathons, product
+        launches, and demo days in San Francisco with OpenAI, Anthropic, Meta, Google, and
+        <a href="https://www.ycombinator.com/">YC</a>. I have competed in multiple and won 8, including
+        <a href="https://www.ycombinator.com/">YC</a> and <a href="https://replicate.com/">Replicate</a>.
       </p>
 
       <h3>Background</h3>
@@ -170,10 +176,6 @@
       <p>
         Outside of that, I have spent a lot of time in security research and penetration testing across enterprise,
         startup, and public-sector systems.
-      </p>
-
-      <p>
-        I have won 8 different hackathons, including <a href="https://www.ycombinator.com/">YC</a> and <a href="https://replicate.com/">Replicate</a> (<a href="https://www.cloudflare.com/">Cloudflare</a>).
       </p>
 
       <p>
@@ -185,6 +187,16 @@
       <h3>Projects</h3>
 
       <ul>
+        <li>
+          <span class="entry-title">Metric</span> - recruiting intelligence layer for builders. Scrapes competition
+          leaderboards, gated developer communities, GitHub history, paywalled content, and CTF results. Outputs
+          ranked candidates with scores and evidence. 30K+ people ranked. Try to find the easter eggs on the site.
+        </li>
+        <li>
+          <span class="entry-title">SF Graffiti Search</span> - semantic search over 87,790 photos taken by San
+          Francisco city inspectors documenting graffiti violations. Each image was described by Gemini Flash so you can
+          search by content, style, or location. Images sourced by walzr.
+        </li>
         <li>
           <span class="entry-title">cv-rank</span> (private, email me for more info) - debiased applicant ranking with
           pairwise Elo-style comparisons. It combines LLM-as-judge scoring, rubric scoring, Swiss pairwise rounds, Bradley-Terry fitting,
