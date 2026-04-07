@@ -20,6 +20,8 @@ SITE_DIR = ROOT
 DEFAULT_PORT = 5181
 TIMEZONE = ZoneInfo("America/Los_Angeles")
 CLAUDE_AUDIT_PATH = Path("/Users/nickita/.local/bin/aiusage_audit.py")
+VENDORED_CODEX_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-codex-index.js"
+VENDORED_CLAUDE_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-data-loader.js"
 
 
 def parse_codex_date(value: str) -> date:
@@ -55,6 +57,12 @@ def latest_daily_date(report: dict[str, Any], parser) -> date | None:
 
 
 def find_latest_npx_entry(package_suffix: str) -> Path:
+    if package_suffix == "@ccusage/codex/dist/index.js" and VENDORED_CODEX_BUNDLE.exists():
+        return VENDORED_CODEX_BUNDLE
+    if package_suffix == "ccusage/dist/data-loader-B58Zt4YE.js":
+        if VENDORED_CLAUDE_BUNDLE.exists():
+            return VENDORED_CLAUDE_BUNDLE
+
     matches = sorted(
         (Path.home() / ".npm" / "_npx").glob(f"*/node_modules/{package_suffix}"),
         key=lambda path: path.stat().st_mtime,
