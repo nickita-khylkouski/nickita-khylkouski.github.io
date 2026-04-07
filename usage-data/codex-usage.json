@@ -914,19 +914,19 @@
     },
     {
       "date": "Apr 06, 2026",
-      "inputTokens": 2391875069,
-      "cachedInputTokens": 2301836160,
-      "outputTokens": 7773827,
-      "reasoningOutputTokens": 2676599,
-      "totalTokens": 2399648896,
-      "costUSD": 915.3161055000006,
+      "inputTokens": 2401973953,
+      "cachedInputTokens": 2309980672,
+      "outputTokens": 7830333,
+      "reasoningOutputTokens": 2700408,
+      "totalTokens": 2409804286,
+      "costUSD": 923.0857535000004,
       "models": {
         "gpt-5.4": {
-          "inputTokens": 2390484267,
-          "cachedInputTokens": 2300820352,
-          "outputTokens": 7730082,
-          "reasoningOutputTokens": 2649086,
-          "totalTokens": 2398214349,
+          "inputTokens": 2400583151,
+          "cachedInputTokens": 2308964864,
+          "outputTokens": 7786588,
+          "reasoningOutputTokens": 2672895,
+          "totalTokens": 2408369739,
           "isFallback": false
         },
         "gpt-5.4-mini": {
@@ -938,14 +938,33 @@
           "isFallback": false
         }
       }
+    },
+    {
+      "date": "Apr 07, 2026",
+      "inputTokens": 234950558,
+      "cachedInputTokens": 210684416,
+      "outputTokens": 1322406,
+      "reasoningOutputTokens": 448014,
+      "totalTokens": 236272964,
+      "costUSD": 133.17254900000026,
+      "models": {
+        "gpt-5.4": {
+          "inputTokens": 234950558,
+          "cachedInputTokens": 210684416,
+          "outputTokens": 1322406,
+          "reasoningOutputTokens": 448014,
+          "totalTokens": 236272964,
+          "isFallback": false
+        }
+      }
     }
   ],
   "totals": {
-    "inputTokens": 36644114826,
-    "cachedInputTokens": 34259867136,
-    "outputTokens": 159332411,
-    "reasoningOutputTokens": 61012570,
-    "totalTokens": 36803447237,
-    "costUSD": 15973.392000100008
+    "inputTokens": 36889164268,
+    "cachedInputTokens": 34478696064,
+    "outputTokens": 160711323,
+    "reasoningOutputTokens": 61484393,
+    "totalTokens": 37049875591,
+    "costUSD": 16114.334197100008
   }
 }
