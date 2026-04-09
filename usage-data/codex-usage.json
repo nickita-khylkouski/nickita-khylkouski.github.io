@@ -976,19 +976,19 @@
     },
     {
       "date": "Apr 08, 2026",
-      "inputTokens": 2128621105,
-      "cachedInputTokens": 1939367296,
-      "outputTokens": 7853287,
-      "reasoningOutputTokens": 3132205,
-      "totalTokens": 2136474392,
-      "costUSD": 1066.1009819499952,
+      "inputTokens": 2468043174,
+      "cachedInputTokens": 2260080128,
+      "outputTokens": 8948937,
+      "reasoningOutputTokens": 3483755,
+      "totalTokens": 2476992111,
+      "costUSD": 1209.487032449993,
       "models": {
         "gpt-5.4": {
-          "inputTokens": 2108789134,
-          "cachedInputTokens": 1921363584,
-          "outputTokens": 7746704,
-          "reasoningOutputTokens": 3064910,
-          "totalTokens": 2116535838,
+          "inputTokens": 2448211203,
+          "cachedInputTokens": 2242076416,
+          "outputTokens": 8842354,
+          "reasoningOutputTokens": 3416460,
+          "totalTokens": 2457053557,
           "isFallback": false
         },
         "gpt-5.4-mini": {
@@ -1008,14 +1008,41 @@
           "isFallback": false
         }
       }
+    },
+    {
+      "date": "Apr 09, 2026",
+      "inputTokens": 278867292,
+      "cachedInputTokens": 262238720,
+      "outputTokens": 1151174,
+      "reasoningOutputTokens": 401635,
+      "totalTokens": 280018466,
+      "costUSD": 110.71520349999987,
+      "models": {
+        "gpt-5.4": {
+          "inputTokens": 256285057,
+          "cachedInputTokens": 241719424,
+          "outputTokens": 924751,
+          "reasoningOutputTokens": 308238,
+          "totalTokens": 257209808,
+          "isFallback": false
+        },
+        "gpt-5.4-mini": {
+          "inputTokens": 22582235,
+          "cachedInputTokens": 20519296,
+          "outputTokens": 226423,
+          "reasoningOutputTokens": 93397,
+          "totalTokens": 22808658,
+          "isFallback": false
+        }
+      }
     }
   ],
   "totals": {
-    "inputTokens": 40347271445,
-    "cachedInputTokens": 37635025408,
-    "outputTokens": 173560268,
-    "reasoningOutputTokens": 66443268,
-    "totalTokens": 40520831713,
-    "costUSD": 17839.886525400005
+    "inputTokens": 40965560806,
+    "cachedInputTokens": 38217976960,
+    "outputTokens": 175807092,
+    "reasoningOutputTokens": 67196453,
+    "totalTokens": 41141367898,
+    "costUSD": 18093.987779400002
   }
 }
