@@ -387,11 +387,14 @@ def compute_claude_rows(start_date: date) -> list[dict[str, Any]]:
     seen_messages: set[str] = set()
 
     min_mtime = datetime.combine(start_date, datetime.min.time(), tzinfo=TIMEZONE).timestamp()
-    claude_files = [
-        Path(path)
-        for path in glob.glob(str(Path.home() / ".claude" / "projects" / "**" / "*.jsonl"), recursive=True)
-        if Path(path).stat().st_mtime >= min_mtime
-    ]
+    claude_files: list[Path] = []
+    for path in glob.glob(str(Path.home() / ".claude" / "projects" / "**" / "*.jsonl"), recursive=True):
+        file_path = Path(path)
+        try:
+            if file_path.stat().st_mtime >= min_mtime:
+                claude_files.append(file_path)
+        except FileNotFoundError:
+            continue
 
     for file_path in sorted(claude_files):
         with file_path.open(encoding="utf-8", errors="ignore") as handle:
