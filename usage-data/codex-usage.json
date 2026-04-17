@@ -1178,30 +1178,116 @@
     },
     {
       "date": "Apr 14, 2026",
-      "inputTokens": 1631279,
-      "cachedInputTokens": 1391488,
-      "outputTokens": 8597,
-      "reasoningOutputTokens": 2213,
-      "totalTokens": 1639876,
-      "costUSD": 1.0763045000000002,
+      "inputTokens": 775268236,
+      "cachedInputTokens": 728938368,
+      "outputTokens": 3370797,
+      "reasoningOutputTokens": 1530168,
+      "totalTokens": 778639033,
+      "costUSD": 325.3042263999998,
       "models": {
         "gpt-5.4": {
-          "inputTokens": 1631279,
-          "cachedInputTokens": 1391488,
-          "outputTokens": 8597,
-          "reasoningOutputTokens": 2213,
-          "totalTokens": 1639876,
+          "inputTokens": 727378721,
+          "cachedInputTokens": 687776768,
+          "outputTokens": 2940273,
+          "reasoningOutputTokens": 1217293,
+          "totalTokens": 730318994,
+          "isFallback": false
+        },
+        "gpt-5.4-mini": {
+          "inputTokens": 18102597,
+          "cachedInputTokens": 13825152,
+          "outputTokens": 346320,
+          "reasoningOutputTokens": 280092,
+          "totalTokens": 18448917,
+          "isFallback": false
+        },
+        "gpt-5.3-codex": {
+          "inputTokens": 29786918,
+          "cachedInputTokens": 27336448,
+          "outputTokens": 84204,
+          "reasoningOutputTokens": 32783,
+          "totalTokens": 29871122,
+          "isFallback": false
+        }
+      }
+    },
+    {
+      "date": "Apr 15, 2026",
+      "inputTokens": 1202225636,
+      "cachedInputTokens": 1136187520,
+      "outputTokens": 4564506,
+      "reasoningOutputTokens": 1995459,
+      "totalTokens": 1206790142,
+      "costUSD": 485.24521240000115,
+      "models": {
+        "gpt-5.4": {
+          "inputTokens": 1061281073,
+          "cachedInputTokens": 1006537088,
+          "outputTokens": 3917890,
+          "reasoningOutputTokens": 1543037,
+          "totalTokens": 1065198963,
+          "isFallback": false
+        },
+        "gpt-5.3-codex": {
+          "inputTokens": 127162610,
+          "cachedInputTokens": 119868928,
+          "outputTokens": 302973,
+          "reasoningOutputTokens": 156862,
+          "totalTokens": 127465583,
+          "isFallback": false
+        },
+        "gpt-5.4-mini": {
+          "inputTokens": 13781953,
+          "cachedInputTokens": 9781504,
+          "outputTokens": 343643,
+          "reasoningOutputTokens": 295560,
+          "totalTokens": 14125596,
+          "isFallback": false
+        }
+      }
+    },
+    {
+      "date": "Apr 16, 2026",
+      "inputTokens": 5506197508,
+      "cachedInputTokens": 5300679808,
+      "outputTokens": 17006574,
+      "reasoningOutputTokens": 5302352,
+      "totalTokens": 5523204082,
+      "costUSD": 2073.7601680500056,
+      "models": {
+        "gpt-5.4": {
+          "inputTokens": 5335264335,
+          "cachedInputTokens": 5136561792,
+          "outputTokens": 16593189,
+          "reasoningOutputTokens": 5137522,
+          "totalTokens": 5351857524,
+          "isFallback": false
+        },
+        "gpt-5.3-codex": {
+          "inputTokens": 167694045,
+          "cachedInputTokens": 161786496,
+          "outputTokens": 379620,
+          "reasoningOutputTokens": 144354,
+          "totalTokens": 168073665,
+          "isFallback": false
+        },
+        "gpt-5.4-mini": {
+          "inputTokens": 3239128,
+          "cachedInputTokens": 2331520,
+          "outputTokens": 33765,
+          "reasoningOutputTokens": 20476,
+          "totalTokens": 3272893,
           "isFallback": false
         }
       }
     }
   ],
   "totals": {
-    "inputTokens": 63018937818,
-    "cachedInputTokens": 59341722368,
-    "outputTokens": 241532513,
-    "reasoningOutputTokens": 88677800,
-    "totalTokens": 63260470331,
-    "costUSD": 26439.35912860003
+    "inputTokens": 70500997919,
+    "cachedInputTokens": 66506136576,
+    "outputTokens": 266465793,
+    "reasoningOutputTokens": 97503566,
+    "totalTokens": 70767463712,
+    "costUSD": 29322.592430950037
   }
 }
