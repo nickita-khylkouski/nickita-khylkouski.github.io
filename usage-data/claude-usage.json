@@ -2619,14 +2619,45 @@
           "cost": 0.24512715
         }
       ]
+    },
+    {
+      "date": "2026-04-17",
+      "inputTokens": 38552,
+      "outputTokens": 813,
+      "cacheCreationTokens": 176997,
+      "cacheReadTokens": 92892,
+      "totalTokens": 309254,
+      "totalCost": 0.041898750000000005,
+      "modelsUsed": [
+        "MiniMax-M2.7",
+        "claude-sonnet-4-5-20250929"
+      ],
+      "modelBreakdowns": [
+        {
+          "modelName": "MiniMax-M2.7",
+          "inputTokens": 38542,
+          "outputTokens": 806,
+          "cacheCreationTokens": 165860,
+          "cacheReadTokens": 92892,
+          "cost": 0.0
+        },
+        {
+          "modelName": "claude-sonnet-4-5-20250929",
+          "inputTokens": 10,
+          "outputTokens": 7,
+          "cacheCreationTokens": 11137,
+          "cacheReadTokens": 0,
+          "cost": 0.041898750000000005
+        }
+      ]
     }
   ],
   "totals": {
-    "inputTokens": 554538740,
-    "outputTokens": 49275556,
-    "cacheCreationTokens": 525849409,
-    "cacheReadTokens": 12689027162,
-    "totalCost": 7333.324135349998,
-    "totalTokens": 13818690867
+    "inputTokens": 554577292,
+    "outputTokens": 49276369,
+    "cacheCreationTokens": 526026406,
+    "cacheReadTokens": 12689120054,
+    "totalCost": 7333.366034099998,
+    "totalTokens": 13819000121
   }
 }
