@@ -105,6 +105,16 @@ def normalize_claude_rows(report: dict) -> list[dict]:
     return rows
 
 
+def coverage_range(rows: list[dict]) -> str:
+    if not rows:
+        return "No data"
+    start = parse_usage_date(rows[0]["date"])
+    end = parse_usage_date(rows[-1]["date"])
+    if "-" in rows[0]["date"]:
+        return f"{start.strftime('%Y-%m-%d')} to {end.strftime('%Y-%m-%d')}"
+    return f"{start.strftime('%b %d, %Y')} to {end.strftime('%b %d, %Y')}"
+
+
 def money(value: float) -> str:
     return f"${value:,.2f}"
 
@@ -254,6 +264,10 @@ def build_usage_page(codex: dict, claude: dict) -> str:
 
       <p>
         Exact local Codex and Claude Code usage. Snapshot date: {snapshot_date}.
+      </p>
+
+      <p>
+        Coverage: Codex {coverage_range(codex_rows)}. Claude Code {coverage_range(claude_rows)}.
       </p>
 
       <p>

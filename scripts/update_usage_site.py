@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
+import codex_usage_audit
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "usage-data"
@@ -211,104 +213,16 @@ def iter_codex_files_since(start_date: date) -> list[Path]:
 def compute_codex_rows(start_date: date) -> list[dict[str, Any]]:
     codex_bundle = find_latest_npx_entry("@ccusage/codex/dist/index.js")
     pricing = load_js_prefetched_constant(codex_bundle, "PREFETCHED_CODEX_PRICING")
-    by_day: dict[date, dict[str, Any]] = {}
-
-    for file_path in iter_codex_files_since(start_date):
-        previous_totals: dict[str, int] | None = None
-        current_model: str | None = None
-        current_model_is_fallback = False
-
-        with file_path.open(encoding="utf-8", errors="ignore") as handle:
-            for line in handle:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    entry = json.loads(line)
-                except json.JSONDecodeError:
-                    continue
-
-                entry_type = entry.get("type")
-                payload = entry.get("payload")
-                if entry_type == "turn_context" and isinstance(payload, dict):
-                    context_model = codex_extract_model(payload)
-                    if context_model:
-                        current_model = context_model
-                        current_model_is_fallback = False
-                    continue
-
-                if entry_type != "event_msg" or not isinstance(payload, dict) or payload.get("type") != "token_count":
-                    continue
-
-                timestamp = entry.get("timestamp")
-                if not isinstance(timestamp, str):
-                    continue
-
-                info = payload.get("info")
-                last_usage = codex_normalize_raw_usage(info.get("last_token_usage") if isinstance(info, dict) else None)
-                total_usage = codex_normalize_raw_usage(info.get("total_token_usage") if isinstance(info, dict) else None)
-                raw = last_usage if last_usage is not None else (codex_subtract_raw_usage(total_usage, previous_totals) if total_usage is not None else None)
-                if total_usage is not None:
-                    previous_totals = total_usage
-                if raw is None:
-                    continue
-
-                delta = codex_convert_delta(raw)
-                if not any(delta[key] for key in ("inputTokens", "cachedInputTokens", "outputTokens", "reasoningOutputTokens")):
-                    continue
-
-                extracted_model = codex_extract_model({**payload, "info": info} if isinstance(info, dict) else payload)
-                is_fallback = False
-                if extracted_model:
-                    current_model = extracted_model
-                    current_model_is_fallback = False
-
-                model = extracted_model or current_model
-                if model is None:
-                    model = "gpt-5"
-                    is_fallback = True
-                    current_model = model
-                    current_model_is_fallback = True
-                elif extracted_model is None and current_model_is_fallback:
-                    is_fallback = True
-
-                local_day = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(TIMEZONE).date()
-                if local_day < start_date:
-                    continue
-
-                row = by_day.setdefault(
-                    local_day,
-                    {
-                        "date": format_codex_date(local_day),
-                        "inputTokens": 0,
-                        "cachedInputTokens": 0,
-                        "outputTokens": 0,
-                        "reasoningOutputTokens": 0,
-                        "totalTokens": 0,
-                        "costUSD": 0.0,
-                        "models": {},
-                    },
-                )
-                for key in ("inputTokens", "cachedInputTokens", "outputTokens", "reasoningOutputTokens", "totalTokens"):
-                    row[key] += delta[key]
-                row["costUSD"] += codex_cost_usd(delta, model, pricing)
-
-                model_bucket = row["models"].setdefault(
-                    model,
-                    {
-                        "inputTokens": 0,
-                        "cachedInputTokens": 0,
-                        "outputTokens": 0,
-                        "reasoningOutputTokens": 0,
-                        "totalTokens": 0,
-                        "isFallback": False,
-                    },
-                )
-                for key in ("inputTokens", "cachedInputTokens", "outputTokens", "reasoningOutputTokens", "totalTokens"):
-                    model_bucket[key] += delta[key]
-                model_bucket["isFallback"] = model_bucket["isFallback"] or is_fallback
-
-    return [by_day[day] for day in sorted(by_day)]
+    session_roots = codex_usage_audit.discover_session_roots()
+    rows = codex_usage_audit.build_daily_rows(
+        session_roots,
+        start_date=start_date,
+        timezone=TIMEZONE,
+        price_for_usage=lambda usage, model: codex_cost_usd(usage, model, pricing),
+    )
+    for row in rows:
+        row["date"] = format_codex_date(row["date"])
+    return rows
 
 
 def codex_totals(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -329,20 +243,17 @@ def codex_totals(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def update_codex_usage() -> Path:
     out_path = DATA_DIR / "codex-usage.json"
-    report = load_json(out_path)
-    start_date = latest_daily_date(report, parse_codex_date)
-    if start_date is None:
-        first_file = sorted((Path.home() / ".codex" / "sessions").rglob("*.jsonl"))[0]
-        start_date = date(
-            int(first_file.parts[-4]),
-            int(first_file.parts[-3]),
-            int(first_file.parts[-2]),
-        )
-
+    session_files = codex_usage_audit.iter_session_files(codex_usage_audit.discover_session_roots())
+    if not session_files:
+        raise RuntimeError("No Codex session files found in any known Codex home")
+    first_file = session_files[0]
+    start_date = date(
+        int(first_file.parts[-4]),
+        int(first_file.parts[-3]),
+        int(first_file.parts[-2]),
+    )
     fresh_rows = compute_codex_rows(start_date)
-    kept_rows = [row for row in report.get("daily", []) if parse_codex_date(row["date"]) < start_date]
-    merged_rows = kept_rows + fresh_rows
-    payload = {"daily": merged_rows, "totals": codex_totals(merged_rows)}
+    payload = {"daily": fresh_rows, "totals": codex_totals(fresh_rows)}
     write_json(out_path, payload)
     return out_path
 
@@ -504,15 +415,13 @@ def claude_totals(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def update_claude_usage() -> Path:
     out_path = DATA_DIR / "claude-usage.json"
-    report = load_json(out_path)
-    start_date = latest_daily_date(report, parse_claude_date)
-    if start_date is None:
-        start_date = date(2026, 1, 1)
+    project_files = sorted((Path.home() / ".claude" / "projects").rglob("*.jsonl"))
+    if not project_files:
+        raise RuntimeError("No Claude project log files found in ~/.claude/projects")
 
+    start_date = date(2026, 1, 1)
     fresh_rows = compute_claude_rows(start_date)
-    kept_rows = [row for row in report.get("daily", []) if parse_claude_date(row["date"]) < start_date]
-    merged_rows = kept_rows + fresh_rows
-    payload = {"daily": merged_rows, "totals": claude_totals(merged_rows)}
+    payload = {"daily": fresh_rows, "totals": claude_totals(fresh_rows)}
     write_json(out_path, payload)
     return out_path
 
