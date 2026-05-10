@@ -516,6 +516,107 @@ def update_claude_usage() -> Path:
     return out_path
 
 
+def usage_page_money(value: float) -> str:
+    return f"${value:,.2f}"
+
+
+def usage_page_integer(value: int) -> str:
+    return f"{value:,}"
+
+
+def usage_page_parse_date(value: str) -> datetime:
+    if "-" in value:
+        return datetime.strptime(value, "%Y-%m-%d")
+    return datetime.strptime(value, "%b %d, %Y")
+
+
+def usage_page_coverage(rows: list[dict[str, Any]]) -> str:
+    start = usage_page_parse_date(rows[0]["date"])
+    end = usage_page_parse_date(rows[-1]["date"])
+    if "-" in rows[0]["date"]:
+        return f"{start.strftime('%Y-%m-%d')} to {end.strftime('%Y-%m-%d')}"
+    return f"{start.strftime('%b %d, %Y')} to {end.strftime('%b %d, %Y')}"
+
+
+def usage_page_month_spend(rows: list[dict[str, Any]], cost_key: str) -> list[tuple[str, float]]:
+    buckets: dict[str, float] = defaultdict(float)
+    for row in rows:
+        month = usage_page_parse_date(row["date"]).strftime("%Y-%m")
+        buckets[month] += float(row[cost_key])
+    return sorted(buckets.items())
+
+
+def usage_page_median(values: list[float]) -> float:
+    sorted_values = sorted(values)
+    if not sorted_values:
+        return 0.0
+    mid = len(sorted_values) // 2
+    if len(sorted_values) % 2 == 0:
+        return (sorted_values[mid - 1] + sorted_values[mid]) / 2
+    return sorted_values[mid]
+
+
+def usage_page_summary_fragment(tool: str, rows: list[dict[str, Any]], total_spend: float, total_tokens: int, cost_key: str) -> str:
+    report_days = len(rows)
+    spend_days = sum(1 for row in rows if float(row[cost_key]) > 0)
+    average = total_spend / report_days if report_days else 0.0
+    median = usage_page_median([float(row[cost_key]) for row in rows])
+    return (
+        f"<tr><td>{tool}</td><td>{usage_page_money(total_spend)}</td><td>{usage_page_integer(total_tokens)}</td>"
+        f"<td>{report_days}</td><td>{spend_days}</td><td>{usage_page_money(average)}</td><td>{usage_page_money(median)}</td></tr>"
+    )
+
+
+def codex_models_display(row: dict[str, Any]) -> str:
+    return ", ".join((row.get("models") or {}).keys()) or "None"
+
+
+def claude_models_display(row: dict[str, Any]) -> str:
+    return ", ".join(model.replace("claude-", "").replace("-20251101", "") for model in row.get("modelsUsed", [])) or "None"
+
+
+def usage_page_top_fragments(rows: list[dict[str, Any]], cost_key: str, model_display) -> list[str]:
+    fragments = []
+    for row in sorted(rows, key=lambda item: float(item[cost_key]), reverse=True)[:5]:
+        fragments.append(f"<tr><td>{row['date']}</td><td>{usage_page_money(float(row[cost_key]))}</td><td>{model_display(row)}</td></tr>")
+    return fragments
+
+
+def audit_usage_page_stats(codex_path: Path, claude_path: Path, html_path: Path) -> None:
+    codex = load_json(codex_path)
+    claude = load_json(claude_path)
+    html = html_path.read_text()
+
+    combined_spend = float(codex["totals"]["costUSD"]) + float(claude["totals"]["totalCost"])
+    combined_tokens = int(codex["totals"]["totalTokens"]) + int(claude["totals"]["totalTokens"])
+    snapshot_date = max(
+        usage_page_parse_date(row["date"]) for row in [*codex["daily"], *claude["daily"]]
+    ).strftime("%b %d, %Y")
+
+    expected_fragments = [
+        f"Snapshot date: {snapshot_date}.",
+        f"Coverage: Codex {usage_page_coverage(codex['daily'])}. Claude Code {usage_page_coverage(claude['daily'])}.",
+        f"Combined spend: {usage_page_money(combined_spend)}.",
+        f"Combined tokens: {usage_page_integer(combined_tokens)}.",
+        usage_page_summary_fragment("Codex", codex["daily"], float(codex["totals"]["costUSD"]), int(codex["totals"]["totalTokens"]), "costUSD"),
+        usage_page_summary_fragment("Claude Code", claude["daily"], float(claude["totals"]["totalCost"]), int(claude["totals"]["totalTokens"]), "totalCost"),
+    ]
+
+    for rows, cost_key in ((codex["daily"], "costUSD"), (claude["daily"], "totalCost")):
+        expected_fragments.extend(
+            f"<tr><td>{month}</td><td>{usage_page_money(spend)}</td></tr>"
+            for month, spend in usage_page_month_spend(rows, cost_key)
+        )
+
+    expected_fragments.extend(usage_page_top_fragments(codex["daily"], "costUSD", codex_models_display))
+    expected_fragments.extend(usage_page_top_fragments(claude["daily"], "totalCost", claude_models_display))
+
+    missing = [fragment for fragment in expected_fragments if fragment not in html]
+    if missing:
+        preview = "\n".join(missing[:5])
+        raise RuntimeError(f"Rendered usage page stats do not match generated JSON. Missing fragment(s):\n{preview}")
+
+
 def build_site() -> None:
     subprocess.run(
         ["python3", str(ROOT / "scripts" / "build_local_nickitakhy_site.py")],
@@ -563,6 +664,7 @@ def main() -> int:
     codex_path = update_codex_usage()
     claude_path = update_claude_usage()
     build_site()
+    audit_usage_page_stats(codex_path, claude_path, SITE_DIR / "usage" / "index.html")
 
     print("Updated usage snapshots:")
     print(f"  Codex:  {codex_path}")
