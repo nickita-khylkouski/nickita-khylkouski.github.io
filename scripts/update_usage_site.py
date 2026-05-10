@@ -7,6 +7,7 @@ import json
 import socket
 import subprocess
 import sys
+import urllib.request
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -24,6 +25,7 @@ TIMEZONE = ZoneInfo("America/Los_Angeles")
 CLAUDE_AUDIT_PATH = Path("/Users/nickita/.local/bin/aiusage_audit.py")
 VENDORED_CODEX_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-codex-index.js"
 VENDORED_CLAUDE_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-data-loader.js"
+LITELLM_PRICING_URL = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
 
 
 def parse_codex_date(value: str) -> date:
@@ -95,6 +97,26 @@ process.stdout.write(JSON.stringify(obj));
         text=True,
     )
     return json.loads(result.stdout)
+
+
+def fetch_litellm_pricing() -> dict[str, Any]:
+    request = urllib.request.Request(
+        LITELLM_PRICING_URL,
+        headers={"User-Agent": "nickitakhy-usage-site/1.0"},
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def load_codex_pricing() -> dict[str, Any]:
+    codex_bundle = find_latest_npx_entry("@ccusage/codex/dist/index.js")
+    vendored = load_js_prefetched_constant(codex_bundle, "PREFETCHED_CODEX_PRICING")
+    try:
+        latest = fetch_litellm_pricing()
+    except Exception as exc:
+        print(f"Warning: failed to fetch current LiteLLM pricing; using vendored @ccusage/codex pricing: {exc}", file=sys.stderr)
+        return vendored
+    return {**vendored, **latest}
 
 
 def load_aiusage_audit_module():
@@ -172,13 +194,34 @@ def codex_convert_delta(raw: dict[str, int]) -> dict[str, int]:
     }
 
 
-def codex_price_for_model(model: str, pricing: dict[str, Any]) -> dict[str, float]:
+def codex_pricing_for_model(model: str, pricing: dict[str, Any]) -> dict[str, Any]:
     aliases = {
         "gpt-5-codex": "gpt-5",
         "gpt-5.3-codex": "gpt-5.2-codex",
+        "gpt-5.3-codex-spark": "gpt-5.3-codex",
     }
-    key = model if model in pricing else aliases.get(model, model)
-    data = pricing.get(key) or {}
+    candidates = [model]
+    alias = aliases.get(model)
+    if alias:
+        candidates.append(alias)
+    candidates.extend(f"{prefix}{model}" for prefix in ("openai/", "azure/", "openrouter/openai/"))
+
+    for candidate in candidates:
+        data = pricing.get(candidate)
+        if isinstance(data, dict):
+            return data
+
+    lowered = model.lower()
+    for key, data in pricing.items():
+        if isinstance(key, str) and isinstance(data, dict):
+            comparison = key.lower()
+            if comparison == lowered or comparison.endswith(f"/{lowered}"):
+                return data
+    return {}
+
+
+def codex_price_for_model(model: str, pricing: dict[str, Any]) -> dict[str, float]:
+    data = codex_pricing_for_model(model, pricing)
     return {
         "input": float(data.get("input_cost_per_token") or 0),
         "cached": float(data.get("cache_read_input_token_cost") or data.get("input_cost_per_token") or 0),
@@ -186,15 +229,62 @@ def codex_price_for_model(model: str, pricing: dict[str, Any]) -> dict[str, floa
     }
 
 
+def tiered_token_cost(tokens: int, base_price: float | None, tiered_price: float | None, threshold: int) -> float:
+    if tokens <= 0:
+        return 0.0
+    if tiered_price is not None and tokens > threshold:
+        return threshold * (base_price or 0.0) + (tokens - threshold) * tiered_price
+    return tokens * (base_price or 0.0)
+
+
+def pricing_threshold(data: dict[str, Any], *keys: str) -> int:
+    for key in keys:
+        for suffix in ("_above_272k_tokens", "_above_200k_tokens"):
+            if data.get(f"{key}{suffix}") is not None:
+                return 272_000 if suffix == "_above_272k_tokens" else 200_000
+    return 200_000
+
+
 def codex_cost_usd(usage: dict[str, int], model: str, pricing: dict[str, Any]) -> float:
-    model_pricing = codex_price_for_model(model, pricing)
+    model_pricing = codex_pricing_for_model(model, pricing)
     non_cached_input = max(usage["inputTokens"] - usage["cachedInputTokens"], 0)
     cached_input = min(usage["cachedInputTokens"], usage["inputTokens"])
     return (
-        non_cached_input * model_pricing["input"]
-        + cached_input * model_pricing["cached"]
-        + usage["outputTokens"] * model_pricing["output"]
+        tiered_token_cost(
+            non_cached_input,
+            model_pricing.get("input_cost_per_token"),
+            model_pricing.get("input_cost_per_token_above_272k_tokens") or model_pricing.get("input_cost_per_token_above_200k_tokens"),
+            pricing_threshold(model_pricing, "input_cost_per_token"),
+        )
+        + tiered_token_cost(
+            cached_input,
+            model_pricing.get("cache_read_input_token_cost") or model_pricing.get("input_cost_per_token"),
+            model_pricing.get("cache_read_input_token_cost_above_272k_tokens") or model_pricing.get("cache_read_input_token_cost_above_200k_tokens"),
+            pricing_threshold(model_pricing, "cache_read_input_token_cost"),
+        )
+        + tiered_token_cost(
+            usage["outputTokens"],
+            model_pricing.get("output_cost_per_token"),
+            model_pricing.get("output_cost_per_token_above_272k_tokens") or model_pricing.get("output_cost_per_token_above_200k_tokens"),
+            pricing_threshold(model_pricing, "output_cost_per_token"),
+        )
     )
+
+
+def validate_codex_pricing_coverage(rows: list[dict[str, Any]], pricing: dict[str, Any]) -> None:
+    missing: set[str] = set()
+    for row in rows:
+        for model, usage in (row.get("models") or {}).items():
+            if str(model).startswith("openrouter/") and str(model).endswith(":free"):
+                continue
+            token_count = int(usage.get("inputTokens", 0)) + int(usage.get("outputTokens", 0))
+            if token_count <= 0:
+                continue
+            price = codex_price_for_model(str(model), pricing)
+            if not any(price.values()):
+                missing.add(str(model))
+    if missing:
+        raise RuntimeError(f"Missing nonzero Codex pricing for model(s): {', '.join(sorted(missing))}")
 
 
 def iter_codex_files_since(start_date: date) -> list[Path]:
@@ -211,8 +301,7 @@ def iter_codex_files_since(start_date: date) -> list[Path]:
 
 
 def compute_codex_rows(start_date: date) -> list[dict[str, Any]]:
-    codex_bundle = find_latest_npx_entry("@ccusage/codex/dist/index.js")
-    pricing = load_js_prefetched_constant(codex_bundle, "PREFETCHED_CODEX_PRICING")
+    pricing = load_codex_pricing()
     session_roots = codex_usage_audit.discover_session_roots()
     rows = codex_usage_audit.build_daily_rows(
         session_roots,
@@ -220,6 +309,7 @@ def compute_codex_rows(start_date: date) -> list[dict[str, Any]]:
         timezone=TIMEZONE,
         price_for_usage=lambda usage, model: codex_cost_usd(usage, model, pricing),
     )
+    validate_codex_pricing_coverage(rows, pricing)
     for row in rows:
         row["date"] = format_codex_date(row["date"])
     return rows

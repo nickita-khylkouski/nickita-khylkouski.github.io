@@ -895,7 +895,7 @@ async function executeCommand(cmd, ctx, name$1) {
 	await resolved.run(ctx);
 }
 var name = "@ccusage/codex";
-var version = "18.0.10";
+var version = "18.0.11";
 var description = "Usage analysis tool for OpenAI Codex sessions";
 var require_debug = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	let messages = [];
@@ -7230,6 +7230,22 @@ const PREFETCHED_CODEX_PRICING = {
 		"max_input_tokens": 105e4,
 		"max_output_tokens": 128e3
 	},
+	"azure/gpt-5.4-mini": {
+		"input_cost_per_token": 75e-8,
+		"output_cost_per_token": 45e-7,
+		"cache_read_input_token_cost": 75e-9,
+		"max_tokens": 128e3,
+		"max_input_tokens": 105e4,
+		"max_output_tokens": 128e3
+	},
+	"azure/gpt-5.4-nano": {
+		"input_cost_per_token": 2e-7,
+		"output_cost_per_token": 125e-8,
+		"cache_read_input_token_cost": 2e-8,
+		"max_tokens": 128e3,
+		"max_input_tokens": 105e4,
+		"max_output_tokens": 128e3
+	},
 	"gpt-5": {
 		"input_cost_per_token": 125e-8,
 		"output_cost_per_token": 1e-5,
@@ -7338,6 +7354,22 @@ const PREFETCHED_CODEX_PRICING = {
 		"cache_read_input_token_cost": 3e-6,
 		"max_tokens": 128e3,
 		"max_input_tokens": 105e4,
+		"max_output_tokens": 128e3
+	},
+	"gpt-5.4-mini": {
+		"input_cost_per_token": 75e-8,
+		"output_cost_per_token": 45e-7,
+		"cache_read_input_token_cost": 75e-9,
+		"max_tokens": 128e3,
+		"max_input_tokens": 272e3,
+		"max_output_tokens": 128e3
+	},
+	"gpt-5.4-nano": {
+		"input_cost_per_token": 2e-7,
+		"output_cost_per_token": 125e-8,
+		"cache_read_input_token_cost": 2e-8,
+		"max_tokens": 128e3,
+		"max_input_tokens": 272e3,
 		"max_output_tokens": 128e3
 	},
 	"gpt-5-pro": {
