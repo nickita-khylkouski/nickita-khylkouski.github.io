@@ -26,6 +26,10 @@ CLAUDE_AUDIT_PATH = Path("/Users/nickita/.local/bin/aiusage_audit.py")
 VENDORED_CODEX_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-codex-index.js"
 VENDORED_CLAUDE_BUNDLE = ROOT / "scripts" / "vendor" / "ccusage-data-loader.js"
 LITELLM_PRICING_URL = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+ZERO_COST_CODEX_MODELS = {
+    "gemma-test",
+    "gemma-uncensored:latest",
+}
 
 
 def parse_codex_date(value: str) -> date:
@@ -195,6 +199,13 @@ def codex_convert_delta(raw: dict[str, int]) -> dict[str, int]:
 
 
 def codex_pricing_for_model(model: str, pricing: dict[str, Any]) -> dict[str, Any]:
+    if is_zero_cost_codex_model(model):
+        return {
+            "input_cost_per_token": 0,
+            "cache_read_input_token_cost": 0,
+            "output_cost_per_token": 0,
+        }
+
     aliases = {
         "gpt-5-codex": "gpt-5",
         "gpt-5.3-codex": "gpt-5.2-codex",
@@ -218,6 +229,10 @@ def codex_pricing_for_model(model: str, pricing: dict[str, Any]) -> dict[str, An
             if comparison == lowered or comparison.endswith(f"/{lowered}"):
                 return data
     return {}
+
+
+def is_zero_cost_codex_model(model: str) -> bool:
+    return model in ZERO_COST_CODEX_MODELS
 
 
 def codex_price_for_model(model: str, pricing: dict[str, Any]) -> dict[str, float]:
@@ -275,14 +290,17 @@ def validate_codex_pricing_coverage(rows: list[dict[str, Any]], pricing: dict[st
     missing: set[str] = set()
     for row in rows:
         for model, usage in (row.get("models") or {}).items():
-            if str(model).startswith("openrouter/") and str(model).endswith(":free"):
+            model_name = str(model)
+            if model_name.startswith("openrouter/") and model_name.endswith(":free"):
+                continue
+            if is_zero_cost_codex_model(model_name):
                 continue
             token_count = int(usage.get("inputTokens", 0)) + int(usage.get("outputTokens", 0))
             if token_count <= 0:
                 continue
-            price = codex_price_for_model(str(model), pricing)
+            price = codex_price_for_model(model_name, pricing)
             if not any(price.values()):
-                missing.add(str(model))
+                missing.add(model_name)
     if missing:
         raise RuntimeError(f"Missing nonzero Codex pricing for model(s): {', '.join(sorted(missing))}")
 

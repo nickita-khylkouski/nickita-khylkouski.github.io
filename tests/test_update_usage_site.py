@@ -64,6 +64,23 @@ class UpdateUsageSiteTests(unittest.TestCase):
         self.assertEqual(price["cached"], 0.000000175)
         self.assertEqual(price["output"], 0.000014)
 
+    def test_known_local_codex_models_are_counted_as_zero_cost(self) -> None:
+        rows = [
+            {
+                "date": "May 21, 2026",
+                "models": {
+                    "gemma-uncensored:latest": {
+                        "inputTokens": 100,
+                        "cachedInputTokens": 0,
+                        "outputTokens": 10,
+                    }
+                },
+            }
+        ]
+
+        update_usage_site.validate_codex_pricing_coverage(rows, {})
+        self.assertEqual(update_usage_site.codex_price_for_model("gemma-uncensored:latest", {})["input"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()
