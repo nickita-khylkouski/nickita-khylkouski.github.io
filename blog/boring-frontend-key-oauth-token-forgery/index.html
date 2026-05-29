@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I Found a Boring Frontend Key. It Turned Into OAuth Token Forgery.</title>
+    <style>
+      body {
+        margin: 18px 28px 32px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 16px;
+        line-height: 1.25;
+        background: white;
+        color: black;
+      }
+
+      .page {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 18px 0 10px;
+        font-size: 32px;
+        line-height: 1.08;
+      }
+
+      h2 {
+        margin: 28px 0 12px;
+        font-size: 21px;
+      }
+
+      p {
+        margin: 0 0 16px;
+      }
+
+      .meta {
+        margin-bottom: 22px;
+      }
+
+      pre {
+        margin: 0 0 18px;
+        padding: 14px;
+        overflow-x: auto;
+        border: 1px solid black;
+        background: #f7f7f7;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      code {
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          margin: 16px;
+        }
+
+        pre {
+          padding: 12px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <p>home / blog</p>
+
+      <h1>I Found a Boring Frontend Key. It Turned Into OAuth Token Forgery.</h1>
+
+      <p class="meta">May 28, 2026</p>
+
+      <p>
+        I almost skipped the finding.
+      </p>
+
+      <p>
+        It started with one of the most boring things you can find during web recon: a public key inside a
+        JavaScript bundle.
+      </p>
+
+      <p>
+        If you have done bug bounty or web app testing, you already know how this usually goes. You open the bundle,
+        see some API config, get excited for half a second, test the key, and realize it can only do what the frontend
+        already does.
+      </p>
+
+      <p>
+        Most public keys are not secrets. They are labels. The backend decides what they can touch.
+      </p>
+
+      <p>
+        This key was different.
+      </p>
+
+      <p>
+        Instead of an admin panel or a dramatic database dump, the key led somewhere quieter: a browser role could
+        reach the OAuth storage behind an MCP server.
+      </p>
+
+      <p>
+        That is where the story stopped being about a leaked key and started being about trust.
+      </p>
+
+      <h2>The target looked normal</h2>
+
+      <p>
+        I started the way I usually start: collect public assets, open the main app, watch network traffic, download
+        JavaScript, search for API hosts, then test what the browser already knows.
+      </p>
+
+      <p>
+        Nothing looked dramatic at first.
+      </p>
+
+      <p>
+        There was a web app. There were API calls. There was an MCP integration somewhere in the product. There was a
+        browser-facing data API configuration in one of the shipped bundles.
+      </p>
+
+      <p>
+        I had seen this pattern many times. The public key usually has tight permissions. It might read a public
+        profile row. It might create a signup request. It might write analytics events. Boring, but normal.
+      </p>
+
+      <p>
+        Still, the only way to know is to ask the role what it can do.
+      </p>
+
+      <h2>The first strange request</h2>
+
+      <p>
+        I tested a read against storage that looked related to OAuth refresh tokens.
+      </p>
+
+      <p>
+        That sounds scarier than it was at first. I expected hashes, because refresh tokens belong in storage the same
+        way passwords do: transformed before they ever hit disk.
+      </p>
+
+      <p>
+        I only wanted to know if the table was visible at all.
+      </p>
+
+      <pre><code>GET /data/&lt;refresh_token_store&gt;?select=id,subject,scope,revoked_at&amp;limit=1
+Authorization: Bearer &lt;public_browser_key&gt;
+
+HTTP/2 206
+[
+  {
+    "id": "&lt;row_id&gt;",
+    "subject": "&lt;tenant_and_user_context&gt;",
+    "scope": "&lt;oauth_scopes&gt;",
+    "revoked_at": null
+  }
+]</code></pre>
+
+      <p>
+        The server answered with a real row.
+      </p>
+
+      <p>
+        The raw token stayed hidden, but the browser role could read the ledger around it: subject context, scope,
+        revocation status, and enough structure to understand what a valid grant looked like.
+      </p>
+
+      <p>
+        That was already a vulnerability. A public browser role had access to records that drive token refresh.
+      </p>
+
+      <p>
+        But read access was only the first door.
+      </p>
+
+      <h2>The question that made the bug interesting</h2>
+
+      <p>
+        Read access gave me the small version of the story: a public role could inspect sensitive OAuth metadata.
+      </p>
+
+      <p>
+        Write access would turn that into something sharper.
+      </p>
+
+      <p>
+        Refresh-token storage is future authentication. If the token endpoint trusts that storage, writing a row there
+        is closer to editing the backend's memory of who can refresh into a session.
+      </p>
+
+      <p>
+        So I tried a small proof write.
+      </p>
+
+      <p>
+        I generated my own test refresh token locally. I hashed it into the same kind of stored value the system
+        expected. Then I attached it to an existing authorization context that the public API had already exposed.
+      </p>
+
+      <pre><code>POST /data/&lt;refresh_token_store&gt;
+Authorization: Bearer &lt;public_browser_key&gt;
+Content-Type: application/json
+
+{
+  "token_hash": "&lt;hash_of_my_test_token&gt;",
+  "subject": "&lt;existing_tenant_and_user_context&gt;",
+  "scope": "&lt;compatible_scope&gt;",
+  "expires_at": "&lt;future_time&gt;",
+  "revoked_at": null
+}
+
+HTTP/2 201
+[
+  {
+    "id": "&lt;inserted_row&gt;",
+    "subject": "&lt;existing_tenant_and_user_context&gt;",
+    "revoked_at": null
+  }
+]</code></pre>
+
+      <p>
+        The write worked.
+      </p>
+
+      <p>
+        That was the first real "wait, what?" moment.
+      </p>
+
+      <p>
+        The browser role had just written refresh-token state. Now the bug had a clean test: would the OAuth server
+        accept the matching token?
+      </p>
+
+      <h2>The token endpoint believed the row</h2>
+
+      <p>
+        I sent the test refresh token to the real OAuth token endpoint.
+      </p>
+
+      <pre><code>POST /oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token
+&amp;refresh_token=&lt;my_test_token&gt;
+&amp;client_id=&lt;matching_client&gt;
+
+HTTP/2 200
+{
+  "access_token": "&lt;fresh_bearer_token&gt;",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "&lt;rotated_refresh_token&gt;"
+}</code></pre>
+
+      <p>
+        That response changed the severity.
+      </p>
+
+      <p>
+        I wrote token state through a public role, then asked OAuth to process the matching token. The flow used my
+        test token, attached to authorization context the public API had already exposed.
+      </p>
+
+      <p>
+        The OAuth endpoint saw a row in the right shape and minted a bearer token.
+      </p>
+
+      <p>
+        A public browser role could write the state that OAuth later treated as authority.
+      </p>
+
+      <h2>Why OAuth bugs are easy to underestimate</h2>
+
+      <p>
+        OAuth can make bugs look less direct than they are.
+      </p>
+
+      <p>
+        If an endpoint returns private data immediately, everyone understands the story. You send a request, data comes
+        back, and nobody has to squint at the screenshot.
+      </p>
+
+      <p>
+        OAuth bugs often hide one layer earlier. The first response may only show that you can influence the thing that
+        creates access.
+      </p>
+
+      <p>
+        That is what happened here.
+      </p>
+
+      <p>
+        The vulnerable write returned a database row. That row became useful when the token endpoint consumed it. The
+        token became useful when the MCP server accepted it.
+      </p>
+
+      <p>
+        You had to follow the trust chain.
+      </p>
+
+      <h2>Then MCP made the token matter</h2>
+
+      <p>
+        A bearer token is only interesting if something trusts it.
+      </p>
+
+      <p>
+        In this case, the token belonged to an MCP flow. MCP servers expose tools, and those tools can read, search,
+        update, summarize, create, delete, schedule, send, or call into other systems depending on what the server
+        offers.
+      </p>
+
+      <p>
+        I initialized the MCP server with the token.
+      </p>
+
+      <pre><code>POST /mcp
+Authorization: Bearer &lt;fresh_bearer_token&gt;
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "clientInfo": { "name": "test-client" }
+  }
+}
+
+HTTP/2 200
+{
+  "result": {
+    "serverInfo": { "name": "&lt;mcp_server&gt;" }
+  }
+}</code></pre>
+
+      <p>
+        Initialization succeeded.
+      </p>
+
+      <p>
+        Then I called one read-only tool with a limit of one.
+      </p>
+
+      <pre><code>POST /mcp
+Authorization: Bearer &lt;fresh_bearer_token&gt;
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "&lt;read_only_listing_tool&gt;",
+    "arguments": { "limit": 1 }
+  }
+}
+
+HTTP/2 200
+{
+  "result": {
+    "items": [
+      {
+        "id": "&lt;redacted&gt;",
+        "title": "&lt;redacted&gt;",
+        "visibility": "&lt;redacted&gt;",
+        "updatedAt": "&lt;redacted&gt;"
+      }
+    ]
+  }
+}</code></pre>
+
+      <p>
+        That was enough.
+      </p>
+
+      <p>
+        One protected tool response was enough. The forged OAuth path had crossed into MCP capability.
+      </p>
+
+      <h2>The part that made it click</h2>
+
+      <p>
+        The bug lived across a chain of normal-looking trust decisions:
+      </p>
+
+      <pre><code>public JavaScript
+  exposes browser data API config
+        ↓
+browser role
+  can read OAuth state
+        ↓
+browser role
+  can write refresh-token state
+        ↓
+OAuth endpoint
+  trusts refresh-token storage
+        ↓
+MCP server
+  trusts OAuth bearer token
+        ↓
+MCP tool
+  returns protected data</code></pre>
+
+      <p>
+        Each layer behaved like the previous layer had done its job.
+      </p>
+
+      <p>
+        The data API assumed the browser role had the right permissions. The OAuth endpoint assumed refresh-token
+        storage contained trusted records. The MCP server assumed the bearer token represented a valid user context.
+      </p>
+
+      <p>
+        The failure lived between those assumptions.
+      </p>
+
+      <h2>The public key was never the punchline</h2>
+
+      <p>
+        It is tempting to title every finding like this "API key leaked in JavaScript."
+      </p>
+
+      <p>
+        That title misses the better story. The key was public by design. The vulnerability was what the key could do.
+      </p>
+
+      <p>
+        There is a big difference between:
+      </p>
+
+      <pre><code>public key can call public APIs
+
+and:
+
+public key can write auth state that becomes a bearer token</code></pre>
+
+      <p>
+        That second line is the whole story.
+      </p>
+
+      <h2>The mental model I kept after this</h2>
+
+      <p>
+        For MCP apps, I now trace authority backward.
+      </p>
+
+      <p>
+        I start at the tool and ask what had to be trusted for that tool call to work.
+      </p>
+
+      <pre><code>tool call
+  bearer token
+    refresh token
+      refresh-token row
+        database permission
+          frontend bundle</code></pre>
+
+      <p>
+        If a browser role can write any layer in that chain, the MCP server can look fine while the authority path
+        behind it is broken.
+      </p>
+
+      <h2>What happened after reporting</h2>
+
+      <p>
+        I sent the vendor the private report with exact routes, table names, row counts, proof requests, cleanup
+        notes, and the bounded MCP response.
+      </p>
+
+      <p>
+        They investigated, patched, and told affected users to reauthorize the MCP connection.
+      </p>
+
+      <h2>The takeaway</h2>
+
+      <p>
+        The bug started as a boring public key.
+      </p>
+
+      <p>
+        It became interesting only after I followed where that key led.
+      </p>
+
+      <p>
+        That is the lesson I would give anyone testing MCP or OAuth-heavy apps:
+      </p>
+
+      <p>
+        Do not stop at the frontend key. Follow it until you reach the thing that decides authority.
+      </p>
+
+      <p>
+        Sometimes the MCP server handles the final request, while the broken trust started three layers earlier in the
+        table the token server trusts.
+      </p>
+    </div>
+  </body>
+</html>

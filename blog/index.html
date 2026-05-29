@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nickita Khylkouski Blog</title>
+    <style>
+      body {
+        margin: 18px 28px 32px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 16px;
+        line-height: 1.12;
+        background: white;
+        color: black;
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 18px 0 16px;
+        font-size: 32px;
+      }
+
+      h2 {
+        margin: 24px 0 14px;
+        font-size: 18px;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      .meta {
+        color: #333;
+      }
+
+      .post {
+        margin-top: 20px;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          margin: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <p><a href="/">home</a></p>
+
+      <h1>Blog</h1>
+
+      <p>
+        Security notes, field reports, and writeups.
+      </p>
+
+      <div class="post">
+        <h2>
+          <a href="/blog/boring-frontend-key-oauth-token-forgery/">
+            I Found a Boring Frontend Key. It Turned Into OAuth Token Forgery.
+          </a>
+        </h2>
+        <p class="meta">May 28, 2026</p>
+        <p>
+          A writeup on how a browser-exposed key led to refresh-token state writes, bearer-token minting, and protected
+          MCP tool access.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
