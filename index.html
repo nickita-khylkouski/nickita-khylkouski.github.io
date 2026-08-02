@@ -3,180 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Nickita Khylkouski builds security systems, ranking systems, and strange little tools."
-    />
+    <meta name="description" content="Nickita Khylkouski's personal website." />
     <title>Nickita Khylkouski's Home Page</title>
-    <style>
-      :root {
-        color-scheme: light;
-      }
-
-      body {
-        margin: 18px 28px 36px;
-        background: white;
-        color: black;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 17px;
-        line-height: 1.32;
-      }
-
-      .page {
-        max-width: 980px;
-        margin: 0 auto;
-      }
-
-      .toplinks {
-        margin-bottom: 28px;
-        text-align: right;
-        font-size: 15px;
-      }
-
-      .toplinks a {
-        white-space: nowrap;
-      }
-
-      h1 {
-        max-width: 720px;
-        margin: 0 0 12px;
-        font-size: 38px;
-        line-height: 1.02;
-      }
-
-      h2 {
-        clear: both;
-        margin: 34px 0 12px;
-        padding-top: 8px;
-        border-top: 1px solid black;
-        font-size: 21px;
-        line-height: 1.1;
-      }
-
-      h3 {
-        margin: 20px 0 8px;
-        font-size: 17px;
-      }
-
-      p {
-        max-width: 820px;
-        margin: 0 0 15px;
-      }
-
-      ul {
-        max-width: 820px;
-        margin: 8px 0 18px 24px;
-        padding: 0;
-      }
-
-      li {
-        margin-bottom: 8px;
-      }
-
-      a {
-        color: black;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 2px;
-      }
-
-      .lead {
-        font-size: 21px;
-        line-height: 1.18;
-      }
-
-      .portrait {
-        float: right;
-        width: 250px;
-        height: 300px;
-        margin: 4px 0 18px 28px;
-        border: 1px solid black;
-        object-fit: cover;
-      }
-
-      .photo-word {
-        cursor: zoom-in;
-        text-decoration-line: underline;
-        text-decoration-style: dotted;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
-
-      .photo-popover {
-        position: fixed;
-        z-index: 1000;
-        display: none;
-        width: min(340px, calc(100vw - 32px));
-        margin: 0;
-        padding: 6px;
-        border: 1px solid black;
-        background: white;
-        box-shadow: 8px 8px 0 rgb(0 0 0 / 14%);
-        pointer-events: none;
-      }
-
-      .photo-popover.is-visible {
-        display: block;
-      }
-
-      .photo-popover img {
-        display: block;
-        width: 100%;
-        max-height: min(420px, 64vh);
-        object-fit: contain;
-        background: #f4f4f4;
-      }
-
-      .photo-popover figcaption {
-        margin-top: 6px;
-        font-size: 13px;
-        line-height: 1.2;
-      }
-
-      .small-note {
-        font-size: 15px;
-      }
-
-      .clear {
-        clear: both;
-      }
-
-      @media (max-width: 760px) {
-        body {
-          margin: 16px;
-          font-size: 16px;
-        }
-
-        .toplinks {
-          margin-bottom: 22px;
-          text-align: left;
-          line-height: 1.8;
-        }
-
-        h1 {
-          font-size: 33px;
-        }
-
-        .lead {
-          font-size: 19px;
-        }
-
-        .portrait {
-          float: none;
-          width: 220px;
-          height: 264px;
-          margin: 10px auto 18px;
-        }
-
-        .photo-popover {
-          width: calc(100vw - 32px);
-          max-height: 48vh;
-        }
-
-        .photo-popover img {
-          max-height: 38vh;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="page">
@@ -185,151 +14,67 @@
         <span aria-hidden="true"> · </span>
         <a href="https://www.linkedin.com/in/nickita-khy">LinkedIn</a>
         <span aria-hidden="true"> · </span>
-        <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a>
+        <a href="/work/">Work</a>
         <span aria-hidden="true"> · </span>
-        <a href="/usage/">My AI Usage</a>
+        <a href="/projects/">Projects</a>
+        <span aria-hidden="true"> · </span>
+        <a href="/about/">About</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a>
         <span aria-hidden="true"> · </span>
         <a href="/blog/">Blog</a>
       </nav>
 
       <main>
-        <img class="portrait" src="profile-photo.jpg" alt="Nickita Khylkouski speaking" />
+        <img class="portrait" src="/profile-photo.jpg" alt="Nickita Khylkouski speaking" />
 
         <h1>Nickita Khylkouski's Home Page</h1>
 
-        <p class="lead">I build security systems, ranking systems, and strange little tools.</p>
+        <p class="lead">Founder, security engineer, and builder in the Bay Area.</p>
 
-        <p>
-          Right now I work at <a href="https://replit.com/">Replit</a> and run
-          <a href="https://peaksecurity.us/">Peak Security</a>. I like finding hidden structure in messy systems,
-          then shipping something people can use.
-        </p>
-
-        <p>
-          This page is the short version of how I got here. The longer version is below, with the photos left in because
-          a resume is not a person.
-        </p>
-
-        <p>
-          <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a> ·
-          <a href="nickita-khylkouski-resume.pdf">resume</a>
-        </p>
-
-        <h2>How I got here</h2>
+        <h2>Replit</h2>
 
         <p>
           I started coding on <a href="https://replit.com/">Replit</a> in fifth grade. In ninth grade, my Java class
-          used it too. I helped classmates until I became the unofficial second teacher. Years later, I won the Alif x
-          Replit hackathon, shown here in a <a class="photo-word" data-photo="photos/photo-8590aef9f817390e.jpg" data-caption="Winning the Alif x Replit hackathon" href="https://blog.replit.com/">photo from that period</a>,
-          and ended up working with people whose editor I had been using for years.
-        </p>
-
-        <p>
-          Hackathons followed the same loop. First I entered them. Then I started winning. Then I helped run them and
-          judge them. I learned that I liked the systems around a project almost as much as the project itself: who gets
-          in, how teams form, and which signals actually matter.
+          used it too. I helped classmates until I became the unofficial second teacher. Years later, I won the
+          <a class="photo-word" data-photo="photos/photo-8590aef9f817390e.jpg" data-caption="Winning the Aleph x Replit hackathon" href="https://alif.build/tournament">Aleph x Replit hackathon</a>.
+          I now work at Replit, where I help with abuse and moderation and test platform surfaces for vulnerabilities.
         </p>
 
         <h2>Peak Security</h2>
 
         <p>
-          <a href="https://peaksecurity.us/">Peak Security</a> is where I work on AI-assisted recon, exploit validation,
-          CVSS triage, evidence packaging, and responsible-disclosure workflows. The blunt version is that I find the
-          trust boundary, prove the impact, and help fix it.
+          <a href="https://peaksecurity.us/">Peak Security</a> is my company. I use AI to do white hat hacking. Peak
+          was a <a class="photo-word" data-photo="photos/photo-51e1182f70490446.jpg" data-caption="YC Summer Fellows" href="https://www.ycombinator.com/blog/summer-fellows">YC Summer Fellow</a>
+          and a <a class="photo-word" data-photo="photos/photo-cf0012cf4c460edd.jpg" data-caption="Palantir Valley Forge Fellowship" href="https://www.palantir.com/careers/students-and-early-talent/">Palantir Valley Forge Fellow</a>.
+          It made $40K profit in its first month.
+        </p>
+
+        <h2>Cerebral Valley</h2>
+
+        <p>
+          I also work with <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a> and
+          <a href="https://aivalley.io/events">AI Valley</a>. I build admissions, event, judging, and recruiting
+          tools. The work has covered 6,000+ builder profiles, 19 AI events, and 3,700+ attendees.
         </p>
 
         <p>
-          Peak made $40K profit in its first month. It was also a
-          <a class="photo-word" data-photo="photos/photo-51e1182f70490446.jpg" data-caption="YC Summer Fellows" href="https://www.ycombinator.com/blog/summer-fellows">YC Summer Fellow</a>
-          and a
-          <a class="photo-word" data-photo="photos/photo-cf0012cf4c460edd.jpg" data-caption="Palantir Valley Forge Fellowship" href="https://www.palantir.com/careers/students-and-early-talent/">Palantir Valley Forge Fellow</a>.
-          Those fellowships were for Peak, not separate side quests.
-        </p>
-
-        <p>
-          I have earned $50K+ from security research and responsible disclosure across startups, enterprise systems,
-          AI infrastructure, and public-sector systems. I keep the public version short. The work is usually less
-          glamorous than the headline and more useful than it sounds.
-        </p>
-
-        <h2>Replit</h2>
-
-        <p>
-          At <a href="https://replit.com/">Replit</a>, I help build abuse and moderation workflows, then test user
-          Repls and platform surfaces for vulnerabilities. It is a good full-circle job for someone who started coding
-          there in fifth grade.
-        </p>
-
-        <h2>People, events, and ranking systems</h2>
-
-        <p>
-          At <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a> and
-          <a href="https://aivalley.io/events">AI Valley</a>, I built admissions, event operations, mobile app,
-          messaging, judging, and recruiting-intelligence systems. The work touched 6,000+ enriched builder profiles,
-          5,000+ hackathon users, 19 AI events, and 3,700+ attendees.
-        </p>
-
-        <p>
-          I got interested in the problem of ranking people without flattening them. Cerebral Valley chose roughly 500
-          people from more than 20,000 applicants for one event. The useful part was not the number. It was building a
-          system that could find good builders from messy evidence instead of rewarding whoever had the cleanest resume.
-          That work shows up in <a href="https://usemetric.app/">Metric</a>.
-        </p>
-
-        <p>
-          <a href="https://usemetric.app/">Metric</a> ranks builders by demonstrated work. It has ranked 30,000+ people
-          and predicted two of the top three hackathon winners in one backtest. I built it with my brother. The
-          <a class="photo-word" data-photo="photos/curated-four-zero-three.jpg" data-caption="Building Four Zero Three with my brother" href="https://usemetric.app/">photo here is from that chapter</a>.
+          I built <a href="https://usemetric.app/">Metric</a> with my brother. It helps recruiting teams compare
+          builders using evidence from their work.
         </p>
 
         <h2>Catan Zero</h2>
 
         <p>
           <a href="https://github.com/nickita-khylkouski/catan-zero-public">Catan Zero</a> is a reinforcement-learning
-          research stack for a strong two-player, no-trade Settlers agent. I built it with Michael Burton, who holds the
-          top Catan Elo ranking. We met through YC fellows after he demoed a model trained on scraped Catan games.
+          project for training models to play Catan. I built it with Michael Tan, who is number one in Catan Elo. We
+          met through YC fellows after he showed me a model trained on scraped Catan games.
         </p>
 
         <p>
-          The project mixes expert iteration, search, native simulation, and multi-GPU training. It is also a good
-          example of how I like working: start with a game, find the hard part, and go down the rabbit hole.
-        </p>
-
-        <h2>Other things I care about</h2>
-
-        <p>
-          I taught AI fundamentals to 60 students and reached 2,500+ people through teaching and outreach. I have
-          competed in USACO through Platinum and reached number one globally on Exonic for a period. I lift, run, and
-          still take photos of graffiti when I see a good wall.
-        </p>
-
-        <p>
-          The graffiti project is a semantic search engine over 87,790 San Francisco inspector photos. I gave the photos
-          descriptions, then made the collection searchable by meaning instead of filename. That is the same instinct
-          as Metric and Peak Security in a quieter form.
-        </p>
-
-        <h2>Projects</h2>
-
-        <ul>
-          <li><a href="https://usemetric.app/">Metric</a>: recruiting intelligence built around demonstrated work.</li>
-          <li><a href="https://github.com/nickita-khylkouski/catan-zero-public">Catan Zero</a>: models that learn to play Catan.</li>
-          <li><a href="https://github.com/nickita-khylkouski/awake">Awake</a>: a small open-source project that turns ideas into something you can use.</li>
-          <li><a href="https://github.com/nickita-khylkouski/HumanPaste">HumanPaste</a>: a tool for making generated text feel less generated.</li>
-          <li><a href="https://github.com/nickita-khylkouski/ultrathink">Ultrathink</a>, <a href="https://github.com/nickita-khylkouski/DateGuesser-website">DateGuesser</a>, and <a href="https://github.com/nickita-khylkouski/BoidDynamics">BoidDynamics</a>: smaller experiments that were too interesting to leave as notes.</li>
-        </ul>
-
-        <h2>Open source and contact</h2>
-
-        <p>
-          The rest is on <a href="https://github.com/nickita-khylkouski">GitHub</a>. I write about what I am building on
-          the <a href="/blog/">blog</a> and keep a running record of how I use AI in
-          <a href="/usage/">My AI Usage</a>.
-        </p>
-
-        <p>
-          If you want to talk about security, ranking systems, weird projects, or building something from scratch,
-          email me at <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a>.
+          <a href="/work/">Work</a> · <a href="/projects/">Projects</a> · <a href="/about/">About</a> ·
+          <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a> ·
+          <a href="nickita-khylkouski-resume.pdf">resume</a>
         </p>
       </main>
     </div>
@@ -339,95 +84,6 @@
       <figcaption></figcaption>
     </figure>
 
-    <script>
-      (() => {
-        const targets = document.querySelectorAll("[data-photo]");
-        const popover = document.querySelector(".photo-popover");
-        const image = popover.querySelector("img");
-        const caption = popover.querySelector("figcaption");
-        const gap = 12;
-        const edge = 16;
-
-        const overlapArea = (first, second) => {
-          const width = Math.max(0, Math.min(first.right, second.right) - Math.max(first.left, second.left));
-          const height = Math.max(0, Math.min(first.bottom, second.bottom) - Math.max(first.top, second.top));
-          return width * height;
-        };
-
-        const overflow = (box) => {
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-          return (
-            Math.max(0, edge - box.left) +
-            Math.max(0, edge - box.top) +
-            Math.max(0, box.right - viewportWidth + edge) +
-            Math.max(0, box.bottom - viewportHeight + edge)
-          );
-        };
-
-        const position = (target) => {
-          const targetBox = target.getBoundingClientRect();
-          const popoverBox = popover.getBoundingClientRect();
-
-          if (window.innerWidth <= 760) {
-            popover.style.left = `${edge}px`;
-            popover.style.top = `${Math.max(edge, window.innerHeight - popoverBox.height - edge)}px`;
-            return;
-          }
-
-          const candidates = [
-            { left: targetBox.right + gap, top: targetBox.top },
-            { left: targetBox.left - popoverBox.width - gap, top: targetBox.top },
-            { left: targetBox.left, top: targetBox.bottom + gap },
-            { left: targetBox.left, top: targetBox.top - popoverBox.height - gap },
-          ];
-
-          const score = (candidate) => {
-            const box = {
-              left: candidate.left,
-              top: candidate.top,
-              right: candidate.left + popoverBox.width,
-              bottom: candidate.top + popoverBox.height,
-            };
-            return overflow(box) * 100 + overlapArea(box, targetBox) * 10000;
-          };
-
-          const best = candidates.sort((first, second) => score(first) - score(second))[0];
-          const left = Math.min(window.innerWidth - popoverBox.width - edge, Math.max(edge, best.left));
-          const top = Math.min(window.innerHeight - popoverBox.height - edge, Math.max(edge, best.top));
-          popover.style.left = `${left}px`;
-          popover.style.top = `${top}px`;
-        };
-
-        const show = (target) => {
-          image.src = target.dataset.photo;
-          image.alt = target.dataset.caption || "Photo";
-          caption.textContent = target.dataset.caption || "";
-          popover.setAttribute("aria-hidden", "false");
-          popover.classList.add("is-visible");
-          position(target);
-          image.decode?.().catch(() => {}).finally(() => position(target));
-        };
-
-        const hide = () => {
-          popover.classList.remove("is-visible");
-          popover.setAttribute("aria-hidden", "true");
-        };
-
-        targets.forEach((target) => {
-          if (!target.matches("a")) target.tabIndex = 0;
-          target.addEventListener("mouseenter", () => show(target));
-          target.addEventListener("mouseleave", hide);
-          target.addEventListener("focus", () => show(target));
-          target.addEventListener("blur", hide);
-        });
-
-        window.addEventListener("scroll", hide, { passive: true });
-        window.addEventListener("resize", hide);
-        window.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") hide();
-        });
-      })();
-    </script>
+    <script src="/photo-popover.js"></script>
   </body>
 </html>

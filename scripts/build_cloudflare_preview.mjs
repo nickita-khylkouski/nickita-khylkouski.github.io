@@ -13,11 +13,15 @@ await mkdir(server, { recursive: true });
 
 for (const entry of [
   "index.html",
+  "styles.css",
+  "photo-popover.js",
   "profile-photo.jpg",
   "nickita-khylkouski-resume.pdf",
   "photos",
   "blog",
-  "usage",
+  "work",
+  "projects",
+  "about",
   "support",
   "privacy",
 ]) {
