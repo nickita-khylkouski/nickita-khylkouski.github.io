@@ -3,15 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nickita Khylkouski builds security systems, ranking systems, and strange little tools."
+    />
     <title>Nickita Khylkouski's Home Page</title>
     <style>
+      :root {
+        color-scheme: light;
+      }
+
       body {
-        margin: 18px 28px 32px;
-        font-family: "Times New Roman", Times, serif;
-        font-size: 16px;
-        line-height: 1.12;
+        margin: 18px 28px 36px;
         background: white;
         color: black;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 17px;
+        line-height: 1.32;
       }
 
       .page {
@@ -19,72 +27,78 @@
         margin: 0 auto;
       }
 
+      .toplinks {
+        margin-bottom: 28px;
+        text-align: right;
+        font-size: 15px;
+      }
+
+      .toplinks a {
+        white-space: nowrap;
+      }
+
       h1 {
-        margin: 18px 0 16px;
-        font-size: 32px;
+        max-width: 720px;
+        margin: 0 0 12px;
+        font-size: 38px;
+        line-height: 1.02;
       }
 
       h2 {
-        margin: 24px 0 14px;
-        font-size: 18px;
-        text-align: center;
+        clear: both;
+        margin: 34px 0 12px;
+        padding-top: 8px;
+        border-top: 1px solid black;
+        font-size: 21px;
+        line-height: 1.1;
       }
 
       h3 {
-        margin: 20px 0 10px;
-        font-size: 16px;
+        margin: 20px 0 8px;
+        font-size: 17px;
       }
 
       p {
-        margin: 0 0 14px;
+        max-width: 820px;
+        margin: 0 0 15px;
       }
 
       ul {
-        margin: 10px 0 0 22px;
+        max-width: 820px;
+        margin: 8px 0 18px 24px;
         padding: 0;
       }
 
       li {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
 
-      .toplogos {
-        float: right;
-        margin: 0 0 14px 18px;
+      a {
+        color: black;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
       }
 
-      .toplogos a {
-        text-decoration: none;
-      }
-
-      .toplogos img {
-        width: 24px;
-        height: 24px;
-        vertical-align: middle;
-        margin-left: 8px;
+      .lead {
+        font-size: 21px;
+        line-height: 1.18;
       }
 
       .portrait {
         float: right;
         width: 250px;
         height: 300px;
-        margin: 6px 0 18px 26px;
+        margin: 4px 0 18px 28px;
         border: 1px solid black;
-        display: block;
         object-fit: cover;
       }
 
-      .entry-title {
-        font-weight: bold;
-      }
-
-      /* Approved direction: selected photos stay hidden until a related phrase is hovered or focused. */
       .photo-word {
+        cursor: zoom-in;
         text-decoration-line: underline;
         text-decoration-style: dotted;
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
-        cursor: zoom-in;
       }
 
       .photo-popover {
@@ -118,6 +132,10 @@
         line-height: 1.2;
       }
 
+      .small-note {
+        font-size: 15px;
+      }
+
       .clear {
         clear: both;
       }
@@ -125,314 +143,270 @@
       @media (max-width: 760px) {
         body {
           margin: 16px;
+          font-size: 16px;
         }
 
-        .toplogos {
-          float: none;
-          margin: 0 0 14px;
+        .toplinks {
+          margin-bottom: 22px;
+          text-align: left;
+          line-height: 1.8;
         }
 
-        .toplogos img {
-          margin: 0 8px 0 0;
+        h1 {
+          font-size: 33px;
+        }
+
+        .lead {
+          font-size: 19px;
         }
 
         .portrait {
           float: none;
           width: 220px;
+          height: 264px;
           margin: 10px auto 18px;
+        }
+
+        .photo-popover {
+          width: calc(100vw - 32px);
+          max-height: 48vh;
+        }
+
+        .photo-popover img {
+          max-height: 38vh;
         }
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <div class="toplogos">
-        <a href="https://github.com/nickita-khylkouski">
-          <img src="https://github.com/favicon.ico" alt="GitHub" />
-        </a>
-        <a href="https://www.linkedin.com/in/nickita-khy">
-          <img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" />
-        </a>
-        <a href="https://www.cerebralvalley.ai/">
-          <img src="https://www.cerebralvalley.ai/icon-light-32x32.png" alt="Cerebral Valley" />
-        </a>
-        <a href="/usage/" style="margin-left: 10px; vertical-align: middle;">My AI Usage</a>
-        <a href="/blog/" style="margin-left: 10px; vertical-align: middle;">Blog</a>
-      </div>
+      <nav class="toplinks" aria-label="Site links">
+        <a href="https://github.com/nickita-khylkouski">GitHub</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://www.linkedin.com/in/nickita-khy">LinkedIn</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a>
+        <span aria-hidden="true"> · </span>
+        <a href="/usage/">My AI Usage</a>
+        <span aria-hidden="true"> · </span>
+        <a href="/blog/">Blog</a>
+      </nav>
 
-      <h1>Nickita Khylkouski's Home Page</h1>
+      <main>
+        <img class="portrait" src="profile-photo.jpg" alt="Nickita Khylkouski speaking" />
 
-      <p>
-        <span class="photo-word" data-photo="photos/curated-entrepreneurs-first-stage.jpg" data-caption="Entrepreneurs First founder interview">Founder</span>, security engineer, and builder in the Bay Area -
-        <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a> -
-        <a href="nickita-khylkouski-resume.pdf">resume</a>
-      </p>
+        <h1>Nickita Khylkouski's Home Page</h1>
 
-      <img
-        class="portrait"
-        src="profile-photo.jpg"
-        alt="Nickita Khylkouski speaking"
-      />
+        <p class="lead">I build security systems, ranking systems, and strange little tools.</p>
 
-      <h2>Research</h2>
+        <p>
+          Right now I work at <a href="https://replit.com/">Replit</a> and run
+          <a href="https://peaksecurity.us/">Peak Security</a>. I like finding hidden structure in messy systems,
+          then shipping something people can use.
+        </p>
 
-      <p>
-        <b>I am the founder of Peak Security, a <a class="photo-word" data-photo="photos/photo-51e1182f70490446.jpg" data-caption="YC Summer Fellows" href="https://www.ycombinator.com/blog/summer-fellows">YC Summer Fellow</a>,
-        a <a class="photo-word" data-photo="photos/photo-cf0012cf4c460edd.jpg" data-caption="Palantir Valley Forge Fellowship" href="https://www.palantir.com/careers/students-and-early-talent/">Palantir Valley Forge Fellow</a>, and a <span class="photo-word" data-photo="photos/photo-5314b0f494959b53.jpg" data-caption="Security engineering at Palantir">security
-        engineer</span> / software engineer at <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a>.</b>
-      </p>
+        <p>
+          This page is the short version of how I got here. The longer version is below, with the photos left in because
+          a resume is not a person.
+        </p>
 
-      <h3>Security Research</h3>
+        <p>
+          <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a> ·
+          <a href="nickita-khylkouski-resume.pdf">resume</a>
+        </p>
 
-      <p>
-        Through Peak Security, I work on AI-assisted recon, exploit validation, CVSS triage, evidence packaging, and
-        responsible-disclosure workflows for startup and enterprise clients. Peak made $40K profit in its first month
-        and received fellowships from <a href="https://www.ycombinator.com/blog/summer-fellows">YC</a> and
-        <a class="photo-word" data-photo="photos/curated-national-security-hackathon.jpg" data-caption="National Security Hackathon at Palantir" href="https://www.palantir.com/careers/students-and-early-talent/">Palantir</a>.
-      </p>
+        <h2>How I got here</h2>
 
-      <p>
-        I have earned $50K+ from security research and responsible disclosure across YC-backed startups,
-        NASDAQ-listed companies, AI infrastructure, enterprise, and public-sector systems. I was also recognized on
-        <a href="https://www.ycombinator.com/security">ycombinator.com/security</a> for responsibly disclosing internal
-        data exposure across development and staging environments.
-      </p>
+        <p>
+          I started coding on <a href="https://replit.com/">Replit</a> in fifth grade. In ninth grade, my Java class
+          used it too. I helped classmates until I became the unofficial second teacher. Years later, I won the Alif x
+          Replit hackathon, shown here in a <a class="photo-word" data-photo="photos/photo-8590aef9f817390e.jpg" data-caption="Winning the Alif x Replit hackathon" href="https://blog.replit.com/">photo from that period</a>,
+          and ended up working with people whose editor I had been using for years.
+        </p>
 
-      <p>
-        At Cerebral Valley, I helped fix CVSS 8.5 issue and CVSS 7.7 issue, including sender
-        impersonation, cross-user export restrictions, and event messaging hardening.
-      </p>
+        <p>
+          Hackathons followed the same loop. First I entered them. Then I started winning. Then I helped run them and
+          judge them. I learned that I liked the systems around a project almost as much as the project itself: who gets
+          in, how teams form, and which signals actually matter.
+        </p>
 
-      <h3>Data Enrichment</h3>
+        <h2>Peak Security</h2>
 
-      <p>
-        At Cerebral Valley, I built agent-orchestrated enrichment pipelines that launched thousands of research agents
-        to investigate candidates and turn messy web data into structured recruiting dossiers.
-      </p>
+        <p>
+          <a href="https://peaksecurity.us/">Peak Security</a> is where I work on AI-assisted recon, exploit validation,
+          CVSS triage, evidence packaging, and responsible-disclosure workflows. The blunt version is that I find the
+          trust boundary, prove the impact, and help fix it.
+        </p>
 
-      <p>
-        The system processed a person in about 4 minutes, produced 10 to 20 page dossiers, and surfaced roughly 15 to
-        25 verifiable public signals per candidate for recruiting insights, sponsor analytics, and event intelligence.
-      </p>
+        <p>
+          Peak made $40K profit in its first month. It was also a
+          <a class="photo-word" data-photo="photos/photo-51e1182f70490446.jpg" data-caption="YC Summer Fellows" href="https://www.ycombinator.com/blog/summer-fellows">YC Summer Fellow</a>
+          and a
+          <a class="photo-word" data-photo="photos/photo-cf0012cf4c460edd.jpg" data-caption="Palantir Valley Forge Fellowship" href="https://www.palantir.com/careers/students-and-early-talent/">Palantir Valley Forge Fellow</a>.
+          Those fellowships were for Peak, not separate side quests.
+        </p>
 
-      <h3>Recruiting Intelligence</h3>
+        <p>
+          I have earned $50K+ from security research and responsible disclosure across startups, enterprise systems,
+          AI infrastructure, and public-sector systems. I keep the public version short. The work is usually less
+          glamorous than the headline and more useful than it sounds.
+        </p>
 
-      <p>
-        That work turned into <a href="https://usemetric.app/">Metric</a>, which I <span class="photo-word" data-photo="photos/curated-build-ai-teammate.jpg" data-caption="Build Your AI Teammate">co-founded</span> with my <span class="photo-word" data-photo="photos/curated-four-zero-three.jpg" data-caption="Four Zero Three with my brother">brother</span>.
-        Metric is the ranking layer on top of those dossiers: an LLM-assisted evaluation system with pairwise
-        comparisons, where each skill is tracked with its own Elo-style rating instead of collapsing a person into one
-        opaque score.
-      </p>
+        <h2>Replit</h2>
 
-      <p>
-        I worked on the scoring logic, evidence-backed rankings, and multi-skill comparisons so candidates could be
-        compared by demonstrated strengths with traceable justification. In one tested event, Metric predicted 2 of the
-        top 3 hackathon winners.
-      </p>
+        <p>
+          At <a href="https://replit.com/">Replit</a>, I help build abuse and moderation workflows, then test user
+          Repls and platform surfaces for vulnerabilities. It is a good full-circle job for someone who started coding
+          there in fifth grade.
+        </p>
 
-      <h3>Hackathons</h3>
+        <h2>People, events, and ranking systems</h2>
 
-      <p>
-        I work across <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a> and
-        <a href="https://www.aivalley.io/">AI Valley</a>, where we host <span class="photo-word" data-photo="photos/manual-oct25-2022.jpg" data-caption="Building at a Bay Area hackathon">hackathons</span>, <span class="photo-word" data-photo="photos/photo-7ad4d0ebc8552cb3.jpg" data-caption="Launching a product at AGI House AI4Healthcare">product launches</span>, and <span class="photo-word" data-photo="photos/photo-b817694a6374a46c.jpg" data-caption="Presenting at YC Hack the Stackathon">demo days</span> in
-        San Francisco and beyond. I built judging and submission
-        software used by 5K+ hackathon users for scoring, submissions, reviewer workflows, and operations.
-      </p>
+        <p>
+          At <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a> and
+          <a href="https://aivalley.io/events">AI Valley</a>, I built admissions, event operations, mobile app,
+          messaging, judging, and recruiting-intelligence systems. The work touched 6,000+ enriched builder profiles,
+          5,000+ hackathon users, 19 AI events, and 3,700+ attendees.
+        </p>
 
-      <p>
-        I have helped organize 19 AI events with groups like
-        <a href="https://cerebralvalley.ai/e/openai-codex-hackathon">OpenAI</a>,
-        <a href="https://cerebralvalley.ai/e/claude-code-virtual-2">Anthropic</a>,
-        <a class="photo-word" data-photo="photos/curated-gemini-3-team.jpg" data-caption="Gemini 3 with Google DeepMind" href="https://cerebralvalley.ai/e/gemini-3-hackathon-london">Google DeepMind</a>,
-        <a href="https://cerebralvalley.ai/e/zero-to-agent-london">Vercel</a>,
-        <a href="https://aws.amazon.com/">AWS</a>,
-        <a href="https://www.netflix.com/">Netflix</a>, and
-        <a href="https://www.ycombinator.com/">Y Combinator</a>, with 3,700+ recent attendees and one 1,200+ signup
-        event. I also secured <span class="photo-word" data-photo="photos/curated-agentic-payments.jpg" data-caption="Agentic Payments Hackathon">2 sponsorships directly</span>, generated 6 sponsor leads, and spoke at
-        <a href="https://www.techexevent.com/northamerica/">TechEx North America</a> about <span class="photo-word" data-photo="photos/curated-entrepreneurs-first-building.jpg" data-caption="Building AI coding agents at Entrepreneurs First">building AI coding agents</span>.
-      </p>
+        <p>
+          I got interested in the problem of ranking people without flattening them. Cerebral Valley chose roughly 500
+          people from more than 20,000 applicants for one event. The useful part was not the number. It was building a
+          system that could find good builders from messy evidence instead of rewarding whoever had the cleanest resume.
+          That work shows up in <a href="https://usemetric.app/">Metric</a>.
+        </p>
 
-      <p>
-        I have <span class="photo-word" data-photo="photos/photo-8590aef9f817390e.jpg" data-caption="Winning at Alif x Replit">won</span> <a class="photo-word" data-photo="photos/manual-jan31-2127b.jpg" data-caption="YC Hack the Stackathon team" href="https://events.ycombinator.com/HacktheStackathon">YC Hack the Stackathon</a>,
-        <a class="photo-word" data-photo="photos/manual-jan18-0214.jpg" data-caption="Alif x Replit World's Greatest Tournament" href="https://alif.build/tournament">Alif x Replit World's Greatest Tournament</a>,
-        <a class="photo-word" data-photo="photos/photo-418fd1d1e24c6b0d.jpg" data-caption="AGI House AI4Healthcare team" href="https://blog.agihouse.org/posts/ai-x-healthcare-pre-event-guide">AGI House AI4Healthcare</a>,
-        <a href="https://cua.ai/hackathon">cua.ai Computer-Use Agents</a>,
-        <a href="https://replicate.com/blog/kontext-hackathon">Replicate Hackathon</a>,
-        <a href="https://stupidhackathon.com/">Dumb Hackathon</a>, and
-        <a href="https://oneshothack.com/">Single Shot Hackathon</a>. I also placed at
-        <a href="https://www.omi.me/blogs/events/omihacks-2025-hackathon">AGI House x Omi</a> and
-        <a class="photo-word" data-photo="photos/photo-9c444bc287130ebc.jpg" data-caption="Hack for Social Impact" href="https://www.hackforsocialimpact.com/">Hack for Social Impact</a>.
-      </p>
+        <p>
+          <a href="https://usemetric.app/">Metric</a> ranks builders by demonstrated work. It has ranked 30,000+ people
+          and predicted two of the top three hackathon winners in one backtest. I built it with my brother. The
+          <a class="photo-word" data-photo="photos/curated-four-zero-three.jpg" data-caption="Building Four Zero Three with my brother" href="https://usemetric.app/">photo here is from that chapter</a>.
+        </p>
 
-      <h3>Background</h3>
+        <h2>Catan Zero</h2>
 
-      <p>
-        Another part of my work is teaching. I am an AI Ambassador and Instructor at
-        <a href="https://www.inspiritai.com/">Inspirit AI</a>, where I taught AI fundamentals to 60 students, won 1st
-        Place for Best Presentation, and reached 2,500+ people worldwide through education.
-      </p>
+        <p>
+          <a href="https://github.com/nickita-khylkouski/catan-zero-public">Catan Zero</a> is a reinforcement-learning
+          research stack for a strong two-player, no-trade Settlers agent. I built it with Michael Burton, who holds the
+          top Catan Elo ranking. We met through YC fellows after he demoed a model trained on scraped Catan games.
+        </p>
 
-      <p>
-        I am USACO Platinum, which is the top 1% internationally in competitive programming.
-      </p>
+        <p>
+          The project mixes expert iteration, search, native simulation, and multi-GPU training. It is also a good
+          example of how I like working: start with a game, find the hard part, and go down the rabbit hole.
+        </p>
 
-      <p>
-        I also ranked #1 globally in the Exonic AI Tournament for DNA sequences enhancing liver cancer-killing cells.
-      </p>
+        <h2>Other things I care about</h2>
 
-      <h3>Projects</h3>
+        <p>
+          I taught AI fundamentals to 60 students and reached 2,500+ people through teaching and outreach. I have
+          competed in USACO through Platinum and reached number one globally on Exonic for a period. I lift, run, and
+          still take photos of graffiti when I see a good wall.
+        </p>
 
-      <ul>
-        <li>
-          <a class="entry-title" href="https://github.com/nickita-khylkouski?tab=repositories">Metric</a> - recruiting intelligence layer for builders. Scrapes competition
-          leaderboards, gated developer communities, GitHub history, paywalled content, and CTF results. Outputs
-          ranked candidates with scores and evidence. 30K+ people ranked. Try to find the easter eggs on the site.
-        </li>
-        <li>
-          <a class="entry-title" href="https://github.com/nickita-khylkouski?tab=repositories">SF Graffiti Search</a> - semantic search over 87,790 photos taken by San
-          Francisco city inspectors documenting graffiti violations. Each image was described by Gemini Flash so you can
-          search by content, style, or location. Images sourced by walzr.
-        </li>
-        <li>
-          <span class="entry-title">cv-rank</span> (private, email me for more info) - debiased applicant ranking with
-          pairwise Elo-style comparisons. It combines LLM-as-judge scoring, rubric scoring, Swiss pairwise rounds, Bradley-Terry fitting,
-          anonymization, position-bias mitigation, debiasing, and borderline review. Papers:
-          <a href="https://arxiv.org/abs/2306.05685">Zheng et al. 2023</a>,
-          <a href="https://arxiv.org/abs/2310.08491">Prometheus 2024</a>,
-          <a href="https://doi.org/10.1016/j.cor.2022.105927">Sziklai et al. 2022</a>,
-          <a href="https://arxiv.org/abs/2403.04132">Chatbot Arena 2024</a>,
-          <a href="https://arxiv.org/abs/2406.07791">Shi et al. 2024</a>, and
-          <a href="https://arxiv.org/abs/2504.14716">Tripathi et al. 2025</a>.
-        </li>
-        <li>
-          <span class="entry-title">Ranky</span> (private, email me for more info) - human-facing ranking for choosing
-          the best photos. It uses pairwise comparison instead of flat scores, so the final order comes from simpler
-          choices with fewer decisions. Support and Privacy Policy.
-        </li>
-        <li>
-          <a href="https://github.com/nickita-khylkouski/HumanPaste">HumanPaste</a> - paste does not work everywhere. It
-          takes clipboard text and retypes it with realistic keystrokes, which is useful in terminals, remote sessions,
-          and apps that accept typing but not direct paste.
-        </li>
-        <li>
-          <a href="https://github.com/nickita-khylkouski/awake">awake</a> - keeps a Mac awake during long AI agent runs,
-          with safeguards so background work does not die when the machine sleeps.
-        </li>
-        <li>
-          <a href="https://github.com/nickita-khylkouski/ultrathink">ultrathink</a> - drug-discovery search system using
-          <a href="https://arxiv.org/abs/2108.02198">AlphaFold</a>,
-          <a href="https://arxiv.org/abs/2207.14282">ESMFold</a>,
-          <a href="https://arxiv.org/abs/1805.11973">MolGAN</a>,
-          <a href="https://www.rdkit.org/docs/Overview.html">RDKit</a>, and simulated randomness inside an evolutionary search loop. The idea
-          was to grade and improve molecules with many AI tools together so they can cover each other's gaps better than
-          a single model.
-        </li>
-        <li>
-          <a href="https://github.com/nickita-khylkouski/DateGuesser-website">DateGuesser-website</a> - weekday
-          calculation trainer built around
-          <a href="https://archim.org.uk/eureka/archive/Eureka-36.pdf">Conway's Doomsday algorithm</a>, with repeated practice,
-          feedback, and speed modes.
-        </li>
-        <li>
-          <a href="https://github.com/nickita-khylkouski/BoidDynamics">BoidDynamics</a> - interactive flocking and
-          complex-systems simulation based on <a href="https://red3d.com/cwr/index.html">Craig Reynolds</a>'s
-          <a href="http://www.red3d.com/cwr/papers/1987/boids.html">Boids algorithm</a>.
-        </li>
-      </ul>
+        <p>
+          The graffiti project is a semantic search engine over 87,790 San Francisco inspector photos. I gave the photos
+          descriptions, then made the collection searchable by meaning instead of filename. That is the same instinct
+          as Metric and Peak Security in a quieter form.
+        </p>
 
-      <h3><span class="photo-word" data-photo="photos/curated-github-office.jpg" data-caption="At GitHub's office">Open Source Contributions</span></h3>
+        <h2>Projects</h2>
 
-      <p>
-        <a class="photo-word" data-photo="photos/curated-google-io.jpg" data-caption="Google I/O" href="https://github.com/google/guava">Google/guava</a> and
-        <a href="https://github.com/google/mug">Google/mug</a>: Java utility libraries.<br />
-        Google/guava: cleanup, test hygiene, thread-leak fixes, and build reliability.<br />
-        Google/mug: regex edge cases, locale-dependent failures, concurrency tests, and reproducible Maven builds.
-      </p>
+        <ul>
+          <li><a href="https://usemetric.app/">Metric</a>: recruiting intelligence built around demonstrated work.</li>
+          <li><a href="https://github.com/nickita-khylkouski/catan-zero-public">Catan Zero</a>: models that learn to play Catan.</li>
+          <li><a href="https://github.com/nickita-khylkouski/awake">Awake</a>: a small open-source project that turns ideas into something you can use.</li>
+          <li><a href="https://github.com/nickita-khylkouski/HumanPaste">HumanPaste</a>: a tool for making generated text feel less generated.</li>
+          <li><a href="https://github.com/nickita-khylkouski/ultrathink">Ultrathink</a>, <a href="https://github.com/nickita-khylkouski/DateGuesser-website">DateGuesser</a>, and <a href="https://github.com/nickita-khylkouski/BoidDynamics">BoidDynamics</a>: smaller experiments that were too interesting to leave as notes.</li>
+        </ul>
 
-      <p>
-        <a href="https://github.com/google/dotprompt">Google/dotprompt</a>: prompt tooling across
-        runtimes.<br />
-        Build and test support, runtime parity fixes, package cleanup, docs fixes, and Python or Bazel workflow
-        improvements.
-      </p>
+        <h2>Open source and contact</h2>
 
-      <p>
-        <a href="https://github.com/superset-sh/superset">superset</a>: AI agent desktop and infrastructure
-        work.<br />
-        Desktop behavior, billing flow, telemetry cleanup, and the ElectricSQL or Cloudflare infrastructure path.
-      </p>
+        <p>
+          The rest is on <a href="https://github.com/nickita-khylkouski">GitHub</a>. I write about what I am building on
+          the <a href="/blog/">blog</a> and keep a running record of how I use AI in
+          <a href="/usage/">My AI Usage</a>.
+        </p>
 
-      <h3>Miscellaneous</h3>
-
-      <p>
-        I like going to the <span class="photo-word" data-photo="photos/photo-1c344eb30ec743ab.jpg" data-caption="Training in the gym">gym</span>, running, and doing track and field throws.
-      </p>
-
-      <p>
-        Lifts / marks: 225 bench, 355 squat, 405 deadlift, 6-minute mile, sub-20 5K.
-      </p>
-
-      <p>
-        Lifting account: <a href="https://www.instagram.com/nk.liftss/">@nk.liftss</a>
-      </p>
-
-      <h3>Reaching Me</h3>
-
-      <p>
-        Email<br />
-        <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a>
-      </p>
-
-      <p>
-        GitHub<br />
-        <a href="https://github.com/nickita-khylkouski">github.com/nickita-khylkouski</a>
-      </p>
-
-      <p>
-        LinkedIn<br />
-        <a href="https://www.linkedin.com/in/nickita-khy">linkedin.com/in/nickita-khy</a>
-      </p>
-
-      <p class="clear">
-        Here is my <a href="nickita-khylkouski-resume.pdf">resume</a>.
-      </p>
+        <p>
+          If you want to talk about security, ranking systems, weird projects, or building something from scratch,
+          email me at <a href="mailto:nickitakhy@gmail.com">nickitakhy@gmail.com</a>.
+        </p>
+      </main>
     </div>
-    <figure class="photo-popover" id="photo-popover" aria-hidden="true">
-      <img id="photo-popover-image" alt="" />
-      <figcaption id="photo-popover-caption"></figcaption>
+
+    <figure class="photo-popover" aria-hidden="true">
+      <img alt="" />
+      <figcaption></figcaption>
     </figure>
+
     <script>
       (() => {
-        const popover = document.getElementById("photo-popover");
-        const image = document.getElementById("photo-popover-image");
-        const caption = document.getElementById("photo-popover-caption");
         const targets = document.querySelectorAll("[data-photo]");
+        const popover = document.querySelector(".photo-popover");
+        const image = popover.querySelector("img");
+        const caption = popover.querySelector("figcaption");
+        const gap = 12;
+        const edge = 16;
+
+        const overlapArea = (first, second) => {
+          const width = Math.max(0, Math.min(first.right, second.right) - Math.max(first.left, second.left));
+          const height = Math.max(0, Math.min(first.bottom, second.bottom) - Math.max(first.top, second.top));
+          return width * height;
+        };
+
+        const overflow = (box) => {
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+          return (
+            Math.max(0, edge - box.left) +
+            Math.max(0, edge - box.top) +
+            Math.max(0, box.right - viewportWidth + edge) +
+            Math.max(0, box.bottom - viewportHeight + edge)
+          );
+        };
 
         const position = (target) => {
-          const gap = 12;
-          const edge = 16;
           const targetBox = target.getBoundingClientRect();
           const popoverBox = popover.getBoundingClientRect();
-          let left = targetBox.left + targetBox.width / 2 - popoverBox.width / 2;
-          left = Math.max(edge, Math.min(left, window.innerWidth - popoverBox.width - edge));
 
-          let top = targetBox.bottom + gap;
-          if (top + popoverBox.height > window.innerHeight - edge) {
-            top = targetBox.top - popoverBox.height - gap;
+          if (window.innerWidth <= 760) {
+            popover.style.left = `${edge}px`;
+            popover.style.top = `${Math.max(edge, window.innerHeight - popoverBox.height - edge)}px`;
+            return;
           }
-          top = Math.max(edge, Math.min(top, window.innerHeight - popoverBox.height - edge));
+
+          const candidates = [
+            { left: targetBox.right + gap, top: targetBox.top },
+            { left: targetBox.left - popoverBox.width - gap, top: targetBox.top },
+            { left: targetBox.left, top: targetBox.bottom + gap },
+            { left: targetBox.left, top: targetBox.top - popoverBox.height - gap },
+          ];
+
+          const score = (candidate) => {
+            const box = {
+              left: candidate.left,
+              top: candidate.top,
+              right: candidate.left + popoverBox.width,
+              bottom: candidate.top + popoverBox.height,
+            };
+            return overflow(box) * 100 + overlapArea(box, targetBox) * 10000;
+          };
+
+          const best = candidates.sort((first, second) => score(first) - score(second))[0];
+          const left = Math.min(window.innerWidth - popoverBox.width - edge, Math.max(edge, best.left));
+          const top = Math.min(window.innerHeight - popoverBox.height - edge, Math.max(edge, best.top));
           popover.style.left = `${left}px`;
           popover.style.top = `${top}px`;
         };
 
         const show = (target) => {
           image.src = target.dataset.photo;
-          image.alt = target.dataset.caption;
-          caption.textContent = target.dataset.caption;
-          popover.classList.add("is-visible");
+          image.alt = target.dataset.caption || "Photo";
+          caption.textContent = target.dataset.caption || "";
           popover.setAttribute("aria-hidden", "false");
-          image.decode?.().catch(() => {}).finally(() => position(target));
+          popover.classList.add("is-visible");
           position(target);
+          image.decode?.().catch(() => {}).finally(() => position(target));
         };
 
         const hide = () => {
@@ -450,6 +424,9 @@
 
         window.addEventListener("scroll", hide, { passive: true });
         window.addEventListener("resize", hide);
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") hide();
+        });
       })();
     </script>
   </body>
