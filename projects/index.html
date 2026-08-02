@@ -28,9 +28,18 @@
         <h2><a href="https://usemetric.app/">Metric</a></h2>
 
         <p>
-          I built <a href="https://usemetric.app/">Metric</a> with my brother. It helps recruiting teams compare
-          builders using evidence from their work. It has covered more than 30,000 people and predicted two of the top
-          three hackathon winners in one backtest.
+          I built <a href="https://usemetric.app/">Metric</a>, the recruiting intelligence layer on top of the
+          Cerebral Valley dossiers, with my
+          <a class="photo-word" data-photo="/photos/curated-four-zero-three.jpg" data-caption="Building Four Zero Three with my brother">brother</a>.
+          It is an LLM-assisted evaluation system with pairwise comparisons, where each skill gets its own Elo-style
+          rating instead of collapsing a person into one opaque score.
+        </p>
+
+        <p>
+          I worked on the scoring logic, evidence-backed comparisons, and multi-skill evaluations so candidates could be
+          compared by demonstrated strengths with traceable justification. Metric has evaluated 30K+ people and
+          predicted 2 of the top 3 hackathon winners in one tested event. Try to find the easter eggs on the
+          <a href="https://usemetric.app/">site</a>.
         </p>
 
         <h2><a href="https://github.com/nickita-khylkouski/catan-zero-public">Catan Zero</a></h2>
@@ -45,27 +54,47 @@
 
         <ul>
           <li>
-            <strong>SF Graffiti Search</strong>: semantic search over 87,790 San Francisco inspector photos. Each image
-            was described by Gemini so the collection could be searched by content, style, or location.
+            <strong>SF Graffiti Search</strong>: semantic search over 87,790 photos taken by San Francisco city
+            inspectors documenting graffiti violations. Each image was described by Gemini Flash so you can search by
+            content, style, or location. Images sourced by walzr.
           </li>
           <li>
-            <a href="https://github.com/nickita-khylkouski/HumanPaste">HumanPaste</a>: retypes clipboard text with
-            realistic keystrokes for terminals, remote sessions, and apps that accept typing but not direct paste.
+            <strong>cv-rank</strong> (private, email me for more info): debiased applicant comparison with pairwise
+            Elo-style comparisons. It combines LLM-as-judge scoring, rubric scoring, Swiss pairwise rounds,
+            Bradley-Terry fitting, anonymization, position-bias mitigation, debiasing, and borderline review.
           </li>
           <li>
-            <a href="https://github.com/nickita-khylkouski/awake">Awake</a>: keeps a Mac awake during long AI agent runs.
+            <strong>Ranky</strong> (private, email me for more info): a human-facing tool for choosing the best photos.
+            It uses pairwise comparison instead of flat scores, so the final order comes from simpler choices with fewer
+            decisions.
           </li>
           <li>
-            <a href="https://github.com/nickita-khylkouski/ultrathink">Ultrathink</a>: a drug-discovery search system
-            using several structure and molecule models together.
+            <a href="https://github.com/nickita-khylkouski/HumanPaste">HumanPaste</a>: paste does not work everywhere.
+            It takes clipboard text and retypes it with realistic keystrokes, which is useful in terminals, remote
+            sessions, and apps that accept typing but not direct paste.
           </li>
           <li>
-            <a href="https://github.com/nickita-khylkouski/DateGuesser-website">DateGuesser</a>: a weekday calculation
-            trainer built around Conway's Doomsday algorithm.
+            <a href="https://github.com/nickita-khylkouski/awake">awake</a>: keeps a Mac awake during long AI agent runs,
+            with safeguards so background work does not die when the machine sleeps.
           </li>
           <li>
-            <a href="https://github.com/nickita-khylkouski/BoidDynamics">BoidDynamics</a>: an interactive flocking and
-            complex-systems simulation.
+            <a href="https://github.com/nickita-khylkouski/ultrathink">ultrathink</a>: a drug-discovery search system
+            using <a href="https://arxiv.org/abs/2108.02198">AlphaFold</a>,
+            <a href="https://arxiv.org/abs/2207.14282">ESMFold</a>,
+            <a href="https://arxiv.org/abs/1805.11973">MolGAN</a>,
+            <a href="https://www.rdkit.org/docs/Overview.html">RDKit</a>, and simulated randomness inside an
+            evolutionary search loop.
+          </li>
+          <li>
+            <a href="https://github.com/nickita-khylkouski/DateGuesser-website">DateGuesser-website</a>: weekday
+            calculation trainer built around
+            <a href="https://archim.org.uk/eureka/archive/Eureka-36.pdf">Conway's Doomsday algorithm</a>, with repeated
+            practice, feedback, and speed modes.
+          </li>
+          <li>
+            <a href="https://github.com/nickita-khylkouski/BoidDynamics">BoidDynamics</a>: interactive flocking and
+            complex-systems simulation based on <a href="https://red3d.com/cwr/index.html">Craig Reynolds</a>'s
+            <a href="http://www.red3d.com/cwr/papers/1987/boids.html">Boids algorithm</a>.
           </li>
         </ul>
 
@@ -75,5 +104,11 @@
         </p>
       </main>
     </div>
+
+    <figure class="photo-popover" aria-hidden="true">
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+    <script src="/photo-popover.js"></script>
   </body>
 </html>
