@@ -1,157 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Nickita Khylkouski's combined Codex usage across two accounts." />
-    <meta name="color-scheme" content="light dark" />
-    <title>Nickita Khylkouski · Codex Usage</title>
-    <script>
-      document.documentElement.dataset.theme = localStorage.getItem("usage-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nickita Khylkouski's combined Codex usage." />
+    <title>Nickita Khylkouski's Codex Usage</title>
+    <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="usage.css" />
   </head>
   <body>
-    <div class="site-shell">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a class="home-link" href="/" aria-label="Back to Nickita's home page">
-          <span class="mini-mark" aria-hidden="true">NK</span>
-          <span>nickitakhy.me</span>
-        </a>
-        <div class="topbar-actions">
-          <span class="snapshot-pill">180-day snapshot</span>
-          <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch color theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z"></path></svg>
-          </button>
-        </div>
-      </nav>
+    <div class="page usage-page">
+      <p><a href="/">home</a></p>
 
       <main>
-        <header class="profile-header">
-          <div class="profile-copy">
-            <div class="avatar" aria-hidden="true">NK</div>
-            <div>
-              <p class="eyebrow">Codex usage profile</p>
-              <h1>Nickita Khylkouski</h1>
-              <p class="handle">@nickitakhy770261 <span aria-hidden="true">·</span> <span class="plan">Pro × 2</span></p>
-            </div>
-          </div>
-          <a class="download-link" href="data.json" download>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
-            Download JSON
-          </a>
-        </header>
+        <h1>Nickita Khylkouski's Codex Usage</h1>
+        <p class="lead">Combined usage across my Codex accounts for the past 180 days.</p>
 
-        <section class="headline" aria-labelledby="headline-title">
-          <div>
-            <p class="eyebrow" id="headline-title">Reported tokens</p>
-            <p class="hero-number" id="hero-total">Loading</p>
-            <p class="hero-context" id="hero-context">Combining two Codex accounts over 180 days</p>
-          </div>
-          <dl class="key-stats" aria-label="Usage summary">
-            <div><dt>Turns</dt><dd id="turn-total">Loading</dd></div>
-            <div><dt>Threads</dt><dd id="thread-total">Loading</dd></div>
-            <div><dt>Peak day</dt><dd id="peak-total">Loading</dd></div>
-          </dl>
-        </section>
+        <div class="stats" aria-label="Usage summary">
+          <p><strong id="token-total">Loading</strong><span>tokens</span></p>
+          <p><strong id="turn-total">Loading</strong><span>turns</span></p>
+          <p><strong id="thread-total">Loading</strong><span>threads</span></p>
+          <p><strong id="peak-total">Loading</strong><span>peak day</span></p>
+        </div>
 
-        <section class="account-section" aria-labelledby="account-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Two accounts, one view</p>
-              <h2 id="account-title">Usage split</h2>
-            </div>
-            <p class="date-range" id="date-range">Mar 10 to Sep 5, 2026</p>
-          </div>
+        <h2>Token activity</h2>
+        <p>Daily combined token usage. Hover or focus a square for the exact date and total.</p>
 
-          <div class="account-bar" aria-hidden="true">
-            <span id="peak-bar"></span><span id="personal-bar"></span>
+        <div class="calendar-wrap" tabindex="0" aria-label="Scrollable token activity calendar">
+          <div class="months" id="months" aria-hidden="true"></div>
+          <div class="calendar-row">
+            <div class="weekdays" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div>
+            <div class="heatmap" id="heatmap" aria-label="180 days of combined token usage"></div>
           </div>
-          <div class="account-rows">
-            <div class="account-row">
-              <span class="account-dot peak-dot" aria-hidden="true"></span>
-              <div><strong>Peak Security</strong><span>Work account</span></div>
-              <div class="account-value"><strong id="peak-account-total">Loading</strong><span id="peak-account-share">Calculating</span></div>
-            </div>
-            <div class="account-row">
-              <span class="account-dot personal-dot" aria-hidden="true"></span>
-              <div><strong>Personal</strong><span>Gmail account</span></div>
-              <div class="account-value"><strong id="personal-account-total">Loading</strong><span id="personal-account-share">Calculating</span></div>
-            </div>
-          </div>
-        </section>
+        </div>
 
-        <section class="activity-section" aria-labelledby="activity-title">
-          <div class="section-heading activity-heading">
-            <div>
-              <p class="eyebrow">Day by day</p>
-              <h2 id="activity-title">Token activity</h2>
-            </div>
-            <div class="segmented-control" role="group" aria-label="Account shown in calendar">
-              <button type="button" class="active" data-account="combined" aria-pressed="true">Combined</button>
-              <button type="button" data-account="peaksecurity" aria-pressed="false">Peak</button>
-              <button type="button" data-account="personal" aria-pressed="false">Personal</button>
-            </div>
-          </div>
+        <div class="calendar-caption">
+          <span id="date-range">Loading dates</span>
+          <span class="legend" aria-label="Activity intensity legend">Less <i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i> More</span>
+        </div>
+        <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
-          <div class="calendar-scroll" tabindex="0" aria-label="Scrollable token activity calendar">
-            <div class="month-labels" id="month-labels" aria-hidden="true"></div>
-            <div class="heatmap-layout">
-              <div class="weekday-labels" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div>
-              <div class="heatmap" id="heatmap" aria-label="Daily token activity"></div>
-            </div>
-          </div>
-          <div class="calendar-footer">
-            <p id="calendar-summary">Loading daily activity</p>
-            <div class="legend" aria-label="Activity intensity legend"><span>Less</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>More</span></div>
-          </div>
-          <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
-        </section>
+        <h2>Models</h2>
+        <p>Most-used models, measured by turns because the usage endpoint does not provide token totals by model.</p>
+        <table>
+          <thead><tr><th>Model</th><th>Turns</th></tr></thead>
+          <tbody id="model-table"><tr><td>Loading</td><td></td></tr></tbody>
+        </table>
 
-        <section class="detail-grid">
-          <div class="model-section" aria-labelledby="model-title">
-            <div class="section-heading compact-heading">
-              <div>
-                <p class="eyebrow">Model mix</p>
-                <h2 id="model-title">Activity by turns</h2>
-              </div>
-              <span class="muted">Top 5</span>
-            </div>
-            <div class="model-list" id="model-list" aria-live="polite"></div>
-          </div>
+        <h2>Token breakdown</h2>
+        <table>
+          <thead><tr><th>Type</th><th>Tokens</th><th>Share</th></tr></thead>
+          <tbody id="breakdown-table"><tr><td>Loading</td><td></td><td></td></tr></tbody>
+        </table>
 
-          <div class="composition-section" aria-labelledby="composition-title">
-            <div class="section-heading compact-heading">
-              <div>
-                <p class="eyebrow">Token composition</p>
-                <h2 id="composition-title">What made up the total</h2>
-              </div>
-            </div>
-            <dl class="composition-list">
-              <div><dt><span class="composition-key cached-key"></span>Cached input</dt><dd id="cached-total">Loading</dd></div>
-              <div><dt><span class="composition-key input-key"></span>Uncached input</dt><dd id="input-total">Loading</dd></div>
-              <div><dt><span class="composition-key output-key"></span>Output</dt><dd id="output-total">Loading</dd></div>
-            </dl>
-          </div>
-        </section>
-
-        <aside class="method-note" aria-labelledby="method-title">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
-          <div>
-            <h2 id="method-title">About this snapshot</h2>
-            <p id="coverage-note">Loading coverage details.</p>
-          </div>
-        </aside>
+        <p class="small-note" id="coverage-note">Loading coverage details.</p>
+        <p class="small-note"><a href="data.json" download>download the combined JSON</a></p>
       </main>
-
-      <footer>
-        <span id="refreshed-at">Data refresh in progress</span>
-        <a href="/">nickitakhy.me</a>
-      </footer>
     </div>
 
-    <noscript><p class="noscript">JavaScript is required to render the interactive usage calendar.</p></noscript>
-    <script src="usage.js" defer></script>
+    <noscript><p>JavaScript is required to render the usage graph.</p></noscript>
+    <script src="usage.js"></script>
   </body>
 </html>

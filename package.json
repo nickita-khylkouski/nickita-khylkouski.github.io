@@ -1,8 +1,0 @@
-{
-  "name": "nickita-home-preview",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "node scripts/build_cloudflare_preview.mjs"
-  }
-}
