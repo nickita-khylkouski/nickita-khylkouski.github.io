@@ -14,13 +14,13 @@
 
       <main>
         <h1>Nickita Khylkouski's Codex Usage</h1>
-        <p class="lead">Combined usage across my Codex accounts for the past 180 days.</p>
+        <p class="lead">Combined Codex usage for the 180 days ending September 5, 2026.</p>
 
         <div class="stats" aria-label="Usage summary">
-          <p><strong id="token-total">Loading</strong><span>tokens</span></p>
-          <p><strong id="turn-total">Loading</strong><span>turns</span></p>
-          <p><strong id="thread-total">Loading</strong><span>threads</span></p>
-          <p><strong id="peak-total">Loading</strong><span>peak day</span></p>
+          <p><strong>617.0B</strong><span>tokens</span></p>
+          <p><strong>100,270</strong><span>turns</span></p>
+          <p><strong>16,315</strong><span>threads</span></p>
+          <p><strong>65.5B</strong><span>peak day</span></p>
         </div>
 
         <h2>Token activity</h2>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="calendar-caption">
-          <span id="date-range">Loading dates</span>
+          <span>Mar 10 to Sep 5, 2026</span>
           <span class="legend" aria-label="Activity intensity legend">Less <i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i> More</span>
         </div>
         <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
@@ -44,21 +44,32 @@
         <p>Most-used models, measured by turns because the usage endpoint does not provide token totals by model.</p>
         <table>
           <thead><tr><th>Model</th><th>Turns</th></tr></thead>
-          <tbody id="model-table"><tr><td>Loading</td><td></td></tr></tbody>
+          <tbody>
+            <tr><td>gpt-5.5</td><td>55,842</td></tr>
+            <tr><td>gpt-5.6-luna</td><td>29,811</td></tr>
+            <tr><td>gpt-5.6-sol</td><td>9,691</td></tr>
+            <tr><td>gpt-5.4</td><td>2,611</td></tr>
+            <tr><td>gpt-5.4-mini</td><td>1,605</td></tr>
+          </tbody>
         </table>
 
         <h2>Token breakdown</h2>
         <table>
           <thead><tr><th>Type</th><th>Tokens</th><th>Share</th></tr></thead>
-          <tbody id="breakdown-table"><tr><td>Loading</td><td></td><td></td></tr></tbody>
+          <tbody>
+            <tr><td>Cached input</td><td>601,546,039,296</td><td>97.5%</td></tr>
+            <tr><td>Uncached input</td><td>14,260,224,660</td><td>2.3%</td></tr>
+            <tr><td>Output</td><td>1,236,038,649</td><td>0.2%</td></tr>
+          </tbody>
         </table>
 
-        <p class="small-note" id="coverage-note">Loading coverage details.</p>
+        <p class="small-note">Token totals begin on June 7, 2026. The snapshot contains 48,111 earlier turns without token totals, so 617.0B is a lower bound.</p>
         <p class="small-note"><a href="data.json" download>download the combined JSON</a></p>
       </main>
     </div>
 
     <noscript><p>JavaScript is required to render the usage graph.</p></noscript>
+    <script src="data.js"></script>
     <script src="usage.js"></script>
   </body>
 </html>
