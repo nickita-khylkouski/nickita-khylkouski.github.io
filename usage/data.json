@@ -1,0 +1,1533 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-06T02:32:45.057953+00:00",
+  "date_range": {
+    "days": 180,
+    "end": "2026-09-05",
+    "start": "2026-03-10"
+  },
+  "coverage": {
+    "days_with_reported_tokens": 91,
+    "days_with_reported_turns": 121,
+    "days_with_turns_but_zero_reported_tokens": 30,
+    "first_day_with_reported_tokens": "2026-06-07",
+    "first_day_with_reported_turns": "2026-05-08",
+    "token_total_status": "incomplete_historical_coverage",
+    "turns_on_days_without_token_totals": 48111
+  },
+  "current_combined_quota": {
+    "account_count": 2,
+    "normalized_double_quota_remaining_percent": 27.0,
+    "normalized_double_quota_used_percent": 73.0,
+    "weekly_remaining_percent_points": 54.0,
+    "weekly_used_percent_points": 146.0
+  },
+  "totals": {
+    "combined": {
+      "cached_text_input_tokens": 601546039296,
+      "text_output_tokens": 1236038649,
+      "text_total_tokens": 617042302605,
+      "threads": 16315,
+      "turns": 100270,
+      "uncached_text_input_tokens": 14260224660
+    },
+    "accounts": {
+      "peaksecurity": {
+        "cached_text_input_tokens": 369138275840,
+        "text_output_tokens": 652586641,
+        "text_total_tokens": 377873774002,
+        "threads": 6547,
+        "turns": 24366,
+        "uncached_text_input_tokens": 8082911521
+      },
+      "personal": {
+        "cached_text_input_tokens": 232407763456,
+        "text_output_tokens": 583452008,
+        "text_total_tokens": 239168528603,
+        "threads": 9768,
+        "turns": 75904,
+        "uncached_text_input_tokens": 6177313139
+      }
+    },
+    "model_activity": {
+      "gpt-5.3-codex-spark": {
+        "threads": 20,
+        "turns": 122
+      },
+      "gpt-5.4": {
+        "threads": 302,
+        "turns": 2611
+      },
+      "gpt-5.4-mini": {
+        "threads": 567,
+        "turns": 1605
+      },
+      "gpt-5.5": {
+        "threads": 4184,
+        "turns": 55842
+      },
+      "gpt-5.6-luna": {
+        "threads": 9962,
+        "turns": 29811
+      },
+      "gpt-5.6-sol": {
+        "threads": 1257,
+        "turns": 9691
+      },
+      "gpt-5.6-terra": {
+        "threads": 113,
+        "turns": 511
+      },
+      "gpt-6-astra": {
+        "threads": 13,
+        "turns": 75
+      },
+      "other": {
+        "threads": 2,
+        "turns": 2
+      }
+    }
+  },
+  "calendar": [
+    {
+      "date": "2026-03-10",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-14",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-15",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-16",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-17",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-18",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-19",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-20",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-21",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-22",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-23",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-24",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-25",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-26",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-27",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-28",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-29",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-30",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-03-31",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-01",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-02",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-03",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-04",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-05",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-06",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-07",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-08",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-09",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-10",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-11",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-12",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-13",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-15",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-16",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-17",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-18",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-19",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-20",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-21",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-22",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-25",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-26",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-27",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-28",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-29",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-04-30",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-01",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-02",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-03",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-04",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-05",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-08",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-09",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-10",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-11",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-12",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-13",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-14",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-15",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-16",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-17",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-18",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-19",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-21",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-22",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-23",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-24",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-25",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-26",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-27",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-28",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-29",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-30",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-05-31",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-01",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-02",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-03",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-04",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-05",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-06",
+      "combined": 0,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 0
+      }
+    },
+    {
+      "date": "2026-06-07",
+      "combined": 654198728,
+      "accounts": {
+        "peaksecurity": 14582387,
+        "personal": 639616341
+      }
+    },
+    {
+      "date": "2026-06-08",
+      "combined": 403890678,
+      "accounts": {
+        "peaksecurity": 207425586,
+        "personal": 196465092
+      }
+    },
+    {
+      "date": "2026-06-09",
+      "combined": 363948008,
+      "accounts": {
+        "peaksecurity": 107045245,
+        "personal": 256902763
+      }
+    },
+    {
+      "date": "2026-06-10",
+      "combined": 482280708,
+      "accounts": {
+        "peaksecurity": 71724250,
+        "personal": 410556458
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "combined": 215762049,
+      "accounts": {
+        "peaksecurity": 21579160,
+        "personal": 194182889
+      }
+    },
+    {
+      "date": "2026-06-12",
+      "combined": 457683060,
+      "accounts": {
+        "peaksecurity": 46922382,
+        "personal": 410760678
+      }
+    },
+    {
+      "date": "2026-06-13",
+      "combined": 1293662823,
+      "accounts": {
+        "peaksecurity": 521563765,
+        "personal": 772099058
+      }
+    },
+    {
+      "date": "2026-06-14",
+      "combined": 839924436,
+      "accounts": {
+        "peaksecurity": 102395993,
+        "personal": 737528443
+      }
+    },
+    {
+      "date": "2026-06-15",
+      "combined": 259724115,
+      "accounts": {
+        "peaksecurity": 44052567,
+        "personal": 215671548
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "combined": 152587010,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 152587010
+      }
+    },
+    {
+      "date": "2026-06-17",
+      "combined": 356598456,
+      "accounts": {
+        "peaksecurity": 140896744,
+        "personal": 215701712
+      }
+    },
+    {
+      "date": "2026-06-18",
+      "combined": 220472810,
+      "accounts": {
+        "peaksecurity": 29520975,
+        "personal": 190951835
+      }
+    },
+    {
+      "date": "2026-06-19",
+      "combined": 742566766,
+      "accounts": {
+        "peaksecurity": 253314,
+        "personal": 742313452
+      }
+    },
+    {
+      "date": "2026-06-20",
+      "combined": 156813979,
+      "accounts": {
+        "peaksecurity": 3058570,
+        "personal": 153755409
+      }
+    },
+    {
+      "date": "2026-06-21",
+      "combined": 710805274,
+      "accounts": {
+        "peaksecurity": 507324,
+        "personal": 710297950
+      }
+    },
+    {
+      "date": "2026-06-22",
+      "combined": 282789711,
+      "accounts": {
+        "peaksecurity": 3905525,
+        "personal": 278884186
+      }
+    },
+    {
+      "date": "2026-06-23",
+      "combined": 73944216,
+      "accounts": {
+        "peaksecurity": 38668011,
+        "personal": 35276205
+      }
+    },
+    {
+      "date": "2026-06-24",
+      "combined": 1810766911,
+      "accounts": {
+        "peaksecurity": 1231786034,
+        "personal": 578980877
+      }
+    },
+    {
+      "date": "2026-06-25",
+      "combined": 1024763017,
+      "accounts": {
+        "peaksecurity": 717284953,
+        "personal": 307478064
+      }
+    },
+    {
+      "date": "2026-06-26",
+      "combined": 1050168159,
+      "accounts": {
+        "peaksecurity": 138333030,
+        "personal": 911835129
+      }
+    },
+    {
+      "date": "2026-06-27",
+      "combined": 1338549717,
+      "accounts": {
+        "peaksecurity": 556991009,
+        "personal": 781558708
+      }
+    },
+    {
+      "date": "2026-06-28",
+      "combined": 1519079608,
+      "accounts": {
+        "peaksecurity": 1233924,
+        "personal": 1517845684
+      }
+    },
+    {
+      "date": "2026-06-29",
+      "combined": 675915932,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 675915932
+      }
+    },
+    {
+      "date": "2026-06-30",
+      "combined": 681670748,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 681670748
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "combined": 749828805,
+      "accounts": {
+        "peaksecurity": 69854624,
+        "personal": 679974181
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "combined": 459007526,
+      "accounts": {
+        "peaksecurity": 24294266,
+        "personal": 434713260
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "combined": 163321262,
+      "accounts": {
+        "peaksecurity": 3748245,
+        "personal": 159573017
+      }
+    },
+    {
+      "date": "2026-07-04",
+      "combined": 62178655,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 62178655
+      }
+    },
+    {
+      "date": "2026-07-05",
+      "combined": 645083270,
+      "accounts": {
+        "peaksecurity": 6017325,
+        "personal": 639065945
+      }
+    },
+    {
+      "date": "2026-07-06",
+      "combined": 154414545,
+      "accounts": {
+        "peaksecurity": 29706433,
+        "personal": 124708112
+      }
+    },
+    {
+      "date": "2026-07-07",
+      "combined": 887762151,
+      "accounts": {
+        "peaksecurity": 1825382,
+        "personal": 885936769
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "combined": 465393680,
+      "accounts": {
+        "peaksecurity": 89652331,
+        "personal": 375741349
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "combined": 812145808,
+      "accounts": {
+        "peaksecurity": 33158583,
+        "personal": 778987225
+      }
+    },
+    {
+      "date": "2026-07-10",
+      "combined": 2493778279,
+      "accounts": {
+        "peaksecurity": 583947676,
+        "personal": 1909830603
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "combined": 2293846953,
+      "accounts": {
+        "peaksecurity": 1427911492,
+        "personal": 865935461
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "combined": 2629672748,
+      "accounts": {
+        "peaksecurity": 400237711,
+        "personal": 2229435037
+      }
+    },
+    {
+      "date": "2026-07-13",
+      "combined": 3375941682,
+      "accounts": {
+        "peaksecurity": 425054471,
+        "personal": 2950887211
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "combined": 2294429210,
+      "accounts": {
+        "peaksecurity": 23306299,
+        "personal": 2271122911
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "combined": 1677750749,
+      "accounts": {
+        "peaksecurity": 18654548,
+        "personal": 1659096201
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "combined": 5711132713,
+      "accounts": {
+        "peaksecurity": 1031751146,
+        "personal": 4679381567
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "combined": 3492238596,
+      "accounts": {
+        "peaksecurity": 1590590871,
+        "personal": 1901647725
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "combined": 2318790909,
+      "accounts": {
+        "peaksecurity": 169268843,
+        "personal": 2149522066
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "combined": 629242182,
+      "accounts": {
+        "peaksecurity": 19176870,
+        "personal": 610065312
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "combined": 1137693900,
+      "accounts": {
+        "peaksecurity": 8483905,
+        "personal": 1129209995
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "combined": 510375681,
+      "accounts": {
+        "peaksecurity": 199640337,
+        "personal": 310735344
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "combined": 14194589570,
+      "accounts": {
+        "peaksecurity": 13969961489,
+        "personal": 224628081
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "combined": 2424064996,
+      "accounts": {
+        "peaksecurity": 2029329339,
+        "personal": 394735657
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "combined": 7071632565,
+      "accounts": {
+        "peaksecurity": 5388309738,
+        "personal": 1683322827
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "combined": 3493628286,
+      "accounts": {
+        "peaksecurity": 3203086400,
+        "personal": 290541886
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "combined": 7417477746,
+      "accounts": {
+        "peaksecurity": 7182285904,
+        "personal": 235191842
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "combined": 608647871,
+      "accounts": {
+        "peaksecurity": 75808105,
+        "personal": 532839766
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "combined": 5797327172,
+      "accounts": {
+        "peaksecurity": 5258305967,
+        "personal": 539021205
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "combined": 8550734924,
+      "accounts": {
+        "peaksecurity": 8061857468,
+        "personal": 488877456
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "combined": 840425627,
+      "accounts": {
+        "peaksecurity": 452197650,
+        "personal": 388227977
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "combined": 1933963483,
+      "accounts": {
+        "peaksecurity": 4003816,
+        "personal": 1929959667
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "combined": 411520385,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 411520385
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "combined": 4046336931,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 4046336931
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "combined": 497906651,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 497906651
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "combined": 662040054,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 662040054
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "combined": 1054793329,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 1054793329
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "combined": 181937897,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 181937897
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "combined": 140083894,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 140083894
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "combined": 299913970,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 299913970
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "combined": 30304397821,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 30304397821
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "combined": 4882075791,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 4882075791
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "combined": 25579822918,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 25579822918
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "combined": 6550475131,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 6550475131
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "combined": 137580152,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 137580152
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "combined": 114979798,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 114979798
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "combined": 606312600,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 606312600
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "combined": 458990941,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 458990941
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "combined": 710407713,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 710407713
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "combined": 138837177,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 138837177
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "combined": 356198195,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 356198195
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "combined": 5532635005,
+      "accounts": {
+        "peaksecurity": 27139,
+        "personal": 5532607866
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "combined": 17339701594,
+      "accounts": {
+        "peaksecurity": 16951551414,
+        "personal": 388150180
+      }
+    },
+    {
+      "date": "2026-08-22",
+      "combined": 32195681525,
+      "accounts": {
+        "peaksecurity": 31336696894,
+        "personal": 858984631
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "combined": 50993506179,
+      "accounts": {
+        "peaksecurity": 29804118008,
+        "personal": 21189388171
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "combined": 10566784817,
+      "accounts": {
+        "peaksecurity": 9613029927,
+        "personal": 953754890
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "combined": 65504494937,
+      "accounts": {
+        "peaksecurity": 49186251863,
+        "personal": 16318243074
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "combined": 876320718,
+      "accounts": {
+        "peaksecurity": 6041435,
+        "personal": 870279283
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "combined": 39103462894,
+      "accounts": {
+        "peaksecurity": 38443228257,
+        "personal": 660234637
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "combined": 489446434,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 489446434
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "combined": 55639563734,
+      "accounts": {
+        "peaksecurity": 23491980815,
+        "personal": 32147582919
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "combined": 37630686702,
+      "accounts": {
+        "peaksecurity": 35962461437,
+        "personal": 1668225265
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "combined": 61868749480,
+      "accounts": {
+        "peaksecurity": 41196158428,
+        "personal": 20672591052
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "combined": 6117033277,
+      "accounts": {
+        "peaksecurity": 5531465986,
+        "personal": 585567291
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "combined": 11757837836,
+      "accounts": {
+        "peaksecurity": 6721667483,
+        "personal": 5036170353
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "combined": 7581960994,
+      "accounts": {
+        "peaksecurity": 0,
+        "personal": 7581960994
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "combined": 26078213096,
+      "accounts": {
+        "peaksecurity": 24919330154,
+        "personal": 1158882942
+      }
+    },
+    {
+      "date": "2026-09-05",
+      "combined": 9566523572,
+      "accounts": {
+        "peaksecurity": 8928606780,
+        "personal": 637916792
+      }
+    }
+  ]
+}

@@ -24,6 +24,7 @@ for (const entry of [
   "about",
   "support",
   "privacy",
+  "usage",
 ]) {
   await cp(join(root, entry), join(client, entry), { recursive: true });
 }
