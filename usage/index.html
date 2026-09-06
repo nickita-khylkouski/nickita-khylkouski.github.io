@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Nickita Khylkouski's combined Codex usage." />
-    <title>Nickita Khylkouski's Codex Usage</title>
+    <meta name="description" content="Nickita Khylkouski's combined AI usage." />
+    <title>Nickita Khylkouski's AI Usage</title>
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="usage.css" />
   </head>
@@ -13,43 +13,40 @@
       <p><a href="/">home</a></p>
 
       <main>
-        <h1>Nickita Khylkouski's Codex Usage</h1>
-        <p class="lead">Combined Codex usage for the 180 days ending September 5, 2026.</p>
+        <h1>Nickita Khylkouski's AI Usage</h1>
+        <p class="lead">Combined AI usage for the 365 days ending September 5, 2026.</p>
 
         <div class="stats" aria-label="Usage summary">
-          <p><strong>670.9B</strong><span>tokens</span></p>
-          <p><strong>100,270</strong><span>turns</span></p>
-          <p><strong>16,315</strong><span>threads</span></p>
+          <p><strong>709.7B</strong><span>tokens</span></p>
+          <p><strong>235</strong><span>active days</span></p>
+          <p><strong>365</strong><span>day window</span></p>
           <p><strong>65.5B</strong><span>peak day</span></p>
         </div>
 
         <h2>Token activity</h2>
-        <p>Daily combined token usage. Hover or focus a square for the exact date and total.</p>
+        <p>Daily combined AI token usage. Hover or focus a square for the exact date and total.</p>
 
         <div class="calendar-wrap" tabindex="0" aria-label="Scrollable token activity calendar">
           <div class="months" id="months" aria-hidden="true"></div>
           <div class="calendar-row">
             <div class="weekdays" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div>
-            <div class="heatmap" id="heatmap" aria-label="180 days of combined token usage"></div>
+            <div class="heatmap" id="heatmap" aria-label="365 days of combined AI token usage"></div>
           </div>
         </div>
 
         <div class="calendar-caption">
-          <span>Mar 10 to Sep 5, 2026</span>
+          <span>Sep 6, 2025 to Sep 5, 2026</span>
           <span class="legend" aria-label="Activity intensity legend">Less <i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i> More</span>
         </div>
         <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
-        <h2>Models</h2>
-        <p>Most-used models, measured by turns because the usage endpoint does not provide token totals by model.</p>
+        <h2>Usage included</h2>
+        <p>Codex is combined across both accounts. Claude Code also includes the other models recorded in its history.</p>
         <table>
-          <thead><tr><th>Model</th><th>Turns</th></tr></thead>
+          <thead><tr><th>Source</th><th>Tokens</th></tr></thead>
           <tbody>
-            <tr><td>gpt-5.5</td><td>55,842</td></tr>
-            <tr><td>gpt-5.6-luna</td><td>29,811</td></tr>
-            <tr><td>gpt-5.6-sol</td><td>9,691</td></tr>
-            <tr><td>gpt-5.4</td><td>2,611</td></tr>
-            <tr><td>gpt-5.4-mini</td><td>1,605</td></tr>
+            <tr><td>Codex</td><td>684,018,214,324</td></tr>
+            <tr><td>Claude Code and other models</td><td>25,671,782,108</td></tr>
           </tbody>
         </table>
 
@@ -57,9 +54,9 @@
         <table>
           <thead><tr><th>Type</th><th>Tokens</th><th>Share</th></tr></thead>
           <tbody>
-            <tr><td>Cached input</td><td>652,281,815,854</td><td>97.2%</td></tr>
-            <tr><td>Uncached input</td><td>17,161,478,349</td><td>2.6%</td></tr>
-            <tr><td>Output</td><td>1,420,395,179</td><td>0.2%</td></tr>
+            <tr><td>Cached and context input</td><td>688,158,747,964</td><td>97.0%</td></tr>
+            <tr><td>Uncached input</td><td>19,972,143,522</td><td>2.8%</td></tr>
+            <tr><td>Output</td><td>1,558,488,462</td><td>0.2%</td></tr>
           </tbody>
         </table>
       </main>
