@@ -160,13 +160,12 @@
   font-size: 13px;
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -10px);
-  transition: opacity 100ms ease, transform 120ms ease;
+  transform: translateX(-50%);
+  transition: opacity 100ms ease;
 }
 
 .tooltip.visible {
   opacity: 1;
-  transform: translate(-50%, -15px);
 }
 
 .usage-page table {

@@ -8,9 +8,10 @@ function showTooltip(event, text) {
   const tooltip = document.getElementById("tooltip");
   const box = event.currentTarget.getBoundingClientRect();
   tooltip.textContent = text;
-  tooltip.style.left = `${Math.min(innerWidth - 115, Math.max(115, box.left + box.width / 2))}px`;
-  tooltip.style.top = `${Math.max(38, box.top)}px`;
   tooltip.classList.add("visible");
+  tooltip.style.left = `${Math.min(innerWidth - 115, Math.max(115, box.left + box.width / 2))}px`;
+  const above = box.top - tooltip.offsetHeight - 12;
+  tooltip.style.top = `${above > 8 ? above : box.bottom + 12}px`;
 }
 
 function hideTooltip() {
