@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cheat sheet | Doomsday</title>
+    <meta name="description" content="The whole Doomsday rule on one printable page: weekday numbers, month doomsdays, the year formula and the century anchors." />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/archivo-DY7AcnAa.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" crossorigin src="./assets/cheatsheet-BITRNQxl.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/dom-jJ-skYWB.js">
+    <link rel="stylesheet" crossorigin href="./assets/dom-CcVnUONw.css">
+    <link rel="stylesheet" crossorigin href="./assets/cheatsheet-DjiXUnoF.css">
+  </head>
+  <body class="cheatsheet">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="wordmark" href="./"><img src="./favicon.svg" alt="" width="26" height="26" /><span class="wordmark-text">Doomsday</span></a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="./">Learn</a>
+          <a href="./practice.html">Practice</a>
+          <a href="./cheatsheet.html" aria-current="page">Cheat sheet</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="cheat">
+      <div class="sheet-head">
+        <h1>The Doomsday rule on one page</h1>
+        <button type="button" class="btn quiet print-btn" data-widget="print">Print</button>
+      </div>
+
+      <section class="sheet-method" aria-labelledby="method-title">
+        <h2 id="method-title">The method</h2>
+        <ol class="method-steps">
+          <li><strong>Century anchor.</strong> Look up the first two digits below. 1900s: Wednesday. 2000s: Tuesday.</li>
+          <li><strong>Year’s doomsday.</strong> Add the anchor to the year formula. Take the result mod 7.</li>
+          <li><strong>A doomsday in the month.</strong> Use the memorized date, or one 7, 14, 21 or 28 days away.</li>
+          <li><strong>Count.</strong> Add (or subtract) the days from that doomsday to your date, mod 7.</li>
+        </ol>
+      </section>
+
+      <div class="sheet-grid">
+        <section aria-labelledby="numbers-title">
+          <h2 id="numbers-title">Weekday numbers</h2>
+          <table class="sheet-table" data-widget="numbers-table"></table>
+        </section>
+
+        <section aria-labelledby="months-title">
+          <h2 id="months-title">One doomsday per month</h2>
+          <table class="sheet-table" data-widget="months-table"></table>
+          <p class="sheet-note">
+            From April on, the even months repeat the number: 4/4, 6/6, 8/8, 10/10, 12/12. The odd ones pair up as
+            “I work 9 to 5 at the 7-Eleven”: 5/9, 9/5, 7/11, 11/7. July 4, Halloween, Boxing Day and (outside leap
+            years) Valentine’s Day are doomsdays too.
+          </p>
+        </section>
+
+        <section aria-labelledby="year-title">
+          <h2 id="year-title">The year formula</h2>
+          <p>Let <var>y</var> be the last two digits of the year.</p>
+          <table class="sheet-table formula">
+            <tbody>
+              <tr><th scope="row"><var>a</var></th><td><var>y</var> ÷ 12, whole part</td></tr>
+              <tr><th scope="row"><var>b</var></th><td><var>y</var> ÷ 12, remainder</td></tr>
+              <tr><th scope="row"><var>c</var></th><td><var>b</var> ÷ 4, whole part</td></tr>
+            </tbody>
+          </table>
+          <p class="formula-line">doomsday = anchor + <var>a</var> + <var>b</var> + <var>c</var> (mod 7)</p>
+          <p class="sheet-note">
+            It gives the same answer as anchor + <var>y</var> + ⌊<var>y</var>/4⌋. Dividing by 12 first keeps the
+            numbers small.
+            <span data-widget="example"></span>
+          </p>
+        </section>
+
+        <section aria-labelledby="anchors-title">
+          <h2 id="anchors-title">Century anchors</h2>
+          <table class="sheet-table" data-widget="anchors-table"></table>
+          <p class="sheet-note">The cycle Tuesday, Sunday, Friday, Wednesday repeats every 400 years.</p>
+        </section>
+      </div>
+
+      <section class="sheet-years" aria-labelledby="years-title">
+        <h2 id="years-title">Every doomsday from 1900 to 2099</h2>
+        <p class="sheet-note">Find the decade on the left and the last digit along the top. Handy for checking your answers.</p>
+        <div class="years-scroll">
+          <table class="years-table" data-widget="years-table"></table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Dates use the Gregorian calendar. <a href="./">Learn why each step works</a>, then <a href="./practice.html">practice</a>.</p>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doomsday: find the weekday of any date in your head</title>
+    <meta name="description" content="Learn John Conway’s Doomsday rule step by step, see why each step works, and practice until you can name the weekday of any date in seconds." />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/archivo-DY7AcnAa.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:title" content="What day of the week was July 20, 1969?" />
+    <meta property="og:description" content="Learn to work out the weekday of any date in your head." />
+    <meta property="og:image" content="https://nickita.org/date/og.png" />
+    <meta property="og:url" content="https://nickita.org/date/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" crossorigin src="./assets/learn-Dm4MuN_Q.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/dom-jJ-skYWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/quiz-CwCz-OjH.js">
+    <link rel="stylesheet" crossorigin href="./assets/dom-CcVnUONw.css">
+    <link rel="stylesheet" crossorigin href="./assets/learn-DlC8nbui.css">
+  </head>
+  <body class="learn">
+    <a class="skip-link" href="#idea">Skip to the lesson</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="wordmark" href="./"><img src="./favicon.svg" alt="" width="26" height="26" /><span class="wordmark-text">Doomsday</span></a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="./" aria-current="page">Learn</a>
+          <a href="./practice.html">Practice</a>
+          <a href="./cheatsheet.html">Cheat sheet</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" data-widget="hero" aria-labelledby="hero-question">
+        <div class="hero-text">
+          <h1 id="hero-question">What day of the week was July&nbsp;20, 1969?</h1>
+          <p class="lede">Apollo 11 landed on the Moon that day. Pick a day below to guess, then learn to work it out in your head.</p>
+        </div>
+        <p class="hero-date" aria-hidden="true"><span class="hero-month">July 1969</span><span class="hero-day">20</span></p>
+        <div class="hero-cal"></div>
+        <div class="hero-result" aria-live="polite"></div>
+      </section>
+
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 class="toc-title" id="toc-title">The lesson in 7 steps</h2>
+        <ol>
+          <li><a href="#idea"><span class="toc-num">0</span>The idea</a></li>
+          <li><a href="#numbers"><span class="toc-num">1</span>Weekdays as numbers</a></li>
+          <li><a href="#dates"><span class="toc-num">2</span>One doomsday per month</a></li>
+          <li><a href="#count"><span class="toc-num">3</span>Count to your date</a></li>
+          <li><a href="#year"><span class="toc-num">4</span>The year&rsquo;s doomsday</a></li>
+          <li><a href="#century"><span class="toc-num">5</span>Century anchors</a></li>
+          <li><a href="#together"><span class="toc-num">6</span>Put it together</a></li>
+        </ol>
+      </nav>
+
+      <article class="lesson">
+        <section class="chapter" id="idea">
+          <div class="chapter-num" aria-hidden="true">0</div>
+          <div class="chapter-body">
+            <h2>The idea</h2>
+            <p>
+              Every year has one weekday called its <strong>doomsday</strong>. A handful of easy dates always fall on it:
+              4/4, 6/6, 8/8, 10/10, 12/12, the last day of February, and a few more. In 2026 all of them are Saturdays.
+            </p>
+            <p>Look at the calendar. Every red date sits in the same column.</p>
+            <div class="wide" data-widget="year-calendar" data-year="2026"></div>
+            <p>
+              Change the year and the column moves, but the red dates move together. So to find the weekday of any date,
+              you need two things:
+            </p>
+            <ol class="plain">
+              <li>the year’s doomsday, and</li>
+              <li>how far your date is from the nearest red date.</li>
+            </ol>
+            <p>
+              This is John Conway’s <em>Doomsday rule</em>. Below, it’s split into 5 steps and then put back together.
+              Each step ends with a few questions, and every answer comes with its full working.
+            </p>
+          </div>
+        </section>
+
+        <section class="chapter" id="numbers">
+          <div class="chapter-num" aria-hidden="true">1</div>
+          <div class="chapter-body">
+            <h2>Give each weekday a number</h2>
+            <p>Adding days is easier with numbers than with names, so number them from Sunday:</p>
+            <div class="wide">
+              <div class="number-row" aria-hidden="true" data-widget="number-row"></div>
+            </div>
+            <p>
+              Conway gave the numbers names to help them stick: Noneday, Oneday, Twosday, Treblesday, Foursday, Fiveday,
+              Sixaday.
+            </p>
+            <p>
+              A week is 7 days, so adding 7 lands on the same weekday, and you can throw away 7s whenever you like. Friday
+              plus 4 days is 5 + 4 = 9. Take away 7 and you get 2, which is Tuesday. The short way to write that is
+              <strong>9 mod 7 = 2</strong>, the remainder after dividing by 7.
+            </p>
+            <p>Going backward works the same way. Tuesday minus 4 days is 2 − 4 = −2. Add 7 to get 5, which is Friday.</p>
+            <aside class="try">
+              <h3>Try it</h3>
+              <div data-widget="quiz" data-mode="numbers" data-rounds="4"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="dates">
+          <div class="chapter-num" aria-hidden="true">2</div>
+          <div class="chapter-body">
+            <h2>Memorize one doomsday per month</h2>
+            <p>In any year, these dates all land on the same weekday. They come in three groups.</p>
+            <div class="doom-list">
+              <div class="group">
+                <h3>Doubles</h3>
+                <p class="group-dates">4/4, 6/6, 8/8, 10/10, 12/12</p>
+                <p>The even months from April on. The day matches the month.</p>
+              </div>
+              <div class="group">
+                <h3>Nine to five</h3>
+                <p class="group-dates">5/9, 9/5, 7/11, 11/7</p>
+                <p>“I work 9-to-5 at the 7-Eleven,” both ways round.</p>
+              </div>
+              <div class="group">
+                <h3>Start of the year</h3>
+                <p class="group-dates">1/3, 2/28, 3/14</p>
+                <p>January 3, the last day of February, and Pi Day. Leap years use 1/4 and 2/29.</p>
+              </div>
+            </div>
+            <p>
+              The month lengths are what line them up. From 4/4 to 6/6 is 26 more days in April, 31 in May and 6 in June,
+              which makes 63 days, exactly 9 weeks. The gaps from 6/6 to 8/8, 8/8 to 10/10 and 10/10 to 12/12 are 63 days
+              each too. May 9 to September 5 is 119 days, or 17 weeks, and so is July 11 to November 7.
+            </p>
+            <p>January and February come before the leap day, so they shift in leap years. Everything from March on stays put.</p>
+            <p>
+              You don’t have to use the listed date. Anything 7 days from a doomsday is also a doomsday, so in July you can
+              use the 4th, 11th, 18th or 25th, whichever is closest. A few more come free: July 4, Halloween (10/31), Boxing
+              Day (12/26), and Valentine’s Day (2/14) outside leap years.
+            </p>
+            <aside class="try">
+              <h3>Try it</h3>
+              <p class="try-note">Type any day in the month that falls on doomsday.</p>
+              <div data-widget="quiz" data-mode="months" data-rounds="5" data-from="1900" data-to="2099"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="count">
+          <div class="chapter-num" aria-hidden="true">3</div>
+          <div class="chapter-body">
+            <h2>Count from the nearest doomsday</h2>
+            <p>Say you know that 2026’s doomsday is Saturday. What day is Christmas, December 25?</p>
+            <p>
+              December 12 is a doomsday. Add a week to get December 19, and another to get December 26. Christmas is the day
+              before that, so it’s Saturday minus 1, a <strong>Friday</strong>.
+            </p>
+            <p>
+              In numbers, Saturday is 6 and 6 − 1 = 5, which is Friday. Counting from December 12 instead gives the same
+              answer with more arithmetic: 25 − 12 = 13, 6 + 13 = 19, and 19 mod 7 = 5. Starting from a nearby doomsday
+              keeps the numbers small.
+            </p>
+            <p>Click any day below to see how to count to it.</p>
+            <div class="wide" data-widget="count-explorer" data-year="2026" data-month="12" data-day="25"></div>
+            <aside class="try">
+              <h3>Try it</h3>
+              <p class="try-note">You’re given the year’s doomsday. Count to the date.</p>
+              <div data-widget="quiz" data-mode="count" data-rounds="4" data-from="2020" data-to="2030"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="year">
+          <div class="chapter-num" aria-hidden="true">4</div>
+          <div class="chapter-body">
+            <h2>Find the year’s doomsday</h2>
+            <p>Each year the doomsday moves forward one weekday, or two when a February 29 gets in the way.</p>
+            <p>
+              A normal year has 365 days, which is 52 weeks and 1 day, so any date falls one weekday later the next year. A
+              leap year adds February 29, so the jump is two.
+            </p>
+            <div class="wide" data-widget="drift-strip" data-from="2019" data-to="2033"></div>
+            <p>2026 is Saturday, 2027 is Sunday, and 2028 jumps two days to Tuesday because 2028 is a leap year.</p>
+            <p>
+              So if you know the doomsday at the start of a century, then after <var>y</var> years it has moved
+              <var>y</var> days, plus one extra for every leap year along the way: <strong><var>y</var> + ⌊<var>y</var>/4⌋</strong>.
+              The ⌊ ⌋ brackets mean “round down.”
+            </p>
+            <p>
+              For 1969, <var>y</var> = 69. There are 17 leap years from 1901 to 1969, so the drift is 69 + 17 = 86 days.
+              Throw away 7s: 86 = 84 + 2, which leaves 2. The 1900s start on Wednesday (3), for reasons you’ll see in step 5,
+              so 1969’s doomsday is 3 + 2 = 5, a <strong>Friday</strong>.
+            </p>
+            <h3>The 12s shortcut</h3>
+            <p>
+              86 mod 7 is a lot to do in your head. Grouping the years in twelves keeps the numbers small. Any 12 years in a
+              row contain exactly 3 leap years, so 12 years of drift is 12 + 3 = 15 days, which is 2 weeks and 1 day. Each
+              dozen years moves the doomsday by one.
+            </p>
+            <p>Split the last two digits into dozens and a leftover, then add three small numbers:</p>
+            <ol class="formula">
+              <li><var>a</var> = how many 12s fit into <var>y</var></li>
+              <li><var>b</var> = what’s left over</li>
+              <li><var>c</var> = how many 4s fit into <var>b</var> (the leap years in the leftover)</li>
+            </ol>
+            <p>
+              The drift is <var>a</var> + <var>b</var> + <var>c</var>. For 1969, 69 = 5 × 12 + 9, so <var>a</var> = 5 and
+              <var>b</var> = 9. Two 4s fit into 9, so <var>c</var> = 2. Then 5 + 9 + 2 = 16, and 16 mod 7 = 2, the same
+              drift as before.
+            </p>
+            <p>Type any year to see both ways side by side.</p>
+            <div class="wide" data-widget="year-explorer" data-year="1969"></div>
+            <aside class="try">
+              <h3>Try it</h3>
+              <p class="try-note">You’re given the century anchor. Find the year’s doomsday.</p>
+              <div data-widget="quiz" data-mode="year" data-rounds="4" data-from="1900" data-to="2099"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="century">
+          <div class="chapter-num" aria-hidden="true">5</div>
+          <div class="chapter-body">
+            <h2>Know the century anchors</h2>
+            <p>
+              The last piece is the doomsday of each century year, called its <strong>anchor</strong>. The anchors repeat
+              every 400 years:
+            </p>
+            <div class="wide" data-widget="anchor-row"></div>
+            <p>
+              For most dates you’ll meet, you need two of them: <strong>1900 is Wednesday</strong> and
+              <strong>2000 is Tuesday</strong> (2000 is Twosday).
+            </p>
+            <p>
+              Each century moves the anchor back two days. A century normally has 24 leap years, because the century year
+              itself, like 1900, isn’t one. That’s 100 + 24 = 124 days of drift, and 124 = 17 weeks + 5 days. Moving forward
+              5 lands on the same weekday as moving back 2, so each anchor is two days before the last: Sunday in 1700,
+              Friday in 1800, Wednesday in 1900.
+            </p>
+            <p>
+              Every fourth century year is a leap year anyway (1600, 2000, 2400). That adds one more day, so the step into
+              2000 is only one day back, from Wednesday to Tuesday. Over 400 years that’s 2 + 2 + 2 + 1 = 7 days back, a
+              whole week, which is why the pattern repeats. 400 years of our calendar are 146,097 days, exactly 20,871
+              weeks, so the entire calendar repeats every 400 years.
+            </p>
+            <details class="aside">
+              <summary>A formula, if you’d like one</summary>
+              <p>
+                With <var>c</var> = the first two digits of the year, the anchor is (2 + 5 × (<var>c</var> mod 4)) mod 7.
+                For 1969, <var>c</var> = 19, 19 mod 4 = 3, and (2 + 15) mod 7 = 3, which is Wednesday.
+              </p>
+            </details>
+            <aside class="try">
+              <h3>Try it</h3>
+              <div data-widget="quiz" data-mode="century" data-rounds="4" data-from="1600" data-to="2499"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="together">
+          <div class="chapter-num" aria-hidden="true">6</div>
+          <div class="chapter-body">
+            <h2>Put it together</h2>
+            <p>
+              Here is the whole method worked on the Moon landing. Pick another date, or type your birthday, and the working
+              updates.
+            </p>
+            <div class="wide" data-widget="solver" data-date="1969-07-20"></div>
+            <aside class="try">
+              <h3>Now you</h3>
+              <p class="try-note">Each hint shows one more step of the working.</p>
+              <div data-widget="quiz" data-mode="full" data-rounds="3" data-from="1900" data-to="2099"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="pitfalls">
+          <div class="chapter-num" aria-hidden="true"></div>
+          <div class="chapter-body">
+            <h2>What trips people up</h2>
+            <dl class="pitfalls">
+              <div>
+                <dt>January and February in leap years</dt>
+                <dd>
+                  Use January 4 and February 29 in leap years. A year divisible by 4 is a leap year, except century years,
+                  which must be divisible by 400. So 1900 and 2100 aren’t leap years, but 2000 was.
+                </dd>
+              </div>
+              <div>
+                <dt>Counting backward</dt>
+                <dd>
+                  If your date comes before the doomsday, count back. If you end up with a negative number, add 7s until it
+                  isn’t: −11 + 14 = 3.
+                </dd>
+              </div>
+              <div>
+                <dt>Which century?</dt>
+                <dd>
+                  Here “century” means the first two digits. 1999 is in the 1900s (Wednesday) and 2000 is in the 2000s
+                  (Tuesday).
+                </dd>
+              </div>
+              <div>
+                <dt>Very old dates</dt>
+                <dd>
+                  Countries moved from the Julian calendar to today’s Gregorian one at different times. Britain and its
+                  colonies switched in 1752, when Wednesday, September 2 was followed by Thursday, September 14. The weekdays
+                  carried on and only the dates jumped. This method uses the Gregorian calendar, so an old-style date won’t
+                  match until you convert it.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="chapter next" id="next">
+          <div class="chapter-num" aria-hidden="true"></div>
+          <div class="chapter-body">
+            <h2>Get fast</h2>
+            <p>
+              Conway practiced until he could do it in about 2 seconds, and set his computer to quiz him with a random
+              date every time he logged in. A target of 10 seconds is a good start. You get there by drilling each step until you stop
+              having to think about it.
+            </p>
+            <p class="cta-row">
+              <a class="btn big" href="./practice.html">Start practicing</a>
+              <a class="btn big quiet" href="./cheatsheet.html">Print the cheat sheet</a>
+            </p>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        John Horton Conway devised the Doomsday rule in 1973, building on a method by Lewis Carroll. The worked solutions
+        come from the same code that grades your answers, and that code is tested against every date from 1583 to 3000.
+        <a href="https://github.com/nickita-khylkouski/DateGuesser-website">Source on GitHub</a>.
+      </p>
+    </footer>
+
+  </body>
+</html>
