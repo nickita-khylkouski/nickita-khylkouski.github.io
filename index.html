@@ -85,6 +85,17 @@
   .candidate-panel ol { margin: 8px 0 0; padding-left: 23px; font-size: 15px; }
   .candidate-panel li + li { margin-top: 7px; }
   .detail { background: #fff; border-left-color: #174ea6; }
+
+  .entry.math { display: block; }
+  .mrow { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 22px; align-items: center; margin: 14px 0; }
+  .mrow.flip { grid-template-columns: minmax(0, 1fr) 260px; }
+  .mrow.flip .photos { grid-column: 2; grid-row: 1; }
+  .mrow.flip ul { grid-column: 1; grid-row: 1; }
+  .mrow .photos.single img { max-height: 240px; margin: 0 auto; }
+  @media (max-width: 760px) {
+    .mrow, .mrow.flip { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+    .mrow ul { order: 0; } .mrow .photos { order: 1; max-width: 450px; }
+  }
 </style>
 <link href="https://nickita.org/" rel="canonical"/></head>
 <body>
@@ -183,21 +194,26 @@
 <figure><a href="/photos/photo-5314b0f494959b53.jpg"><img alt="At the national security hackathon" loading="lazy" src="/photos/photo-5314b0f494959b53.jpg"/></a><figcaption>At the national security hackathon</figcaption></figure>
 </div>
 </section>
-<section class="entry reverse">
+<section class="entry math">
 <div class="copy">
 <h3>Math</h3>
 <ul>
-<li>May 24th, 2022 was a Tuesday. Give me any date and I'll tell you its weekday. I try to prove cool math things for fun. I built <a href="/date/">DateGuesser</a> around the Doomsday algorithm.</li>
-<li>Built <a href="https://github.com/nickita-khylkouski/BoidDynamics">Boids</a>, a 2D and 3D flocking simulator, and <a href="https://github.com/nickita-khylkouski/flatlander">Flatlander</a>, a 3D world seen through one 2D slice. Give me five minutes and I'll make 4D make sense to you.</li>
-<li>Embedded 487K Minecraft YouTube videos from 523 channels by title, description and thumbnail, then mapped them into ~200 topics I named by hand. <a href="https://github.com/nickita-khylkouski/mc-titles">mc-titles</a>.</li>
-<li>Embedded 501K drug reviews from Drugs.com, WebMD and Erowid with the drug names hidden, then <a href="/drug-map/">mapped them</a>. Drugs that feel the same to people end up next to each other. When reviewers kept mentioning a surprise good side effect, a paper on it came out later 18% of the time, vs 7% for other effects of the same drug.</li>
+<li>May 24th, 2022 was a Tuesday. Give me any date and I'll tell you its weekday. I try to prove cool math things for fun. I built <a href="/date/">DateGuesser</a> around the Doomsday algorithm.</li></ul>
+<div class="mrow">
+<div class="photos single"><figure><a href="/photos/flatlander-rotate.gif"><img alt="Flatlander: a 3D world viewed through a 2D slice" loading="lazy" src="/photos/flatlander-rotate.gif"/></a><figcaption>Flatlander: a 3D world viewed through a 2D slice</figcaption></figure></div>
+<ul><li>Built <a href="https://github.com/nickita-khylkouski/BoidDynamics">Boids</a>, a 2D and 3D flocking simulator, and <a href="https://github.com/nickita-khylkouski/flatlander">Flatlander</a>, a 3D world seen through one 2D slice. Give me five minutes and I'll make 4D make sense to you.</li></ul>
+</div>
+<div class="mrow flip">
+<div class="photos single"><figure><a href="https://github.com/nickita-khylkouski/mc-titles"><img alt="487K Minecraft YouTube videos mapped by title, description and thumbnail embeddings" loading="lazy" src="/photos/mc-youtube-embeddings.jpg"/></a><figcaption>487K Minecraft videos, embedded three ways</figcaption></figure></div>
+<ul><li>Embedded 487K Minecraft YouTube videos from 523 channels by title, description and thumbnail, then mapped them into ~200 topics I named by hand. <a href="https://github.com/nickita-khylkouski/mc-titles">mc-titles</a>.</li></ul>
+</div>
+<div class="mrow">
+<div class="photos single"><figure><a href="/drug-map/"><img alt="501K drug reviews embedded with drug names hidden, laid out in 3D and turning" loading="lazy" src="/photos/drug-reviews-3d.gif"/></a><figcaption>501K drug reviews, in 3D</figcaption></figure></div>
+<ul><li>Embedded 501K drug reviews from Drugs.com, WebMD and Erowid with the drug names hidden, then <a href="/drug-map/">mapped them</a>. Drugs that feel the same to people end up next to each other. When reviewers kept mentioning a surprise good side effect, a paper on it came out later 18% of the time, vs 7% for other effects of the same drug.</li></ul>
+</div>
+<ul>
 <li>Working on my own math theorem right now. GPT-5.6 Pro, Opus 5.5, GPT-6 Pro, GPT-6.1 Pro, and Astra couldn't solve it either.</li>
 <li class="lesson">Finding a useful math problem I care about that someone has not already solved is hard.</li></ul>
-</div>
-<div aria-label="Math photos" class="photos single">
-<figure><a href="/photos/flatlander-rotate.gif"><img alt="Flatlander: a 3D world viewed through a 2D slice" loading="lazy" src="/photos/flatlander-rotate.gif"/></a><figcaption>Flatlander: a 3D world viewed through a 2D slice</figcaption></figure>
-<figure style="margin-top: 10px"><a href="https://github.com/nickita-khylkouski/mc-titles"><img alt="487K Minecraft YouTube videos mapped by title, description and thumbnail embeddings" loading="lazy" src="/photos/mc-youtube-embeddings.jpg"/></a><figcaption>487K Minecraft videos, embedded three ways</figcaption></figure>
-<figure style="margin-top: 10px"><a href="/drug-map/"><img alt="501K drug reviews mapped by what they say, drug names hidden" loading="lazy" src="/photos/drug-reviews-map.jpg"/></a><figcaption>501K drug reviews, placed by what they say</figcaption></figure><figure style="margin-top: 10px"><a href="https://nickita.org/polytrack-tas/"><img alt="All 17 PolyTrack TAS racing lines drawing themselves at 10x speed" loading="lazy" src="/photos/polytrack-tas.gif"/></a><figcaption>All 17 PolyTrack TAS runs, 10x speed</figcaption></figure>
 </div>
 </section>
 <section class="entry hobbies">
