@@ -38,6 +38,7 @@
   .gallery-heavy .photos figure:nth-child(2) img, .gallery-heavy .photos figure:nth-child(4) img { object-position: center 25%; }
   .gallery-heavy .photos:not(.single) figure:last-child img { width: auto; max-width: 100%; height: 150px; margin: 0 auto; object-fit: contain; background: transparent; }
   .photos.single img { height: auto; max-height: 235px; object-fit: contain; background: transparent; }
+  .photos.single video { display: block; width: 100%; height: auto; max-height: 240px; object-fit: contain; margin: 0 auto; }
   .entry.hobbies { grid-template-columns: minmax(0, 1fr) 200px; }
   .entry.hobbies .photos.single img { max-height: 190px; }
   .entry.yc .photos.single a { display: block; height: 220px; overflow: hidden; }
@@ -208,7 +209,7 @@
 <ul><li>Embedded 487K Minecraft YouTube videos from 523 channels by title, description and thumbnail, then mapped them into ~200 topics I named by hand. <a href="https://github.com/nickita-khylkouski/mc-titles">mc-titles</a>.</li></ul>
 </div>
 <div class="mrow">
-<div class="photos single"><figure><a href="/drug-map/"><img alt="501K drug reviews embedded with drug names hidden, laid out in 3D and turning" loading="lazy" src="/photos/drug-reviews-3d.gif"/></a><figcaption>501K drug reviews, in 3D</figcaption></figure></div>
+<div class="photos single"><figure><a href="/drug-map/"><video aria-label="501K drug reviews in 3D, zooming into the middle where each colour is a smaller cluster" autoplay loop muted playsinline preload="metadata" poster="/photos/drug-reviews-film.jpg" src="/photos/drug-reviews-film.mp4"></video></a><figcaption>501K drug reviews in 3D, zooming into the clusters</figcaption></figure></div>
 <ul><li>Embedded 501K drug reviews with the drug names hidden. <a href="/drug-map/">Map</a>.</li>
 <li>Patients find good side effects before scientists do. Of 367 surprise benefits reviewers flagged, 66 (18%) got a paper later, vs 6.7% for the same benefit on other drugs. The median gap was 8.5 years.</li>
 <li>Example: lorcaserin users wrote about fewer hot flashes in 2014. The first study on it came out in 2020.</li></ul>
