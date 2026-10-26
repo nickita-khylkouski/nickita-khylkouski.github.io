@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four Digits: hit any four-digit number with eight cards</title>
+<meta name="description" content="Draw eight cards and use + − × ÷ to hit a four-digit number. The method I use to do it in my head, tested against other ways, why almost every hand works, and five drills to train it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-h" viewBox="0 0 10 13"><path d="M5 13C3.6 11.2 0 8.3 0 4.6 0 2 1.8 0 3.9 0 4.6 0 5 .6 5 1.3 5 .6 5.4 0 6.1 0 8.2 0 10 2 10 4.6 10 8.3 6.4 11.2 5 13Z"/></symbol>
+  <symbol id="s-d" viewBox="0 0 10 13"><path d="M5 0 9.4 6.5 5 13 .6 6.5Z"/></symbol>
+  <symbol id="s-s" viewBox="0 0 10 13"><path d="M5 0C6.4 1.9 10 4.6 10 7.6 10 9.4 8.7 10.5 7.3 10.5 6.5 10.5 5.9 10.1 5.5 9.6L6.3 13H3.7L4.5 9.6C4.1 10.1 3.5 10.5 2.7 10.5 1.3 10.5 0 9.4 0 7.6 0 4.6 3.6 1.9 5 0Z"/></symbol>
+  <symbol id="s-c" viewBox="0 0 10 13"><circle cx="5" cy="2.9" r="2.6"/><circle cx="2.5" cy="7" r="2.5"/><circle cx="7.5" cy="7" r="2.5"/><path d="M4.4 6.5H5.6L6.4 13H3.6Z"/></symbol>
+</svg>
+
+<header class="bar" id="bar">
+  <a class="wordmark" href="#top">Four Digits</a>
+  <nav aria-label="Sections">
+    <a href="#method">The method</a>
+    <a href="#best">Best way</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#why">Why it works</a>
+  </nav>
+  <a class="btn" href="practice.html">Practice</a>
+</header>
+
+<main id="top">
+
+<!-- HERO: headline across two fields -->
+<section class="hero" data-ground="paper" aria-labelledby="hl">
+  <div class="hero-field hero-top"></div>
+  <div class="hero-field hero-bottom"></div>
+  <h1 class="hl" id="hl" aria-label="Eight cards make 7217">
+    <span class="hl-copy hl-a">
+      <span class="hl-line">Eight <span class="fan" data-fan></span> cards</span>
+      <span class="hl-line">make <span data-hero-target>7217</span></span>
+    </span>
+    <span class="hl-copy hl-b" aria-hidden="true">
+      <span class="hl-line hl-spacer"></span>
+      <span class="hl-line">make <span data-hero-target>7217</span></span>
+    </span>
+  </h1>
+  <div class="hero-sub">
+    <p>Draw eight cards, then use + − × ÷ to hit a four-digit number. Here is how I do it in my head, and five drills to train it.</p>
+    <a class="btn" href="#train">Start training</a>
+  </div>
+</section>
+
+<!-- INTRO: statement with inline pictures, then the answer as a sentence of cards -->
+<section class="intro" data-ground="orange">
+  <p class="statement" data-rise>
+    I drew this hand
+    <img class="thumb" src="assets/thumb-cardsharps.jpg" width="120" height="90" alt="Detail of a young man's hand holding playing cards, from Caravaggio's The Cardsharps">
+    1, 4, 5, 6, 8, 9, 11 and 12, and the target was 7217. Every card
+    <img class="thumb" src="assets/thumb-latour.jpg" width="120" height="90" alt="Detail of a fanned hand of playing cards, from La Tour's The Cheat with the Ace of Diamonds">
+    gets used exactly once.
+  </p>
+  <h2 class="eq" data-rise aria-label="7217 equals 9 times, open bracket, 6 times 11 times 12 plus 5 times 8 divided by 4, close bracket, minus 1">
+    <span class="eq-line" data-eq="7217 = 9 × (6 × 11 × 12"></span>
+    <span class="eq-line" data-eq="+ 5 × 8 ÷ 4) − 1"></span>
+  </h2>
+  <p class="intro-note" data-rise>That is one answer. The same hand has 210 different answers, and you will see every one of them further down.</p>
+</section>
+
+<figure class="band" data-ground="dark">
+  <img src="assets/french-les-joueurs-de-cartes-the-card.jpg" width="1920" height="1575" alt="Two men in hats sit across a small table, each studying the cards in his hand. Painting by Paul Cézanne.">
+  <figcaption>Paul Cézanne, The Card Players, 1890–92. Two players, no table talk, just a hand to work out.</figcaption>
+</figure>
+
+<!-- METHOD: one verb at a time -->
+<div id="method" class="method">
+
+  <section class="panel" data-ground="paper" aria-labelledby="v-guess">
+    <div class="verb-wrap"><h2 class="verb" id="v-guess">Guess</h2></div>
+    <div class="panel-body">
+      <p data-rise>First, believe it can be done. About 98 hands in 100 have an answer, and most of those have over a hundred. So you are not hunting for one magic path. You are picking one of many.</p>
+      <p data-rise>Next, look at the big cards. A typical answer is one big multiplication, the trunk, with a few small fixes added along the way. The trunk is usually three or four of the five biggest cards.</p>
+      <p data-rise>Here the five biggest are 12, 11, 9, 8 and 6. What does the trunk look like?</p>
+      <ol class="work" data-rise>
+        <li><span class="w-math">6 × 8 × 9 × 11 = 6 × 8 × 99</span><span class="w-note">about 4,800. Far too small, so you need both 11 and 12.</span></li>
+        <li><span class="w-math">6 × 9 × 11 × 12 = 72 × 99</span><span class="w-note">that is 7,128. Close to 7217. That is the trunk.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="panel" data-ground="dark" aria-labelledby="v-nudge">
+    <div class="verb-wrap"><h2 class="verb" id="v-nudge">Nudge</h2></div>
+    <div class="panel-body">
+      <p data-rise>Now work backwards from the target. You want to divide 7217 by one of the trunk cards. It almost never divides cleanly, so you nudge it by a small number first.</p>
+      <p data-rise>Can 7217 be nudged to divide by 9? There is a trick for 9: a number divides by 9 when its digits add up to a multiple of 9.</p>
+      <ol class="work" data-rise>
+        <li><span class="w-math">7 + 2 + 1 + 7 = 17</span><span class="w-note">one short of 18.</span></li>
+        <li><span class="w-math">7217 + 1 = 7218</span><span class="w-note">digits add to 18, so 9 goes in.</span></li>
+      </ol>
+      <p data-rise>And you have a 1 in your hand to pay for that nudge. In the final answer it shows up as the − 1 at the end.</p>
+    </div>
+  </section>
+
+  <section class="panel" data-ground="orange" aria-labelledby="v-divide">
+    <div class="verb-wrap"><h2 class="verb" id="v-divide">Divide</h2></div>
+    <div class="panel-body">
+      <ol class="work" data-rise>
+        <li><span class="w-math">7218 ÷ 9 = 802</span><span class="w-note">7200 ÷ 9 is 800, and 18 ÷ 9 is 2.</span></li>
+      </ol>
+      <p data-rise>You need to be able to do this kind of division in your head. It is not hard. It just takes practice, and there is a drill for it at the bottom of this page.</p>
+      <p data-rise>Look at what happened. The 9 and the 1 are spent, and the problem got smaller. Now you need to make 802 from the six cards that are left.</p>
+      <div class="hand-row" data-rise data-hand="4,5,6,8,11,12" aria-label="Cards left: 4, 5, 6, 8, 11, 12"></div>
+    </div>
+  </section>
+
+  <section class="panel" data-ground="paper" aria-labelledby="v-repeat">
+    <div class="verb-wrap"><h2 class="verb" id="v-repeat">Repeat</h2></div>
+    <div class="panel-body">
+      <p data-rise>Same move again. Can 802 be nudged to divide by 12? To divide by 12 a number has to divide by 3 and by 4. Add 2 and it works.</p>
+      <ol class="work" data-rise>
+        <li><span class="w-math">802 + 2 = 804 = 12 × 67</span><span class="w-note">so 67 is in reach.</span></li>
+        <li><span class="w-math">802 − 10 = 792 = 12 × 66</span><span class="w-note">one step down from 67 is 66.</span></li>
+        <li><span class="w-math">66 = 6 × 11</span><span class="w-note">two cards you still hold.</span></li>
+        <li><span class="w-math">10 = 5 × 8 ÷ 4</span><span class="w-note">the last three cards pay for the nudge.</span></li>
+      </ol>
+      <p data-rise>That last part can look like luck. It isn't. Most hands have hundreds of answers, so trying the cards as dividers turns one up fast. But which cards, and in what order? I tested that next.</p>
+    </div>
+  </section>
+</div>
+
+<!-- BEST: the method against the alternatives -->
+<section class="best" id="best" data-ground="dark" aria-labelledby="best-h">
+  <div class="best-top">
+    <h2 class="head" id="best-h" data-rise>Is this the best way?</h2>
+    <p class="best-lead" data-rise>I wanted to know, so I made a computer play like a person. It was only allowed what you can do in your head: find a remainder, spot a card, and finish a small number with the last few cards. Then it played 300 eight-card hands with each strategy, and I counted how many tries each one needed.</p>
+  </div>
+
+  <div class="vs" data-rise>
+    <h3 class="vs-h">Divide, don't subtract</h3>
+    <div class="vs-side">
+      <p class="vs-n">3 <span>in</span> 10</p>
+      <p class="vs-cap">hands solved by getting close with a big product and then making up the gap. The gap is usually an awkward number like 89, and the cards you have left can't make it.</p>
+    </div>
+    <div class="vs-side win">
+      <p class="vs-n">98 <span>in</span> 100</p>
+      <p class="vs-cap">hands solved by dividing down with nudges, the way I showed above.</p>
+    </div>
+  </div>
+
+  <div class="vs" data-rise>
+    <h3 class="vs-h">Biggest card first</h3>
+    <div class="vs-side">
+      <p class="vs-n">8%</p>
+      <p class="vs-cap">of hands fall to the first route you try if you pick dividers in any order. Four in ten fall within ten tries.</p>
+    </div>
+    <div class="vs-side win">
+      <p class="vs-n">51%</p>
+      <p class="vs-cap">fall to the first route if you divide by your biggest card, then your next biggest, paying each nudge with one card. Eight in ten fall within ten tries.</p>
+    </div>
+  </div>
+
+  <div class="best-why">
+    <div class="best-why-text">
+      <h3 class="vs-h" data-rise>Why biggest first</h3>
+      <p data-rise>After two dividers you have a few cards left and one number to make with them. Small numbers are easy. Big ones almost never work. Two big dividers, like 12 and 11, shrink a four-digit target to about 50.</p>
+      <h3 class="vs-h" data-rise>Why one card per nudge</h3>
+      <p data-rise>Every card you spend on a nudge is a card you don't have at the end. With four cards left, about 1 route in 4 finishes. With three, 1 in 20. With two, 1 in 140.</p>
+    </div>
+    <figure class="bars-fig" data-rise>
+      <ol class="bars" aria-label="Chance the last four cards can make the number">
+        <li style="--w:79%"><span class="b-l">up to 20</span><span class="b-bar"></span><span class="b-v">79%</span></li>
+        <li style="--w:67%"><span class="b-l">21 to 40</span><span class="b-bar"></span><span class="b-v">67%</span></li>
+        <li style="--w:52%"><span class="b-l">41 to 60</span><span class="b-bar"></span><span class="b-v">52%</span></li>
+        <li style="--w:38%"><span class="b-l">61 to 100</span><span class="b-bar"></span><span class="b-v">38%</span></li>
+        <li style="--w:25%"><span class="b-l">101 to 150</span><span class="b-bar"></span><span class="b-v">25%</span></li>
+        <li style="--w:12%"><span class="b-l">151 to 250</span><span class="b-bar"></span><span class="b-v">12%</span></li>
+        <li style="--w:6%"><span class="b-l">251 to 400</span><span class="b-bar"></span><span class="b-v">6%</span></li>
+        <li style="--w:2%"><span class="b-l">over 400</span><span class="b-bar"></span><span class="b-v">2%</span></li>
+      </ol>
+      <figcaption>How often the last four cards can make the number you are left with, by its size. From about 99,000 routes through the 300 hands.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- RULES: the method, sharpened -->
+<section class="rules" data-ground="orange" aria-labelledby="rules-h">
+  <h2 class="head" id="rules-h" data-rise>The method, sharpened</h2>
+  <ol class="rule-list">
+    <li data-rise><span class="rule-n">1</span><p>Divide by your biggest card. Pay the nudge with one card.</p></li>
+    <li data-rise><span class="rule-n">2</span><p>Do it again with the next biggest card.</p></li>
+    <li data-rise><span class="rule-n">3</span><p>Make what's left from the last four cards.</p></li>
+  </ol>
+  <div class="rules-body">
+    <p data-rise>If the last step fails, change the second divider and try again, then the first. And the trunk was the right idea all along: the trunk is just your big dividers multiplied together.</p>
+    <h3 class="vs-h" data-rise>7217, the sharp way</h3>
+    <ol class="work" data-rise>
+      <li><span class="w-math">7217 = 12 × 601 + 5</span><span class="w-note">7200 is 12 × 600, and 17 is 12 + 5. I hold a 5.</span></li>
+      <li><span class="w-math">601 = 11 × 55 − 4</span><span class="w-note">11 leaves 7, so go up 4 to 605. I hold a 4.</span></li>
+      <li><span class="w-math">55 = (6 + 1) × 9 − 8</span><span class="w-note">the last four cards: 1, 6, 8 and 9.</span></li>
+    </ol>
+    <p data-rise>So 7217 = 12 × (11 × ((6 + 1) × 9 − 8) − 4) + 5. That was the first route I tried, which happens about half the time.</p>
+  </div>
+</section>
+
+<!-- TOOLKIT: picture left, the five skills right -->
+<section class="tools" id="toolkit" data-ground="paper" aria-labelledby="tools-h">
+  <h2 class="head tools-h" id="tools-h" data-rise>Five things to get fast at</h2>
+  <div class="tools-grid">
+    <img class="tools-pic" src="assets/soldiers-playing-cards-and-dice-the-cheats.jpg" width="1920" height="1422" alt="Soldiers crowd around a table playing cards and dice by candlelight. Painting by Valentin de Boulogne.">
+    <div class="tools-list">
+      <article class="tool" data-rise>
+        <h3 class="tool-h">Remainders in chunks</h3>
+        <p>Don't divide 7217 by 12 in one go. Peel off easy multiples: 7217 = 7200 + 12 + 5. Each chunk is a multiple of 12 except the 5, so 12 leaves 5. For 13 it's 7217 = 6500 + 650 + 65 + 2, so 13 leaves 2. Drill 1 trains this.</p>
+      </article>
+      <article class="tool" data-rise>
+        <h3 class="tool-h">Divisibility tests</h3>
+        <p>For most cards there is a shortcut that tells you at a glance whether a nudge worked.</p>
+        <table class="tricks-table">
+          <caption class="sr">Quick tests for whether a number divides by 2 through 13</caption>
+          <thead><tr><th scope="col">Divides by</th><th scope="col">Test</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td>last digit is even</td><td>7218</td></tr>
+            <tr><td>3</td><td>digits add to a multiple of 3</td><td>804: 8 + 0 + 4 = 12</td></tr>
+            <tr><td>4</td><td>last two digits divide by 4</td><td>804: 04</td></tr>
+            <tr class="grp"><td>5</td><td>ends in 0 or 5</td><td>7215</td></tr>
+            <tr><td>6</td><td>passes the tests for 2 and 3</td><td>7218</td></tr>
+            <tr><td>8</td><td>last three digits divide by 8</td><td>7216: 216 = 8 × 27</td></tr>
+            <tr><td>9</td><td>digits add to a multiple of 9</td><td>7218: 18</td></tr>
+            <tr class="grp"><td>10</td><td>ends in 0</td><td>7210</td></tr>
+            <tr><td>11</td><td>alternate + and − across the digits, get a multiple of 11</td><td>7216: 7 − 2 + 1 − 6 = 0</td></tr>
+            <tr><td>12</td><td>passes the tests for 3 and 4</td><td>804</td></tr>
+            <tr><td>7 or 13</td><td>thousands minus the last three digits, since 1001 = 7 × 11 × 13</td><td>7217: 217 − 7 = 210 = 7 × 30</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="tool" data-rise>
+        <h3 class="tool-h">The last four cards</h3>
+        <p>This is the 24 game with a different target. Multiply two cards to get near, then fix it with the other two. Spare cards can disappear: a 1 multiplies in for free, a pair like 7 and 7 becomes × 7 ÷ 7, and two cards in a row, like 9 and 8, become × (9 − 8). Drill 4 trains this.</p>
+      </article>
+      <article class="tool" data-rise>
+        <h3 class="tool-h">Check with nines</h3>
+        <p>Before you call an answer, check it. Swap every number for its digit sum and do the same sum. 12 × 601 + 5 becomes 3 × 7 + 5 = 26, and 26 becomes 8. The target 7217 becomes 17, then 8. They match. It doesn't work through division, so skip it when your answer divides.</p>
+      </article>
+      <article class="tool" data-rise>
+        <h3 class="tool-h">The double divide</h3>
+        <p>Sometimes the target sits right by a multiple of two cards together. 9 × 8 = 72, and 72 goes into 7200, so 7217 = 72 × 100 + 17. Pay the 17 with 12 + 5, and 100 = (11 − 1) × (6 + 4). With no nudge between the two dividers you keep one more card for the end. In my test, the player that was allowed this move found answers fastest of all.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WALL: one hand, every answer -->
+<section class="wall" data-ground="dark" aria-labelledby="wall-h">
+  <div class="wall-top">
+    <div>
+      <h2 class="head" id="wall-h" data-rise>One hand, <span data-wall-count>210</span> ways in</h2>
+      <p class="wall-lead" data-rise>Every line below uses 1, 4, 5, 6, 8, 9, 11 and 12 once each and lands on 7217. Two answers that only swap the order, like a + b × c and c × b + a, count as one. The four I first found by hand are in orange.</p>
+    </div>
+    <figure class="wall-pic" data-rise>
+      <img src="assets/georges-de-la-tour-cheater-with-the.jpg" width="1403" height="1000" alt="A card player slips an ace of diamonds from behind his back while the others at the table look away. Painting by Georges de La Tour.">
+      <figcaption>Georges de La Tour, The Cheat with the Ace of Diamonds, about 1635. You won't need the ace up your sleeve.</figcaption>
+    </figure>
+  </div>
+  <ol class="wall-list" data-wall></ol>
+</section>
+
+<!-- LEDGER: decimal-aligned figures -->
+<section class="ledger" id="why" data-ground="orange" aria-labelledby="ledger-h">
+  <h2 class="head ledger-h" id="ledger-h" data-rise><span class="soft">More cards,</span> suddenly always</h2>
+  <div class="ledger-figs" data-ledger>
+    <!-- filled from data.js; static copy for no-script -->
+    <div class="fig"><span class="whole">0</span><span class="dec">.0</span><span class="cap">percent of hands with 4 cards can hit the target. They reach about 100 different numbers.</span></div>
+    <div class="fig"><span class="whole">1</span><span class="dec">.8</span><span class="cap">with 5 cards, reaching about 530 numbers.</span></div>
+    <div class="fig"><span class="whole">18</span><span class="dec">.0</span><span class="cap">with 6 cards, about 2,900 numbers.</span></div>
+    <div class="fig"><span class="whole">79</span><span class="dec">.0</span><span class="cap">with 7 cards, about 15,000 numbers.</span></div>
+    <div class="fig last"><span class="whole">98</span><span class="dec">.2</span><span class="cap">with 8 cards, about 74,000 numbers. And the typical hand has 176 different answers.</span></div>
+  </div>
+  <p class="ledger-note" data-rise>How I counted: I dealt random hands (400 each for 4 and 5 cards, 300 for 6, 200 for 7, 500 for 8) from a normal deck, ace as 1 up to king as 13, each with a random target from 1000 to 9999. A computer then tried every way to combine the cards, keeping every step a whole number. Each extra card multiplies the numbers you can reach by about five.</p>
+</section>
+
+<!-- WHY: the sponge -->
+<figure class="sponge" data-ground="dark">
+  <img src="assets/sea-sponges.jpg" width="1920" height="2532" alt="Black and white photograph of tube sponges on the sea floor, their bodies full of openings.">
+  <figcaption>Sea sponges, photographed for the Touring Club Italiano in 1965.</figcaption>
+</figure>
+
+<div class="fields">
+  <section class="field f-paper" data-ground="paper" aria-labelledby="f1">
+    <p class="field-text" data-rise>Pour water on a sponge and it finds a way through. The holes connect into paths from top to bottom, and there are usually lots of paths, not just one.</p>
+    <h2 class="field-phrase" id="f1" data-rise>A sponge leaks</h2>
+  </section>
+  <section class="field f-dark mirror" data-ground="dark" aria-labelledby="f2">
+    <p class="field-text" data-rise>Make the holes sparser and at some point the paths stop connecting. It does not fade out slowly. It flips, fast. Mathematicians call this percolation, and the flip is a phase transition.</p>
+    <h2 class="field-phrase" id="f2" data-rise>Then it doesn't</h2>
+  </section>
+  <section class="field f-orange" data-ground="orange" aria-labelledby="f3">
+    <p class="field-text" data-rise>Cards act the same way. With too few cards the paths to your target are rare. Eight cards are past the flip: there is almost always a way through, and when there is one, there are many.</p>
+    <h2 class="field-phrase" id="f3" data-rise>Eight cards leak</h2>
+  </section>
+</div>
+
+<figure class="band play-band" data-ground="dark">
+  <img src="assets/the-cardsharps.jpg" width="1800" height="1296" alt="A young man studies his cards while a cheat behind him signals to his partner. Painting by Caravaggio.">
+  <figcaption>Caravaggio, The Cardsharps, about 1595. Your turn to sit at the table.</figcaption>
+</figure>
+
+<!-- TRAIN: the live thing, five drills on real eight-card hands -->
+<section class="train" id="train" data-ground="paper" aria-labelledby="train-h">
+  <div class="train-top">
+    <h2 class="head" id="train-h">Five drills, eight cards</h2>
+    <p class="train-lead">Each drill trains one move of the method on a real eight-card hand. Clear one and move on to the next. Your progress stays in this browser. When they feel easy, the <a href="practice.html">practice page</a> has timed hands, sprints and a daily hand.</p>
+  </div>
+
+  <div class="ladder" role="tablist" aria-label="Drills">
+    <button class="rung" role="tab" aria-selected="false" data-lv="1"><span class="rung-n">1</span><span class="rung-name">Remainders</span><span class="rung-p" data-prog="1"></span></button>
+    <button class="rung" role="tab" aria-selected="false" data-lv="2"><span class="rung-n">2</span><span class="rung-name">Nudge card</span><span class="rung-p" data-prog="2"></span></button>
+    <button class="rung" role="tab" aria-selected="false" data-lv="3"><span class="rung-n">3</span><span class="rung-name">Two dividers</span><span class="rung-p" data-prog="3"></span></button>
+    <button class="rung" role="tab" aria-selected="false" data-lv="4"><span class="rung-n">4</span><span class="rung-name">Last four</span><span class="rung-p" data-prog="4"></span></button>
+    <button class="rung" role="tab" aria-selected="false" data-lv="5"><span class="rung-n">5</span><span class="rung-name">Full hand</span><span class="rung-p" data-prog="5"></span></button>
+  </div>
+
+  <div class="pane" data-pane="1" role="tabpanel">
+    <p class="pane-lead">What does the card leave over? Split the target into easy chunks, like 7200 + 12 + 5 for 12. Ten right in a row clears this drill.</p>
+    <div class="hand" data-hand="1" aria-label="Your cards"></div>
+    <form class="ask" data-form="1">
+      <label class="ask-q" for="in1"><span data-q="1">7217 ÷ 12</span> leaves</label>
+      <input class="ask-in" id="in1" data-in="1" inputmode="numeric" autocomplete="off">
+      <button class="btn" type="submit">Check</button>
+      <button class="btn ghost" type="button" data-next="1">Skip</button>
+    </form>
+    <p class="readout" data-out="1" aria-live="polite"></p>
+    <p class="score" data-score="1"></p>
+  </div>
+
+  <div class="pane" data-pane="2" role="tabpanel" hidden>
+    <p class="pane-lead">If 12 leaves 5, a 5 takes the target down to a multiple of 12, and a 7 takes it up. Tap the card that does it. Ten right in a row clears this drill.</p>
+    <p class="ask-q" data-q="2" aria-live="polite">Make 7217 divide by 12</p>
+    <div class="hand" data-hand="2" aria-label="Your cards. Tap the one that pays the nudge."></div>
+    <p class="readout" data-out="2" aria-live="polite"></p>
+    <div class="actions"><button class="btn ghost" data-next="2">Skip</button></div>
+    <p class="score" data-score="2"></p>
+  </div>
+
+  <div class="pane" data-pane="3" role="tabpanel" hidden>
+    <p class="pane-lead">Now both dividers. Tap a divider, then the card that pays its nudge. Biggest cards first, one card per nudge. You win the hand if the cards you have left can still make the number you end up with. Five wins clears it.</p>
+    <div class="target-row">
+      <p class="target"><span class="sr">Target: </span><span data-target="3">7217</span></p>
+      <p class="score" data-score="3"></p>
+    </div>
+    <div class="hand" data-hand="3" aria-label="Your cards"></div>
+    <ol class="work peel-work" data-work="3"></ol>
+    <p class="readout" data-out="3" aria-live="polite"></p>
+    <div class="actions">
+      <button class="btn ghost" data-act3="none">No nudge needed</button>
+      <button class="btn ghost" data-act3="undo">Undo</button>
+      <button class="btn ghost" data-act3="new">New hand</button>
+    </div>
+  </div>
+
+  <div class="pane" data-pane="4" role="tabpanel" hidden>
+    <p class="pane-lead">The two dividers are done for you. Make the last number from the last four cards. This is where most hands are won. Five wins clears it.</p>
+    <p class="scaffold" data-scaffold aria-live="polite"></p>
+    <p class="ask-q" data-q="4"></p>
+    <div data-pad="4"></div>
+    <div class="actions">
+      <button class="btn ghost" data-act4="show">Show answers</button>
+      <button class="btn ghost" data-act4="new">New hand</button>
+    </div>
+    <div class="answers" data-answers="4" hidden>
+      <p class="answers-lead" data-answers-lead="4"></p>
+      <ol class="answers-list" data-answers-list="4"></ol>
+    </div>
+    <p class="score" data-score="4"></p>
+  </div>
+
+  <div class="pane" data-pane="5" role="tabpanel" hidden>
+    <p class="pane-lead">Everything at once. Use all eight cards once each. The hints follow the sharpened method, one step at a time. Five solves clears it, and your best time is kept.</p>
+    <div class="target-row">
+      <p class="target" aria-live="polite"><span class="sr">Target: </span><span data-target="5">7217</span></p>
+      <p class="score" data-score="5"></p>
+    </div>
+    <div data-pad="5"></div>
+    <div class="actions">
+      <button class="btn" data-act="hint">Hint</button>
+      <button class="btn ghost" data-act="answer">Show an answer</button>
+      <button class="btn ghost" data-act="new">New hand</button>
+    </div>
+    <ol class="hints" data-hints></ol>
+    <div class="answers" data-answers="5" hidden>
+      <p class="answers-lead" data-answers-lead="5"></p>
+      <ol class="answers-list" data-answers-list="5"></ol>
+      <button class="btn ghost" data-act="all" hidden>Show them all</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" data-ground="orange">
+  <div class="foot-top">
+    <p>Four Digits, a card game for doing arithmetic in your head. Written by Nickita Khylkouski, 2026.</p>
+    <a href="#top">Back to the top</a>
+  </div>
+  <a class="foot-line" href="#train">Deal another hand</a>
+  <div class="foot-meta">
+    <p><a href="https://nickita.org">nickita.org</a></p>
+    <p class="credits">Pictures, all public domain unless noted, via Wikimedia Commons: Paul Cézanne, <a href="https://commons.wikimedia.org/wiki/File:Les_Joueurs_de_cartes,_par_Paul_C%C3%A9zanne.jpg">The Card Players</a>; Caravaggio, <a href="https://commons.wikimedia.org/wiki/File:Caravaggio_(Michelangelo_Merisi)_-_The_Cardsharps_-_Google_Art_Project.jpg">The Cardsharps</a>; Georges de La Tour, <a href="https://commons.wikimedia.org/wiki/File:Georges_de_La_Tour_-_Cheater_with_the_Ace_of_Diamonds_-_WGA12334.jpg">The Cheat with the Ace of Diamonds</a>; Valentin de Boulogne, <a href="https://commons.wikimedia.org/wiki/File:Valentin_de_Boulogne_-_Soldiers_Playing_Cards_and_Dice_(The_Cheats).jpg">Soldiers Playing Cards and Dice</a>; Touring Club Italiano, <a href="https://commons.wikimedia.org/w/index.php?curid=132439462">Sea sponges</a>, CC BY-SA 4.0.</p>
+    <p>Bay Area, 2026</p>
+  </div>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

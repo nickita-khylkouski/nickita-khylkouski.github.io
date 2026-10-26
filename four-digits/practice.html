@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice · Four Digits</title>
+<meta name="description" content="Practise the four-digit card game: guided hands that walk you through the method, timed solo hands, sixty-second sprints and a daily hand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="practice.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="pr">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-h" viewBox="0 0 10 13"><path d="M5 13C3.6 11.2 0 8.3 0 4.6 0 2 1.8 0 3.9 0 4.6 0 5 .6 5 1.3 5 .6 5.4 0 6.1 0 8.2 0 10 2 10 4.6 10 8.3 6.4 11.2 5 13Z"/></symbol>
+  <symbol id="s-d" viewBox="0 0 10 13"><path d="M5 0 9.4 6.5 5 13 .6 6.5Z"/></symbol>
+  <symbol id="s-s" viewBox="0 0 10 13"><path d="M5 0C6.4 1.9 10 4.6 10 7.6 10 9.4 8.7 10.5 7.3 10.5 6.5 10.5 5.9 10.1 5.5 9.6L6.3 13H3.7L4.5 9.6C4.1 10.1 3.5 10.5 2.7 10.5 1.3 10.5 0 9.4 0 7.6 0 4.6 3.6 1.9 5 0Z"/></symbol>
+  <symbol id="s-c" viewBox="0 0 10 13"><circle cx="5" cy="2.9" r="2.6"/><circle cx="2.5" cy="7" r="2.5"/><circle cx="7.5" cy="7" r="2.5"/><path d="M4.4 6.5H5.6L6.4 13H3.6Z"/></symbol>
+</svg>
+
+<header class="pr-bar">
+  <a class="wordmark" href="index.html">Four Digits</a>
+  <nav class="modes" role="tablist" aria-label="Ways to practise">
+    <button class="mode" role="tab" data-mode="guided" aria-selected="true">Guided</button>
+    <button class="mode" role="tab" data-mode="solo" aria-selected="false">Solo</button>
+    <button class="mode" role="tab" data-mode="sprint" aria-selected="false">Sprint</button>
+    <button class="mode" role="tab" data-mode="daily" aria-selected="false">Daily</button>
+  </nav>
+  <a class="pr-back" href="index.html#best">The method</a>
+</header>
+
+<main class="pr-main">
+<h1 class="sr">Four Digits practice</h1>
+
+<!-- the table: one mode at a time -->
+<section class="table" aria-live="off">
+
+  <!-- GUIDED: the method one step at a time -->
+  <div class="mode-pane" data-pane="guided">
+    <div class="t-top">
+      <p class="t-target" data-target="guided">····</p>
+      <p class="t-clock" data-clock="guided">0:00</p>
+    </div>
+    <p class="t-label">Make this with all eight cards</p>
+    <div class="hand" data-hand="guided"></div>
+    <ol class="g-work" data-work></ol>
+    <p class="g-prompt" data-prompt aria-live="polite">Dealing…</p>
+    <form class="g-ask" data-ask autocomplete="off">
+      <label class="sr" for="g-in">Your answer</label>
+      <input class="g-in" id="g-in" inputmode="numeric" data-g-in>
+      <button class="btn" type="submit" data-g-go>Check</button>
+    </form>
+    <div class="g-pad" data-g-pad hidden></div>
+    <p class="g-say" data-say aria-live="polite"></p>
+    <div class="t-actions">
+      <button class="btn ghost" type="button" data-g="none" hidden>No nudge needed</button>
+      <button class="btn ghost" type="button" data-g="hint">Hint <kbd>?</kbd></button>
+      <button class="btn ghost" type="button" data-g="new">Skip hand <kbd>Esc</kbd></button>
+    </div>
+  </div>
+
+  <!-- SOLO: a full hand against the clock -->
+  <div class="mode-pane" data-pane="solo" hidden>
+    <div class="t-top">
+      <p class="t-target" data-target="solo">····</p>
+      <p class="t-clock" data-clock="solo">0:00</p>
+    </div>
+    <p class="t-label">Use all eight cards once each</p>
+    <div data-pad="solo"></div>
+    <div class="t-actions">
+      <button class="btn ghost" type="button" data-s="hint">Hint <kbd>?</kbd></button>
+      <button class="btn ghost" type="button" data-s="answer">Show an answer</button>
+      <button class="btn ghost" type="button" data-s="new">New hand <kbd>Esc</kbd></button>
+    </div>
+    <ol class="hints" data-s-hints></ol>
+    <div class="t-answers" data-s-answers hidden>
+      <p data-s-lead></p>
+      <ul class="answers-list" data-s-list></ul>
+    </div>
+  </div>
+
+  <!-- SPRINT: as many as you can before the clock runs out -->
+  <div class="mode-pane" data-pane="sprint" hidden>
+    <div class="sp-pick" data-sp-pick>
+      <p class="t-label">Pick a sprint</p>
+      <div class="sp-list">
+        <button class="sp-opt" type="button" data-sp="rem">
+          <span class="sp-name">Remainders</span>
+          <span class="sp-time">60 seconds</span>
+          <span class="sp-what">What does the card leave? Leans on the cards you're slowest at.</span>
+          <span class="sp-best" data-sp-best="rem"></span>
+        </button>
+        <button class="sp-opt" type="button" data-sp="nudge">
+          <span class="sp-name">Nudges</span>
+          <span class="sp-time">60 seconds</span>
+          <span class="sp-what">Tap or type the card that makes the target divide.</span>
+          <span class="sp-best" data-sp-best="nudge"></span>
+        </button>
+        <button class="sp-opt" type="button" data-sp="finish">
+          <span class="sp-name">Last four</span>
+          <span class="sp-time">3 minutes</span>
+          <span class="sp-what">Make the number that's left from four cards. Skipping is allowed.</span>
+          <span class="sp-best" data-sp-best="finish"></span>
+        </button>
+      </div>
+    </div>
+    <div class="sp-run" data-sp-run hidden>
+      <div class="t-top">
+        <p class="t-label"><span data-sp-score>0</span> right</p>
+        <p class="t-clock" data-sp-clock>1:00</p>
+      </div>
+      <p class="sp-q" data-sp-q></p>
+      <div class="hand" data-sp-hand></div>
+      <form class="g-ask" data-sp-form autocomplete="off">
+        <label class="sr" for="sp-in">Your answer</label>
+        <input class="g-in" id="sp-in" inputmode="numeric" data-sp-in>
+        <button class="btn" type="submit">Enter</button>
+      </form>
+      <div data-sp-pad hidden></div>
+      <p class="g-say" data-sp-say aria-live="polite"></p>
+      <div class="t-actions">
+        <button class="btn ghost" type="button" data-sp-skip hidden>Skip <kbd>Esc</kbd></button>
+        <button class="btn ghost" type="button" data-sp-stop>Stop</button>
+      </div>
+    </div>
+    <div class="sp-end" data-sp-end hidden>
+      <p class="t-label" data-sp-kind></p>
+      <p class="t-target" data-sp-final></p>
+      <p class="sp-sum" data-sp-sum></p>
+      <ul class="sp-miss" data-sp-miss></ul>
+      <div class="t-actions">
+        <button class="btn" type="button" data-sp-again>Again <kbd>Enter</kbd></button>
+        <button class="btn ghost" type="button" data-sp-back>Other sprints</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY: the same hand for everyone today -->
+  <div class="mode-pane" data-pane="daily" hidden>
+    <div class="d-wait" data-d-wait>
+      <div class="t-top">
+        <p class="t-target">????</p>
+      </div>
+      <p class="t-label" data-d-date>Today's hand</p>
+      <p class="g-prompt">One hand a day, the same for everyone. The clock starts when the cards turn over.</p>
+      <div class="t-actions"><button class="btn" type="button" data-d-start>Turn the cards over</button></div>
+    </div>
+    <div data-d-play hidden>
+      <div class="t-top">
+        <p class="t-target" data-target="daily"></p>
+        <p class="t-clock" data-clock="daily">0:00</p>
+      </div>
+      <p class="t-label" data-d-date>Today's hand</p>
+      <div data-pad="daily"></div>
+      <div class="t-actions">
+        <button class="btn ghost" type="button" data-d="hint">Hint <kbd>?</kbd></button>
+        <button class="btn ghost" type="button" data-d="give">Give up</button>
+      </div>
+      <ol class="hints" data-d-hints></ol>
+      <div class="t-answers" data-d-answers hidden>
+        <p data-d-lead></p>
+        <ul class="answers-list" data-d-list></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- your numbers -->
+<aside class="stats" aria-labelledby="st-h">
+  <h2 class="st-h" id="st-h">Your numbers</h2>
+  <div class="st-figs">
+    <p class="st-fig"><b data-st="solved">0</b><span>hands solved</span></p>
+    <p class="st-fig"><b data-st="best">–</b><span>best time</span></p>
+    <p class="st-fig"><b data-st="avg">–</b><span>last ten</span></p>
+  </div>
+  <figure class="st-spark">
+    <svg data-spark viewBox="0 0 300 64" preserveAspectRatio="none" role="img" aria-label="Your recent solve times"></svg>
+    <figcaption data-spark-cap>Solve a few hands and your times show up here.</figcaption>
+  </figure>
+
+  <h3 class="st-sub">Remainders by card</h3>
+  <p class="st-note">Orange means fast and right. Tap a card to sprint on it.</p>
+  <div class="st-rems" data-rems></div>
+
+  <h3 class="st-sub">The other steps</h3>
+  <dl class="st-steps">
+    <div><dt>Nudge cards</dt><dd data-st="nudge">–</dd></div>
+    <div><dt>Last four</dt><dd data-st="finish">–</dd></div>
+    <div><dt>Guided hands</dt><dd data-st="guided">–</dd></div>
+    <div><dt>Days in a row</dt><dd data-st="days">–</dd></div>
+  </dl>
+  <p class="st-tip" data-tip></p>
+  <button class="st-reset" type="button" data-reset>Reset my numbers</button>
+</aside>
+</main>
+
+<script type="module" src="practice.js"></script>
+</body>
+</html>
