@@ -28,7 +28,7 @@
   .entry.gallery-heavy .photos.single img { max-height: none; }
   .entry.gallery-heavy .photos:not(.single) { grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .entry.reverse { grid-template-columns: 280px minmax(0, 1fr); }
-  .entry.yc { grid-template-columns: minmax(0, 1fr) 340px; }
+  .entry.yc { grid-template-columns: minmax(0, 1fr) 420px; }
   .entry.reverse .photos { grid-column: 1; grid-row: 1; }
   .entry.reverse .copy { grid-column: 2; grid-row: 1; }
   .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -41,8 +41,8 @@
   .photos.single video { display: block; width: 100%; height: auto; max-height: 240px; object-fit: contain; margin: 0 auto; }
   .entry.hobbies { grid-template-columns: minmax(0, 1fr) 200px; }
   .entry.hobbies .photos.single img { max-height: 190px; }
-  .entry.yc .photos.single a { display: block; height: 170px; overflow: hidden; }
-  .entry.yc .photos.single img { height: 170px; max-height: none; object-fit: cover; object-position: center; transform: scale(1.08); }
+  .entry.yc .photos.single a { display: block; height: 250px; overflow: hidden; }
+  .entry.yc .photos.single img { height: 250px; max-height: none; object-fit: cover; object-position: center; transform: scale(1.08); }
   .photos figcaption { color: #555; font: 12px/1.25 Arial, sans-serif; margin-top: 4px; }
   @media (max-width: 760px) {
     body { padding: 18px; font-size: 16px; }
@@ -84,6 +84,7 @@
   .tagline { margin: 0 0 6px; }
   .entry.grant { padding: 10px 0 8px; }
   .entry.grant ul { margin-bottom: 6px; }
+  .entry.yc h3.sub { margin-top: 18px; }
   .entry.peak { padding-bottom: 12px; }
   .candidate-panel { margin: 16px 0; padding: 12px 15px; background: #f4f4f4; border-left: 3px solid #777; }
   .candidate-title { font: bold 13px/1.4 Arial, sans-serif; color: #3f3f3f; }
@@ -141,17 +142,13 @@
 <li>Got into YC Fellows (NOT YC Startup School) with my brother and received a <strong>$20K grant</strong>.</li>
 <li>Presented Peak Security at a YC Fellows Dinner and Demo Day.</li>
 <li class="lesson">Hiding ideas does not help. Other people are busy building their own stuff.</li></ul>
-</div>
-<div aria-label="YC Fellows photos" class="photos single">
-<figure><a href="/photos/yc-fellows-sign.PNG"><img alt="Nickita and his brother beside the Y Combinator sign" loading="lazy" src="/photos/yc-fellows-sign.PNG"/></a><figcaption>At Y Combinator</figcaption></figure>
-</div>
-</section>
-<section class="entry no-photos grant">
-<div class="copy">
-<h3>Palantir Valley Forge</h3>
+<h3 class="sub">Palantir Valley Forge</h3>
 <ul>
 <li>Got into Palantir Valley Forge and received a <strong>$10K grant</strong>.</li>
 <li>Used <a href="https://www.palantir.com/platforms/foundry/">Palantir Foundry</a> to develop Peak Security and analyze its traces.</li></ul>
+</div>
+<div aria-label="YC Fellows photos" class="photos single">
+<figure><a href="/photos/yc-fellows-sign.PNG"><img alt="Nickita and his brother beside the Y Combinator sign" loading="lazy" src="/photos/yc-fellows-sign.PNG"/></a><figcaption>At Y Combinator</figcaption></figure>
 </div>
 </section>
 <section class="entry">
