@@ -28,7 +28,7 @@
   .entry.gallery-heavy .photos.single img { max-height: none; }
   .entry.gallery-heavy .photos:not(.single) { grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .entry.reverse { grid-template-columns: 280px minmax(0, 1fr); }
-  .entry.yc { grid-template-columns: minmax(0, 1fr) 400px; }
+  .entry.yc { grid-template-columns: minmax(0, 1fr) 340px; }
   .entry.reverse .photos { grid-column: 1; grid-row: 1; }
   .entry.reverse .copy { grid-column: 2; grid-row: 1; }
   .photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -41,8 +41,8 @@
   .photos.single video { display: block; width: 100%; height: auto; max-height: 240px; object-fit: contain; margin: 0 auto; }
   .entry.hobbies { grid-template-columns: minmax(0, 1fr) 200px; }
   .entry.hobbies .photos.single img { max-height: 190px; }
-  .entry.yc .photos.single a { display: block; height: 220px; overflow: hidden; }
-  .entry.yc .photos.single img { height: 220px; max-height: none; object-fit: cover; object-position: center; transform: scale(1.08); }
+  .entry.yc .photos.single a { display: block; height: 170px; overflow: hidden; }
+  .entry.yc .photos.single img { height: 170px; max-height: none; object-fit: cover; object-position: center; transform: scale(1.08); }
   .photos figcaption { color: #555; font: 12px/1.25 Arial, sans-serif; margin-top: 4px; }
   @media (max-width: 760px) {
     body { padding: 18px; font-size: 16px; }
@@ -81,6 +81,10 @@
   @media (max-width: 760px) { .detail { padding: 12px; } }
 
   .lesson { margin-top: 9px; }
+  .tagline { margin: 0 0 6px; }
+  .entry.grant { padding: 10px 0 8px; }
+  .entry.grant ul { margin-bottom: 6px; }
+  .entry.peak { padding-bottom: 12px; }
   .candidate-panel { margin: 16px 0; padding: 12px 15px; background: #f4f4f4; border-left: 3px solid #777; }
   .candidate-title { font: bold 13px/1.4 Arial, sans-serif; color: #3f3f3f; }
   .candidate-panel ol { margin: 8px 0 0; padding-left: 23px; font-size: 15px; }
@@ -103,6 +107,7 @@
 <header class="intro">
 <div class="copy">
 <h1>Nickita Khylkouski</h1>
+<p class="tagline">I run Peak Security, an AI pentesting company. I also like math and building weird things.</p>
 <p><a href="/resume/">Resume</a> · <a href="https://github.com/nickita-khylkouski">GitHub</a> · <a href="https://www.youtube.com/@nickitakhy">YouTube</a> · <a href="https://www.linkedin.com/in/nickita-khy/">LinkedIn</a> · <a href="https://x.com/BitsByNick">Twitter</a> · <a href="https://www.instagram.com/nk.liftss/">Instagram</a> · <a href="mailto:nickitakhy@gmail.com">Email</a></p>
 </div>
 </header>
@@ -129,7 +134,7 @@
 <p>Later Peak findings paid up to roughly <strong>$30,000</strong> and led to <strong>FBI investigations</strong> into other hackers.</p></div>
 </div>
 </section>
-<section class="entry yc">
+<section class="entry yc grant">
 <div class="copy">
 <h3>YC Fellows</h3>
 <ul>
@@ -141,13 +146,12 @@
 <figure><a href="/photos/yc-fellows-sign.PNG"><img alt="Nickita and his brother beside the Y Combinator sign" loading="lazy" src="/photos/yc-fellows-sign.PNG"/></a><figcaption>At Y Combinator</figcaption></figure>
 </div>
 </section>
-<section class="entry no-photos">
+<section class="entry no-photos grant">
 <div class="copy">
 <h3>Palantir Valley Forge</h3>
 <ul>
 <li>Got into Palantir Valley Forge and received a <strong>$10K grant</strong>.</li>
-<li>Used Palantir's software to develop Peak Security and analyze its traces.</li>
-<li class="lesson">The hard part was deciding where one model decision ended and the next began. Same with attack paths.</li><li class="lesson">Keep the pipeline simple enough that I can see each decision.</li></ul>
+<li>Used <a href="https://www.palantir.com/platforms/foundry/">Palantir Foundry</a> to develop Peak Security and analyze its traces.</li></ul>
 </div>
 </section>
 <section class="entry">
@@ -198,7 +202,7 @@
 </section>
 <section class="entry math">
 <div class="copy">
-<h3>Math</h3>
+<h3>Projects</h3>
 <ul>
 <li>May 24th, 2022 was a Tuesday. Give me any date and I'll tell you its weekday. I try to prove cool math things for fun. I built <a href="/date/">DateGuesser</a> around the Doomsday algorithm.</li>
 <li>Saw <a href="https://x.com/swyx/status/2113098033705664650">Scott Wu</a> (Cognition co-founder) make any four-digit number from 8 cards with + − × ÷, plus <a href="https://x.com/GuangyuRobert/status/2114097996229214684">Robert Yang's breakdown</a>, so I built <a href="/four-digits/">Four Digits</a> to learn it. 98% of hands are solvable, and dividing down by your biggest card cracks 98% of them vs 30% for subtracting a product. <a href="/four-digits/practice">Practice here</a>.</li></ul>
